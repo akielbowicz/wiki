@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mini space invaders | Python Argentina Wiki</title>
+<link href="../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/bootblog.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/custom.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<link rel="canonical" href="https://wiki.python.org.ar/recetario/fun/minispaceinvaders/">
+<!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Python Argentina">
+<meta property="og:site_name" content="Python Argentina Wiki">
+<meta property="og:title" content="Mini space invaders">
+<meta property="og:url" content="https://wiki.python.org.ar/recetario/fun/minispaceinvaders/">
+<meta property="og:description" content="Un mini space invaders usando carácteres, la nave dispara a quemarropas en una lucha contra el bicho, nadie sabe cuanto durará esta cacería, que lo disfruten:
+
+La nave y el bicho se mueven solos de fo">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-06-22T11:08:51-03:00">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+                    <a class="nav-link" href="http://www.python.org.ar"><span class="inicio"></span>Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../pyar/"><span class="quienes_somos"></span>Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../foro_y_redes/"><span class="navbar_lista_de_correo"></span>Foro</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../../../"><span class="wiki"></span>Wiki</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://www.python.org.ar/noticias/"><span class="news"></span>Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://www.python.org.ar/irc/"><span class="irc"></span>IRC</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://www.python.org.ar/eventos/"><span class="eventos"></span>Eventos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://planeta.python.org.ar/"><span class="pyar"></span>Planeta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://www.python.org.ar/trabajo/"><span class="jobs"></span>Trabajos</a>
+                </li>
+            </ul>
+</div>
+    </nav>
+</div>
+
+<!-- Header and menu bar -->
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+<div class="col-lg-12">
+    <div class="page-header">
+        <div class="pull-right">
+            <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/fun/minispaceinvaders.rst" id="sourcelink" class="nav-link">Editar</a>
+        </div>
+        <h2>Mini Space Invaders</h2>
+    </div>
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <p>Un mini space invaders usando carácteres, la nave dispara a quemarropas en una lucha contra el bicho, nadie sabe cuanto durará esta cacería, que lo disfruten:</p>
+<ul class="simple">
+<li><p>La nave y el bicho se mueven solos de forma aleatoria.</p></li>
+<li><p>La nave dispara de forma aleatoria.</p></li>
+<li><p>Todo esta en un spanglish feo.</p></li>
+<li><p>Se podría agregar manejo de eventos de teclado para manejar la nave y los disparos. Alguna idea usando módulo estándar de python?</p></li>
+<li><p>En cuanto pueda pongo un videito.</p></li>
+</ul>
+<div class="code"><pre class="code python"><a id="rest_code_96a6d87f5619461486101e5de2819c62-1" name="rest_code_96a6d87f5619461486101e5de2819c62-1" href="#rest_code_96a6d87f5619461486101e5de2819c62-1"></a><span class="kn">import</span> <span class="nn">random</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-2" name="rest_code_96a6d87f5619461486101e5de2819c62-2" href="#rest_code_96a6d87f5619461486101e5de2819c62-2"></a><span class="kn">import</span> <span class="nn">time</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-3" name="rest_code_96a6d87f5619461486101e5de2819c62-3" href="#rest_code_96a6d87f5619461486101e5de2819c62-3"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-4" name="rest_code_96a6d87f5619461486101e5de2819c62-4" href="#rest_code_96a6d87f5619461486101e5de2819c62-4"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-5" name="rest_code_96a6d87f5619461486101e5de2819c62-5" href="#rest_code_96a6d87f5619461486101e5de2819c62-5"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-6" name="rest_code_96a6d87f5619461486101e5de2819c62-6" href="#rest_code_96a6d87f5619461486101e5de2819c62-6"></a><span class="n">ROWS</span> <span class="o">=</span> <span class="mi">14</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-7" name="rest_code_96a6d87f5619461486101e5de2819c62-7" href="#rest_code_96a6d87f5619461486101e5de2819c62-7"></a><span class="n">COLS</span> <span class="o">=</span> <span class="mi">16</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-8" name="rest_code_96a6d87f5619461486101e5de2819c62-8" href="#rest_code_96a6d87f5619461486101e5de2819c62-8"></a><span class="n">BULLET</span> <span class="o">=</span> <span class="s1">'.'</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-9" name="rest_code_96a6d87f5619461486101e5de2819c62-9" href="#rest_code_96a6d87f5619461486101e5de2819c62-9"></a><span class="n">SHOTS</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-10" name="rest_code_96a6d87f5619461486101e5de2819c62-10" href="#rest_code_96a6d87f5619461486101e5de2819c62-10"></a><span class="n">SCREEN</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-11" name="rest_code_96a6d87f5619461486101e5de2819c62-11" href="#rest_code_96a6d87f5619461486101e5de2819c62-11"></a><span class="n">EMPTY</span> <span class="o">=</span> <span class="s1">' '</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-12" name="rest_code_96a6d87f5619461486101e5de2819c62-12" href="#rest_code_96a6d87f5619461486101e5de2819c62-12"></a><span class="n">EXPLOSION</span> <span class="o">=</span> <span class="s1">'#'</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-13" name="rest_code_96a6d87f5619461486101e5de2819c62-13" href="#rest_code_96a6d87f5619461486101e5de2819c62-13"></a><span class="n">SHIP</span> <span class="o">=</span> <span class="s1">'A'</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-14" name="rest_code_96a6d87f5619461486101e5de2819c62-14" href="#rest_code_96a6d87f5619461486101e5de2819c62-14"></a><span class="n">BUG</span> <span class="o">=</span> <span class="s1">'W'</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-15" name="rest_code_96a6d87f5619461486101e5de2819c62-15" href="#rest_code_96a6d87f5619461486101e5de2819c62-15"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-16" name="rest_code_96a6d87f5619461486101e5de2819c62-16" href="#rest_code_96a6d87f5619461486101e5de2819c62-16"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-17" name="rest_code_96a6d87f5619461486101e5de2819c62-17" href="#rest_code_96a6d87f5619461486101e5de2819c62-17"></a><span class="c1">###############################################################################</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-18" name="rest_code_96a6d87f5619461486101e5de2819c62-18" href="#rest_code_96a6d87f5619461486101e5de2819c62-18"></a><span class="c1"># Funciones del mundo</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-19" name="rest_code_96a6d87f5619461486101e5de2819c62-19" href="#rest_code_96a6d87f5619461486101e5de2819c62-19"></a><span class="c1">###############################################################################</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-20" name="rest_code_96a6d87f5619461486101e5de2819c62-20" href="#rest_code_96a6d87f5619461486101e5de2819c62-20"></a><span class="k">def</span> <span class="nf">crear_mapa</span><span class="p">():</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-21" name="rest_code_96a6d87f5619461486101e5de2819c62-21" href="#rest_code_96a6d87f5619461486101e5de2819c62-21"></a>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ROWS</span><span class="p">):</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-22" name="rest_code_96a6d87f5619461486101e5de2819c62-22" href="#rest_code_96a6d87f5619461486101e5de2819c62-22"></a>        <span class="n">SCREEN</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-23" name="rest_code_96a6d87f5619461486101e5de2819c62-23" href="#rest_code_96a6d87f5619461486101e5de2819c62-23"></a>        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">COLS</span><span class="p">):</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-24" name="rest_code_96a6d87f5619461486101e5de2819c62-24" href="#rest_code_96a6d87f5619461486101e5de2819c62-24"></a>            <span class="n">SCREEN</span><span class="p">[</span><span class="n">row</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">)</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-25" name="rest_code_96a6d87f5619461486101e5de2819c62-25" href="#rest_code_96a6d87f5619461486101e5de2819c62-25"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-26" name="rest_code_96a6d87f5619461486101e5de2819c62-26" href="#rest_code_96a6d87f5619461486101e5de2819c62-26"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-27" name="rest_code_96a6d87f5619461486101e5de2819c62-27" href="#rest_code_96a6d87f5619461486101e5de2819c62-27"></a><span class="k">def</span> <span class="nf">mostrar_mapa</span><span class="p">():</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-28" name="rest_code_96a6d87f5619461486101e5de2819c62-28" href="#rest_code_96a6d87f5619461486101e5de2819c62-28"></a>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">SCREEN</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-29" name="rest_code_96a6d87f5619461486101e5de2819c62-29" href="#rest_code_96a6d87f5619461486101e5de2819c62-29"></a>        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-30" name="rest_code_96a6d87f5619461486101e5de2819c62-30" href="#rest_code_96a6d87f5619461486101e5de2819c62-30"></a>            <span class="nb">print</span> <span class="n">col</span><span class="p">,</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-31" name="rest_code_96a6d87f5619461486101e5de2819c62-31" href="#rest_code_96a6d87f5619461486101e5de2819c62-31"></a>        <span class="nb">print</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-32" name="rest_code_96a6d87f5619461486101e5de2819c62-32" href="#rest_code_96a6d87f5619461486101e5de2819c62-32"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-33" name="rest_code_96a6d87f5619461486101e5de2819c62-33" href="#rest_code_96a6d87f5619461486101e5de2819c62-33"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-34" name="rest_code_96a6d87f5619461486101e5de2819c62-34" href="#rest_code_96a6d87f5619461486101e5de2819c62-34"></a><span class="k">def</span> <span class="nf">mover_disparos</span><span class="p">():</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-35" name="rest_code_96a6d87f5619461486101e5de2819c62-35" href="#rest_code_96a6d87f5619461486101e5de2819c62-35"></a>    <span class="k">for</span> <span class="n">disparo</span> <span class="ow">in</span> <span class="n">SHOTS</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-36" name="rest_code_96a6d87f5619461486101e5de2819c62-36" href="#rest_code_96a6d87f5619461486101e5de2819c62-36"></a>        <span class="n">SCREEN</span><span class="p">[</span><span class="n">disparo</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">disparo</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">EMPTY</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-37" name="rest_code_96a6d87f5619461486101e5de2819c62-37" href="#rest_code_96a6d87f5619461486101e5de2819c62-37"></a>        <span class="k">if</span> <span class="n">disparo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-38" name="rest_code_96a6d87f5619461486101e5de2819c62-38" href="#rest_code_96a6d87f5619461486101e5de2819c62-38"></a>            <span class="k">if</span> <span class="n">SCREEN</span><span class="p">[</span><span class="n">disparo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">disparo</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="n">BUG</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-39" name="rest_code_96a6d87f5619461486101e5de2819c62-39" href="#rest_code_96a6d87f5619461486101e5de2819c62-39"></a>                <span class="n">SCREEN</span><span class="p">[</span><span class="n">disparo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">disparo</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">EXPLOSION</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-40" name="rest_code_96a6d87f5619461486101e5de2819c62-40" href="#rest_code_96a6d87f5619461486101e5de2819c62-40"></a>                <span class="k">return</span> <span class="kc">False</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-41" name="rest_code_96a6d87f5619461486101e5de2819c62-41" href="#rest_code_96a6d87f5619461486101e5de2819c62-41"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-42" name="rest_code_96a6d87f5619461486101e5de2819c62-42" href="#rest_code_96a6d87f5619461486101e5de2819c62-42"></a>                <span class="n">SCREEN</span><span class="p">[</span><span class="n">disparo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">disparo</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">BULLET</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-43" name="rest_code_96a6d87f5619461486101e5de2819c62-43" href="#rest_code_96a6d87f5619461486101e5de2819c62-43"></a>                <span class="n">SHOTS</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">disparo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">disparo</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-44" name="rest_code_96a6d87f5619461486101e5de2819c62-44" href="#rest_code_96a6d87f5619461486101e5de2819c62-44"></a>        <span class="n">SHOTS</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">disparo</span><span class="p">)</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-45" name="rest_code_96a6d87f5619461486101e5de2819c62-45" href="#rest_code_96a6d87f5619461486101e5de2819c62-45"></a>    <span class="k">return</span> <span class="kc">True</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-46" name="rest_code_96a6d87f5619461486101e5de2819c62-46" href="#rest_code_96a6d87f5619461486101e5de2819c62-46"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-47" name="rest_code_96a6d87f5619461486101e5de2819c62-47" href="#rest_code_96a6d87f5619461486101e5de2819c62-47"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-48" name="rest_code_96a6d87f5619461486101e5de2819c62-48" href="#rest_code_96a6d87f5619461486101e5de2819c62-48"></a><span class="k">def</span> <span class="nf">_mover_nave</span><span class="p">(</span><span class="n">direccion</span><span class="p">,</span> <span class="n">nave</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-49" name="rest_code_96a6d87f5619461486101e5de2819c62-49" href="#rest_code_96a6d87f5619461486101e5de2819c62-49"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-50" name="rest_code_96a6d87f5619461486101e5de2819c62-50" href="#rest_code_96a6d87f5619461486101e5de2819c62-50"></a>        <span class="n">col</span> <span class="o">=</span> <span class="n">SCREEN</span><span class="p">[</span><span class="n">row</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">nave</span><span class="p">)</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-51" name="rest_code_96a6d87f5619461486101e5de2819c62-51" href="#rest_code_96a6d87f5619461486101e5de2819c62-51"></a>    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-52" name="rest_code_96a6d87f5619461486101e5de2819c62-52" href="#rest_code_96a6d87f5619461486101e5de2819c62-52"></a>            <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-53" name="rest_code_96a6d87f5619461486101e5de2819c62-53" href="#rest_code_96a6d87f5619461486101e5de2819c62-53"></a>    <span class="n">SCREEN</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">EMPTY</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-54" name="rest_code_96a6d87f5619461486101e5de2819c62-54" href="#rest_code_96a6d87f5619461486101e5de2819c62-54"></a>    <span class="n">next_col</span> <span class="o">=</span> <span class="n">col</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">direccion</span><span class="p">)</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-55" name="rest_code_96a6d87f5619461486101e5de2819c62-55" href="#rest_code_96a6d87f5619461486101e5de2819c62-55"></a>    <span class="k">if</span> <span class="n">next_col</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-56" name="rest_code_96a6d87f5619461486101e5de2819c62-56" href="#rest_code_96a6d87f5619461486101e5de2819c62-56"></a>        <span class="n">next_col</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-57" name="rest_code_96a6d87f5619461486101e5de2819c62-57" href="#rest_code_96a6d87f5619461486101e5de2819c62-57"></a>    <span class="n">SCREEN</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">next_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">nave</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-58" name="rest_code_96a6d87f5619461486101e5de2819c62-58" href="#rest_code_96a6d87f5619461486101e5de2819c62-58"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-59" name="rest_code_96a6d87f5619461486101e5de2819c62-59" href="#rest_code_96a6d87f5619461486101e5de2819c62-59"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-60" name="rest_code_96a6d87f5619461486101e5de2819c62-60" href="#rest_code_96a6d87f5619461486101e5de2819c62-60"></a><span class="k">def</span> <span class="nf">limpiar_pantalla</span><span class="p">():</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-61" name="rest_code_96a6d87f5619461486101e5de2819c62-61" href="#rest_code_96a6d87f5619461486101e5de2819c62-61"></a>    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">([</span><span class="s1">'clear'</span><span class="p">,</span> <span class="s1">'cls'</span><span class="p">][</span><span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">'nt'</span><span class="p">])</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-62" name="rest_code_96a6d87f5619461486101e5de2819c62-62" href="#rest_code_96a6d87f5619461486101e5de2819c62-62"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-63" name="rest_code_96a6d87f5619461486101e5de2819c62-63" href="#rest_code_96a6d87f5619461486101e5de2819c62-63"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-64" name="rest_code_96a6d87f5619461486101e5de2819c62-64" href="#rest_code_96a6d87f5619461486101e5de2819c62-64"></a><span class="c1">###############################################################################</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-65" name="rest_code_96a6d87f5619461486101e5de2819c62-65" href="#rest_code_96a6d87f5619461486101e5de2819c62-65"></a><span class="c1"># Funciones para la nave</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-66" name="rest_code_96a6d87f5619461486101e5de2819c62-66" href="#rest_code_96a6d87f5619461486101e5de2819c62-66"></a><span class="c1">###############################################################################</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-67" name="rest_code_96a6d87f5619461486101e5de2819c62-67" href="#rest_code_96a6d87f5619461486101e5de2819c62-67"></a><span class="k">def</span> <span class="nf">crear_nave</span><span class="p">():</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-68" name="rest_code_96a6d87f5619461486101e5de2819c62-68" href="#rest_code_96a6d87f5619461486101e5de2819c62-68"></a>    <span class="n">SCREEN</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">COLS</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">SHIP</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-69" name="rest_code_96a6d87f5619461486101e5de2819c62-69" href="#rest_code_96a6d87f5619461486101e5de2819c62-69"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-70" name="rest_code_96a6d87f5619461486101e5de2819c62-70" href="#rest_code_96a6d87f5619461486101e5de2819c62-70"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-71" name="rest_code_96a6d87f5619461486101e5de2819c62-71" href="#rest_code_96a6d87f5619461486101e5de2819c62-71"></a><span class="k">def</span> <span class="nf">mover_nave</span><span class="p">():</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-72" name="rest_code_96a6d87f5619461486101e5de2819c62-72" href="#rest_code_96a6d87f5619461486101e5de2819c62-72"></a>    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-73" name="rest_code_96a6d87f5619461486101e5de2819c62-73" href="#rest_code_96a6d87f5619461486101e5de2819c62-73"></a>        <span class="n">_mover_nave</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">SHIP</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-74" name="rest_code_96a6d87f5619461486101e5de2819c62-74" href="#rest_code_96a6d87f5619461486101e5de2819c62-74"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-75" name="rest_code_96a6d87f5619461486101e5de2819c62-75" href="#rest_code_96a6d87f5619461486101e5de2819c62-75"></a>        <span class="n">_mover_nave</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">SHIP</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-76" name="rest_code_96a6d87f5619461486101e5de2819c62-76" href="#rest_code_96a6d87f5619461486101e5de2819c62-76"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-77" name="rest_code_96a6d87f5619461486101e5de2819c62-77" href="#rest_code_96a6d87f5619461486101e5de2819c62-77"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-78" name="rest_code_96a6d87f5619461486101e5de2819c62-78" href="#rest_code_96a6d87f5619461486101e5de2819c62-78"></a><span class="k">def</span> <span class="nf">disparar</span><span class="p">():</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-79" name="rest_code_96a6d87f5619461486101e5de2819c62-79" href="#rest_code_96a6d87f5619461486101e5de2819c62-79"></a>    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">70</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-80" name="rest_code_96a6d87f5619461486101e5de2819c62-80" href="#rest_code_96a6d87f5619461486101e5de2819c62-80"></a>        <span class="n">col</span> <span class="o">=</span> <span class="n">SCREEN</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">SHIP</span><span class="p">)</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-81" name="rest_code_96a6d87f5619461486101e5de2819c62-81" href="#rest_code_96a6d87f5619461486101e5de2819c62-81"></a>        <span class="n">SCREEN</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">BULLET</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-82" name="rest_code_96a6d87f5619461486101e5de2819c62-82" href="#rest_code_96a6d87f5619461486101e5de2819c62-82"></a>        <span class="n">row</span> <span class="o">=</span> <span class="n">ROWS</span> <span class="o">-</span> <span class="mi">2</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-83" name="rest_code_96a6d87f5619461486101e5de2819c62-83" href="#rest_code_96a6d87f5619461486101e5de2819c62-83"></a>        <span class="n">SHOTS</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">))</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-84" name="rest_code_96a6d87f5619461486101e5de2819c62-84" href="#rest_code_96a6d87f5619461486101e5de2819c62-84"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-85" name="rest_code_96a6d87f5619461486101e5de2819c62-85" href="#rest_code_96a6d87f5619461486101e5de2819c62-85"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-86" name="rest_code_96a6d87f5619461486101e5de2819c62-86" href="#rest_code_96a6d87f5619461486101e5de2819c62-86"></a><span class="c1">###############################################################################</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-87" name="rest_code_96a6d87f5619461486101e5de2819c62-87" href="#rest_code_96a6d87f5619461486101e5de2819c62-87"></a><span class="c1"># Funciones para el bicho</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-88" name="rest_code_96a6d87f5619461486101e5de2819c62-88" href="#rest_code_96a6d87f5619461486101e5de2819c62-88"></a><span class="c1">###############################################################################</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-89" name="rest_code_96a6d87f5619461486101e5de2819c62-89" href="#rest_code_96a6d87f5619461486101e5de2819c62-89"></a><span class="k">def</span> <span class="nf">crear_bicho</span><span class="p">():</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-90" name="rest_code_96a6d87f5619461486101e5de2819c62-90" href="#rest_code_96a6d87f5619461486101e5de2819c62-90"></a>    <span class="n">SCREEN</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">COLS</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">BUG</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-91" name="rest_code_96a6d87f5619461486101e5de2819c62-91" href="#rest_code_96a6d87f5619461486101e5de2819c62-91"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-92" name="rest_code_96a6d87f5619461486101e5de2819c62-92" href="#rest_code_96a6d87f5619461486101e5de2819c62-92"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-93" name="rest_code_96a6d87f5619461486101e5de2819c62-93" href="#rest_code_96a6d87f5619461486101e5de2819c62-93"></a><span class="k">def</span> <span class="nf">mover_bicho</span><span class="p">():</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-94" name="rest_code_96a6d87f5619461486101e5de2819c62-94" href="#rest_code_96a6d87f5619461486101e5de2819c62-94"></a>    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-95" name="rest_code_96a6d87f5619461486101e5de2819c62-95" href="#rest_code_96a6d87f5619461486101e5de2819c62-95"></a>        <span class="n">_mover_nave</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">BUG</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-96" name="rest_code_96a6d87f5619461486101e5de2819c62-96" href="#rest_code_96a6d87f5619461486101e5de2819c62-96"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-97" name="rest_code_96a6d87f5619461486101e5de2819c62-97" href="#rest_code_96a6d87f5619461486101e5de2819c62-97"></a>        <span class="n">_mover_nave</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">BUG</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-98" name="rest_code_96a6d87f5619461486101e5de2819c62-98" href="#rest_code_96a6d87f5619461486101e5de2819c62-98"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-99" name="rest_code_96a6d87f5619461486101e5de2819c62-99" href="#rest_code_96a6d87f5619461486101e5de2819c62-99"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-100" name="rest_code_96a6d87f5619461486101e5de2819c62-100" href="#rest_code_96a6d87f5619461486101e5de2819c62-100"></a><span class="k">def</span> <span class="nf">jugar</span><span class="p">():</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-101" name="rest_code_96a6d87f5619461486101e5de2819c62-101" href="#rest_code_96a6d87f5619461486101e5de2819c62-101"></a>    <span class="n">crear_mapa</span><span class="p">()</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-102" name="rest_code_96a6d87f5619461486101e5de2819c62-102" href="#rest_code_96a6d87f5619461486101e5de2819c62-102"></a>    <span class="n">crear_nave</span><span class="p">()</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-103" name="rest_code_96a6d87f5619461486101e5de2819c62-103" href="#rest_code_96a6d87f5619461486101e5de2819c62-103"></a>    <span class="n">crear_bicho</span><span class="p">()</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-104" name="rest_code_96a6d87f5619461486101e5de2819c62-104" href="#rest_code_96a6d87f5619461486101e5de2819c62-104"></a>    <span class="k">while</span> <span class="n">mover_disparos</span><span class="p">():</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-105" name="rest_code_96a6d87f5619461486101e5de2819c62-105" href="#rest_code_96a6d87f5619461486101e5de2819c62-105"></a>        <span class="n">mover_bicho</span><span class="p">()</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-106" name="rest_code_96a6d87f5619461486101e5de2819c62-106" href="#rest_code_96a6d87f5619461486101e5de2819c62-106"></a>        <span class="n">disparar</span><span class="p">()</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-107" name="rest_code_96a6d87f5619461486101e5de2819c62-107" href="#rest_code_96a6d87f5619461486101e5de2819c62-107"></a>        <span class="n">mover_nave</span><span class="p">()</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-108" name="rest_code_96a6d87f5619461486101e5de2819c62-108" href="#rest_code_96a6d87f5619461486101e5de2819c62-108"></a>        <span class="n">mostrar_mapa</span><span class="p">()</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-109" name="rest_code_96a6d87f5619461486101e5de2819c62-109" href="#rest_code_96a6d87f5619461486101e5de2819c62-109"></a>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-110" name="rest_code_96a6d87f5619461486101e5de2819c62-110" href="#rest_code_96a6d87f5619461486101e5de2819c62-110"></a>        <span class="n">limpiar_pantalla</span><span class="p">()</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-111" name="rest_code_96a6d87f5619461486101e5de2819c62-111" href="#rest_code_96a6d87f5619461486101e5de2819c62-111"></a>    <span class="n">limpiar_pantalla</span><span class="p">()</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-112" name="rest_code_96a6d87f5619461486101e5de2819c62-112" href="#rest_code_96a6d87f5619461486101e5de2819c62-112"></a>    <span class="n">mostrar_mapa</span><span class="p">()</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-113" name="rest_code_96a6d87f5619461486101e5de2819c62-113" href="#rest_code_96a6d87f5619461486101e5de2819c62-113"></a>    <span class="nb">print</span> <span class="s2">"EL BICHO SE MURIO"</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-114" name="rest_code_96a6d87f5619461486101e5de2819c62-114" href="#rest_code_96a6d87f5619461486101e5de2819c62-114"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-115" name="rest_code_96a6d87f5619461486101e5de2819c62-115" href="#rest_code_96a6d87f5619461486101e5de2819c62-115"></a>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-116" name="rest_code_96a6d87f5619461486101e5de2819c62-116" href="#rest_code_96a6d87f5619461486101e5de2819c62-116"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<a id="rest_code_96a6d87f5619461486101e5de2819c62-117" name="rest_code_96a6d87f5619461486101e5de2819c62-117" href="#rest_code_96a6d87f5619461486101e5de2819c62-117"></a>    <span class="n">jugar</span><span class="p">()</span>
+</pre></div>
+    </div>    
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script src="../../../assets/js/pyar.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

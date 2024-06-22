@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiprocessing y Threading | Python Argentina Wiki</title>
+<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/bootblog.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://wiki.python.org.ar/recetario/multiprocessingythreading/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Python Argentina">
+<meta property="og:site_name" content="Python Argentina Wiki">
+<meta property="og:title" content="Multiprocessing y Threading">
+<meta property="og:url" content="https://wiki.python.org.ar/recetario/multiprocessingythreading/">
+<meta property="og:description" content="En esta receta se muestra cómo hacer para correr algo en otro thread o proceso con pocos cambios y cómo lograr comunicación entre ellos.
+Notar que el pid de quién lanza doer es distinto al que imprime">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-06-22T11:08:51-03:00">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+                    <a class="nav-link" href="http://www.python.org.ar"><span class="inicio"></span>Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../pyar/"><span class="quienes_somos"></span>Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../foro_y_redes/"><span class="navbar_lista_de_correo"></span>Foro</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../../"><span class="wiki"></span>Wiki</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://www.python.org.ar/noticias/"><span class="news"></span>Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://www.python.org.ar/irc/"><span class="irc"></span>IRC</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://www.python.org.ar/eventos/"><span class="eventos"></span>Eventos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://planeta.python.org.ar/"><span class="pyar"></span>Planeta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://www.python.org.ar/trabajo/"><span class="jobs"></span>Trabajos</a>
+                </li>
+            </ul>
+</div>
+    </nav>
+</div>
+
+<!-- Header and menu bar -->
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+<div class="col-lg-12">
+    <div class="page-header">
+        <div class="pull-right">
+            <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/multiprocessingythreading.rst" id="sourcelink" class="nav-link">Editar</a>
+        </div>
+        <h2>Multiprocessing Y Threading</h2>
+    </div>
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <p>En esta receta se muestra cómo hacer para correr algo en otro thread o proceso con pocos cambios y cómo lograr comunicación entre ellos.</p>
+<p>Notar que el pid de quién lanza doer es distinto al que imprime doer</p>
+<section id="ejemplo-con-multiprocessing"><h2>Ejemplo con Multiprocessing</h2>
+<div class="code"><pre class="code python"><a id="rest_code_db7e1eb89717445985384bbf1f6d1884-1" name="rest_code_db7e1eb89717445985384bbf1f6d1884-1" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-2" name="rest_code_db7e1eb89717445985384bbf1f6d1884-2" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-2"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-3" name="rest_code_db7e1eb89717445985384bbf1f6d1884-3" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-3"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-4" name="rest_code_db7e1eb89717445985384bbf1f6d1884-4" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-4"></a><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-5" name="rest_code_db7e1eb89717445985384bbf1f6d1884-5" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-5"></a><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Queue</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-6" name="rest_code_db7e1eb89717445985384bbf1f6d1884-6" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-6"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-7" name="rest_code_db7e1eb89717445985384bbf1f6d1884-7" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-7"></a><span class="k">class</span> <span class="nc">Doer</span><span class="p">(</span><span class="n">Process</span><span class="p">):</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-8" name="rest_code_db7e1eb89717445985384bbf1f6d1884-8" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-8"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-9" name="rest_code_db7e1eb89717445985384bbf1f6d1884-9" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-9"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queue</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-10" name="rest_code_db7e1eb89717445985384bbf1f6d1884-10" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-10"></a>        <span class="n">Process</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-11" name="rest_code_db7e1eb89717445985384bbf1f6d1884-11" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">queue</span> <span class="o">=</span> <span class="n">queue</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-12" name="rest_code_db7e1eb89717445985384bbf1f6d1884-12" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-13" name="rest_code_db7e1eb89717445985384bbf1f6d1884-13" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-13"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-14" name="rest_code_db7e1eb89717445985384bbf1f6d1884-14" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-14"></a>    <span class="k">def</span> <span class="nf">_do_on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-15" name="rest_code_db7e1eb89717445985384bbf1f6d1884-15" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-15"></a>        <span class="nb">print</span> <span class="s2">"doint stuff on start"</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-16" name="rest_code_db7e1eb89717445985384bbf1f6d1884-16" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-16"></a>        <span class="nb">print</span> <span class="s2">"state:"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-17" name="rest_code_db7e1eb89717445985384bbf1f6d1884-17" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-17"></a>        <span class="nb">print</span> <span class="s2">"pid:"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-18" name="rest_code_db7e1eb89717445985384bbf1f6d1884-18" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-18"></a>        <span class="nb">print</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-19" name="rest_code_db7e1eb89717445985384bbf1f6d1884-19" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-19"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-20" name="rest_code_db7e1eb89717445985384bbf1f6d1884-20" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-20"></a>    <span class="k">def</span> <span class="nf">_on_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-21" name="rest_code_db7e1eb89717445985384bbf1f6d1884-21" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-21"></a>        <span class="nb">print</span> <span class="s2">"doint stuff on end"</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-22" name="rest_code_db7e1eb89717445985384bbf1f6d1884-22" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-22"></a>        <span class="nb">print</span> <span class="s2">"state:"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-23" name="rest_code_db7e1eb89717445985384bbf1f6d1884-23" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-23"></a>        <span class="nb">print</span> <span class="s2">"pid:"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-24" name="rest_code_db7e1eb89717445985384bbf1f6d1884-24" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-24"></a>        <span class="nb">print</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-25" name="rest_code_db7e1eb89717445985384bbf1f6d1884-25" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-25"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-26" name="rest_code_db7e1eb89717445985384bbf1f6d1884-26" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-26"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-27" name="rest_code_db7e1eb89717445985384bbf1f6d1884-27" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_do_on_start</span><span class="p">()</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-28" name="rest_code_db7e1eb89717445985384bbf1f6d1884-28" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-28"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-29" name="rest_code_db7e1eb89717445985384bbf1f6d1884-29" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-29"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-30" name="rest_code_db7e1eb89717445985384bbf1f6d1884-30" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-30"></a>        <span class="k">while</span> <span class="n">msg</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">"exit"</span><span class="p">:</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-31" name="rest_code_db7e1eb89717445985384bbf1f6d1884-31" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-31"></a>            <span class="c1"># blocks here</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-32" name="rest_code_db7e1eb89717445985384bbf1f6d1884-32" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-32"></a>            <span class="n">msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-33" name="rest_code_db7e1eb89717445985384bbf1f6d1884-33" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-33"></a>            <span class="nb">print</span> <span class="s2">"handling message"</span><span class="p">,</span> <span class="n">msg</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-34" name="rest_code_db7e1eb89717445985384bbf1f6d1884-34" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-34"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-35" name="rest_code_db7e1eb89717445985384bbf1f6d1884-35" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-35"></a>            <span class="c1"># do stuff here according to the message</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-36" name="rest_code_db7e1eb89717445985384bbf1f6d1884-36" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-36"></a>            <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">"ping"</span><span class="p">:</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-37" name="rest_code_db7e1eb89717445985384bbf1f6d1884-37" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-37"></a>                <span class="nb">print</span> <span class="s2">"pong"</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-38" name="rest_code_db7e1eb89717445985384bbf1f6d1884-38" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-38"></a>            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-39" name="rest_code_db7e1eb89717445985384bbf1f6d1884-39" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-39"></a>                <span class="n">action</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">msg</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-40" name="rest_code_db7e1eb89717445985384bbf1f6d1884-40" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-40"></a>                <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"set-state"</span><span class="p">:</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-41" name="rest_code_db7e1eb89717445985384bbf1f6d1884-41" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-41"></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">value</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-42" name="rest_code_db7e1eb89717445985384bbf1f6d1884-42" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-42"></a>                    <span class="nb">print</span> <span class="s2">"new state:"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-43" name="rest_code_db7e1eb89717445985384bbf1f6d1884-43" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-43"></a>            <span class="k">elif</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">"exit"</span><span class="p">:</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-44" name="rest_code_db7e1eb89717445985384bbf1f6d1884-44" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-44"></a>                <span class="nb">print</span> <span class="s2">"unknown message"</span><span class="p">,</span> <span class="n">msg</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-45" name="rest_code_db7e1eb89717445985384bbf1f6d1884-45" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-45"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-46" name="rest_code_db7e1eb89717445985384bbf1f6d1884-46" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-46"></a>            <span class="nb">print</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-47" name="rest_code_db7e1eb89717445985384bbf1f6d1884-47" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-47"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-48" name="rest_code_db7e1eb89717445985384bbf1f6d1884-48" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-48"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_on_end</span><span class="p">()</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-49" name="rest_code_db7e1eb89717445985384bbf1f6d1884-49" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-49"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-50" name="rest_code_db7e1eb89717445985384bbf1f6d1884-50" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-50"></a><span class="k">def</span> <span class="nf">demo</span><span class="p">():</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-51" name="rest_code_db7e1eb89717445985384bbf1f6d1884-51" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-51"></a>    <span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-52" name="rest_code_db7e1eb89717445985384bbf1f6d1884-52" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-52"></a>    <span class="nb">print</span> <span class="s2">"creating doer from process"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-53" name="rest_code_db7e1eb89717445985384bbf1f6d1884-53" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-53"></a>    <span class="n">doer</span> <span class="o">=</span> <span class="n">Doer</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-54" name="rest_code_db7e1eb89717445985384bbf1f6d1884-54" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-54"></a>    <span class="n">doer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-55" name="rest_code_db7e1eb89717445985384bbf1f6d1884-55" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-55"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">"ping"</span><span class="p">)</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-56" name="rest_code_db7e1eb89717445985384bbf1f6d1884-56" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-56"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">)</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-57" name="rest_code_db7e1eb89717445985384bbf1f6d1884-57" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-57"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="s2">"set-state"</span><span class="p">,</span> <span class="s2">"hola!"</span><span class="p">))</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-58" name="rest_code_db7e1eb89717445985384bbf1f6d1884-58" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-58"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-59" name="rest_code_db7e1eb89717445985384bbf1f6d1884-59" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-59"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">"exit"</span><span class="p">)</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-60" name="rest_code_db7e1eb89717445985384bbf1f6d1884-60" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-60"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-61" name="rest_code_db7e1eb89717445985384bbf1f6d1884-61" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-61"></a>    <span class="n">doer</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-62" name="rest_code_db7e1eb89717445985384bbf1f6d1884-62" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-62"></a>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-63" name="rest_code_db7e1eb89717445985384bbf1f6d1884-63" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-63"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a id="rest_code_db7e1eb89717445985384bbf1f6d1884-64" name="rest_code_db7e1eb89717445985384bbf1f6d1884-64" href="#rest_code_db7e1eb89717445985384bbf1f6d1884-64"></a>    <span class="n">demo</span><span class="p">()</span>
+</pre></div>
+<p>corriendolo tenemos el resultado</p>
+<div class="code"><pre class="code bash"><a id="rest_code_93038d234a91499ea47b42a658fc6d9a-1" name="rest_code_93038d234a91499ea47b42a658fc6d9a-1" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-1"></a>$<span class="w"> </span>python<span class="w"> </span>controlled.py
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-2" name="rest_code_93038d234a91499ea47b42a658fc6d9a-2" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-2"></a>creating<span class="w"> </span>doer<span class="w"> </span>from<span class="w"> </span>process<span class="w"> </span><span class="m">11784</span>
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-3" name="rest_code_93038d234a91499ea47b42a658fc6d9a-3" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-3"></a>doint<span class="w"> </span>stuff<span class="w"> </span>on<span class="w"> </span>start
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-4" name="rest_code_93038d234a91499ea47b42a658fc6d9a-4" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-4"></a>state:<span class="w"> </span><span class="m">42</span>
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-5" name="rest_code_93038d234a91499ea47b42a658fc6d9a-5" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-5"></a>pid:<span class="w"> </span><span class="m">11785</span>
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-6" name="rest_code_93038d234a91499ea47b42a658fc6d9a-6" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-6"></a>
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-7" name="rest_code_93038d234a91499ea47b42a658fc6d9a-7" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-7"></a>handling<span class="w"> </span>message<span class="w"> </span>ping
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-8" name="rest_code_93038d234a91499ea47b42a658fc6d9a-8" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-8"></a>pong
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-9" name="rest_code_93038d234a91499ea47b42a658fc6d9a-9" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-9"></a>
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-10" name="rest_code_93038d234a91499ea47b42a658fc6d9a-10" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-10"></a>handling<span class="w"> </span>message<span class="w"> </span>foo
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-11" name="rest_code_93038d234a91499ea47b42a658fc6d9a-11" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-11"></a>unknown<span class="w"> </span>message<span class="w"> </span>foo
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-12" name="rest_code_93038d234a91499ea47b42a658fc6d9a-12" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-12"></a>
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-13" name="rest_code_93038d234a91499ea47b42a658fc6d9a-13" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-13"></a>handling<span class="w"> </span>message<span class="w"> </span><span class="o">(</span><span class="s1">'set-state'</span>,<span class="w"> </span><span class="s1">'hola!'</span><span class="o">)</span>
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-14" name="rest_code_93038d234a91499ea47b42a658fc6d9a-14" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-14"></a>new<span class="w"> </span>state:<span class="w"> </span>hola!
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-15" name="rest_code_93038d234a91499ea47b42a658fc6d9a-15" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-15"></a>
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-16" name="rest_code_93038d234a91499ea47b42a658fc6d9a-16" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-16"></a>handling<span class="w"> </span>message<span class="w"> </span><span class="nb">exit</span>
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-17" name="rest_code_93038d234a91499ea47b42a658fc6d9a-17" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-17"></a>
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-18" name="rest_code_93038d234a91499ea47b42a658fc6d9a-18" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-18"></a>doint<span class="w"> </span>stuff<span class="w"> </span>on<span class="w"> </span>end
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-19" name="rest_code_93038d234a91499ea47b42a658fc6d9a-19" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-19"></a>state:<span class="w"> </span>hola!
+<a id="rest_code_93038d234a91499ea47b42a658fc6d9a-20" name="rest_code_93038d234a91499ea47b42a658fc6d9a-20" href="#rest_code_93038d234a91499ea47b42a658fc6d9a-20"></a>pid:<span class="w"> </span><span class="m">11785</span>
+</pre></div>
+</section><section id="ejemplo-con-threading"><h2>Ejemplo con Threading</h2>
+<p>Para hacerlo andar con threading hay que solo cambiar de donde importamos las cosas, aquí esta la diferencia:</p>
+<p>Notar que el pid de quién lanza doer es igual al que imprime doer.</p>
+<div class="code"><pre class="code diff"><a id="rest_code_09240345d97248ba97d8aaae35058927-1" name="rest_code_09240345d97248ba97d8aaae35058927-1" href="#rest_code_09240345d97248ba97d8aaae35058927-1"></a><span class="gh">diff controlled.py controlledthread.py</span>
+<a id="rest_code_09240345d97248ba97d8aaae35058927-2" name="rest_code_09240345d97248ba97d8aaae35058927-2" href="#rest_code_09240345d97248ba97d8aaae35058927-2"></a><span class="gu">4,5c4,5</span>
+<a id="rest_code_09240345d97248ba97d8aaae35058927-3" name="rest_code_09240345d97248ba97d8aaae35058927-3" href="#rest_code_09240345d97248ba97d8aaae35058927-3"></a><span class="gd">&lt; from multiprocessing import Process</span>
+<a id="rest_code_09240345d97248ba97d8aaae35058927-4" name="rest_code_09240345d97248ba97d8aaae35058927-4" href="#rest_code_09240345d97248ba97d8aaae35058927-4"></a><span class="gd">&lt; from multiprocessing import Queue</span>
+<a id="rest_code_09240345d97248ba97d8aaae35058927-5" name="rest_code_09240345d97248ba97d8aaae35058927-5" href="#rest_code_09240345d97248ba97d8aaae35058927-5"></a><span class="gs">---</span>
+<a id="rest_code_09240345d97248ba97d8aaae35058927-6" name="rest_code_09240345d97248ba97d8aaae35058927-6" href="#rest_code_09240345d97248ba97d8aaae35058927-6"></a><span class="gi">&gt; from threading import Thread as Process</span>
+<a id="rest_code_09240345d97248ba97d8aaae35058927-7" name="rest_code_09240345d97248ba97d8aaae35058927-7" href="#rest_code_09240345d97248ba97d8aaae35058927-7"></a><span class="gi">&gt; from Queue import Queue</span>
+</pre></div>
+<div class="code"><pre class="code python"><a id="rest_code_3d04dcba7f264902b6c60f448774cc13-1" name="rest_code_3d04dcba7f264902b6c60f448774cc13-1" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-2" name="rest_code_3d04dcba7f264902b6c60f448774cc13-2" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-2"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-3" name="rest_code_3d04dcba7f264902b6c60f448774cc13-3" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-3"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-4" name="rest_code_3d04dcba7f264902b6c60f448774cc13-4" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-4"></a><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span> <span class="k">as</span> <span class="n">Process</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-5" name="rest_code_3d04dcba7f264902b6c60f448774cc13-5" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-5"></a><span class="kn">from</span> <span class="nn">Queue</span> <span class="kn">import</span> <span class="n">Queue</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-6" name="rest_code_3d04dcba7f264902b6c60f448774cc13-6" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-6"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-7" name="rest_code_3d04dcba7f264902b6c60f448774cc13-7" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-7"></a><span class="k">class</span> <span class="nc">Doer</span><span class="p">(</span><span class="n">Process</span><span class="p">):</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-8" name="rest_code_3d04dcba7f264902b6c60f448774cc13-8" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-8"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-9" name="rest_code_3d04dcba7f264902b6c60f448774cc13-9" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-9"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queue</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-10" name="rest_code_3d04dcba7f264902b6c60f448774cc13-10" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-10"></a>        <span class="n">Process</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-11" name="rest_code_3d04dcba7f264902b6c60f448774cc13-11" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">queue</span> <span class="o">=</span> <span class="n">queue</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-12" name="rest_code_3d04dcba7f264902b6c60f448774cc13-12" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-13" name="rest_code_3d04dcba7f264902b6c60f448774cc13-13" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-13"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-14" name="rest_code_3d04dcba7f264902b6c60f448774cc13-14" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-14"></a>    <span class="k">def</span> <span class="nf">_do_on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-15" name="rest_code_3d04dcba7f264902b6c60f448774cc13-15" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-15"></a>        <span class="nb">print</span> <span class="s2">"doint stuff on start"</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-16" name="rest_code_3d04dcba7f264902b6c60f448774cc13-16" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-16"></a>        <span class="nb">print</span> <span class="s2">"state:"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-17" name="rest_code_3d04dcba7f264902b6c60f448774cc13-17" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-17"></a>        <span class="nb">print</span> <span class="s2">"pid:"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-18" name="rest_code_3d04dcba7f264902b6c60f448774cc13-18" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-18"></a>        <span class="nb">print</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-19" name="rest_code_3d04dcba7f264902b6c60f448774cc13-19" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-19"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-20" name="rest_code_3d04dcba7f264902b6c60f448774cc13-20" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-20"></a>    <span class="k">def</span> <span class="nf">_on_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-21" name="rest_code_3d04dcba7f264902b6c60f448774cc13-21" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-21"></a>        <span class="nb">print</span> <span class="s2">"doint stuff on end"</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-22" name="rest_code_3d04dcba7f264902b6c60f448774cc13-22" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-22"></a>        <span class="nb">print</span> <span class="s2">"state:"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-23" name="rest_code_3d04dcba7f264902b6c60f448774cc13-23" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-23"></a>        <span class="nb">print</span> <span class="s2">"pid:"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-24" name="rest_code_3d04dcba7f264902b6c60f448774cc13-24" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-24"></a>        <span class="nb">print</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-25" name="rest_code_3d04dcba7f264902b6c60f448774cc13-25" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-25"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-26" name="rest_code_3d04dcba7f264902b6c60f448774cc13-26" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-26"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-27" name="rest_code_3d04dcba7f264902b6c60f448774cc13-27" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_do_on_start</span><span class="p">()</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-28" name="rest_code_3d04dcba7f264902b6c60f448774cc13-28" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-28"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-29" name="rest_code_3d04dcba7f264902b6c60f448774cc13-29" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-29"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-30" name="rest_code_3d04dcba7f264902b6c60f448774cc13-30" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-30"></a>        <span class="k">while</span> <span class="n">msg</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">"exit"</span><span class="p">:</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-31" name="rest_code_3d04dcba7f264902b6c60f448774cc13-31" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-31"></a>            <span class="c1"># blocks here</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-32" name="rest_code_3d04dcba7f264902b6c60f448774cc13-32" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-32"></a>            <span class="n">msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-33" name="rest_code_3d04dcba7f264902b6c60f448774cc13-33" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-33"></a>            <span class="nb">print</span> <span class="s2">"handling message"</span><span class="p">,</span> <span class="n">msg</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-34" name="rest_code_3d04dcba7f264902b6c60f448774cc13-34" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-34"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-35" name="rest_code_3d04dcba7f264902b6c60f448774cc13-35" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-35"></a>            <span class="c1"># do stuff here according to the message</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-36" name="rest_code_3d04dcba7f264902b6c60f448774cc13-36" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-36"></a>            <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">"ping"</span><span class="p">:</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-37" name="rest_code_3d04dcba7f264902b6c60f448774cc13-37" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-37"></a>                <span class="nb">print</span> <span class="s2">"pong"</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-38" name="rest_code_3d04dcba7f264902b6c60f448774cc13-38" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-38"></a>            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-39" name="rest_code_3d04dcba7f264902b6c60f448774cc13-39" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-39"></a>                <span class="n">action</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">msg</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-40" name="rest_code_3d04dcba7f264902b6c60f448774cc13-40" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-40"></a>                <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"set-state"</span><span class="p">:</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-41" name="rest_code_3d04dcba7f264902b6c60f448774cc13-41" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-41"></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">value</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-42" name="rest_code_3d04dcba7f264902b6c60f448774cc13-42" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-42"></a>                    <span class="nb">print</span> <span class="s2">"new state:"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-43" name="rest_code_3d04dcba7f264902b6c60f448774cc13-43" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-43"></a>            <span class="k">elif</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">"exit"</span><span class="p">:</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-44" name="rest_code_3d04dcba7f264902b6c60f448774cc13-44" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-44"></a>                <span class="nb">print</span> <span class="s2">"unknown message"</span><span class="p">,</span> <span class="n">msg</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-45" name="rest_code_3d04dcba7f264902b6c60f448774cc13-45" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-45"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-46" name="rest_code_3d04dcba7f264902b6c60f448774cc13-46" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-46"></a>            <span class="nb">print</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-47" name="rest_code_3d04dcba7f264902b6c60f448774cc13-47" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-47"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-48" name="rest_code_3d04dcba7f264902b6c60f448774cc13-48" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-48"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_on_end</span><span class="p">()</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-49" name="rest_code_3d04dcba7f264902b6c60f448774cc13-49" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-49"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-50" name="rest_code_3d04dcba7f264902b6c60f448774cc13-50" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-50"></a><span class="k">def</span> <span class="nf">demo</span><span class="p">():</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-51" name="rest_code_3d04dcba7f264902b6c60f448774cc13-51" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-51"></a>    <span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-52" name="rest_code_3d04dcba7f264902b6c60f448774cc13-52" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-52"></a>    <span class="nb">print</span> <span class="s2">"creating doer from process"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-53" name="rest_code_3d04dcba7f264902b6c60f448774cc13-53" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-53"></a>    <span class="n">doer</span> <span class="o">=</span> <span class="n">Doer</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-54" name="rest_code_3d04dcba7f264902b6c60f448774cc13-54" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-54"></a>    <span class="n">doer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-55" name="rest_code_3d04dcba7f264902b6c60f448774cc13-55" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-55"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">"ping"</span><span class="p">)</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-56" name="rest_code_3d04dcba7f264902b6c60f448774cc13-56" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-56"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">)</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-57" name="rest_code_3d04dcba7f264902b6c60f448774cc13-57" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-57"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="s2">"set-state"</span><span class="p">,</span> <span class="s2">"hola!"</span><span class="p">))</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-58" name="rest_code_3d04dcba7f264902b6c60f448774cc13-58" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-58"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-59" name="rest_code_3d04dcba7f264902b6c60f448774cc13-59" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-59"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">"exit"</span><span class="p">)</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-60" name="rest_code_3d04dcba7f264902b6c60f448774cc13-60" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-60"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-61" name="rest_code_3d04dcba7f264902b6c60f448774cc13-61" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-61"></a>    <span class="n">doer</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-62" name="rest_code_3d04dcba7f264902b6c60f448774cc13-62" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-62"></a>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-63" name="rest_code_3d04dcba7f264902b6c60f448774cc13-63" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-63"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a id="rest_code_3d04dcba7f264902b6c60f448774cc13-64" name="rest_code_3d04dcba7f264902b6c60f448774cc13-64" href="#rest_code_3d04dcba7f264902b6c60f448774cc13-64"></a>    <span class="n">demo</span><span class="p">()</span>
+</pre></div>
+<div class="code"><pre class="code bash"><a id="rest_code_ec53040fa5474816a84b45bc4316287b-1" name="rest_code_ec53040fa5474816a84b45bc4316287b-1" href="#rest_code_ec53040fa5474816a84b45bc4316287b-1"></a>$<span class="w"> </span>python<span class="w"> </span>controlledthread.py
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-2" name="rest_code_ec53040fa5474816a84b45bc4316287b-2" href="#rest_code_ec53040fa5474816a84b45bc4316287b-2"></a>creating<span class="w"> </span>doer<span class="w"> </span>from<span class="w"> </span>process<span class="w"> </span><span class="m">11812</span>
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-3" name="rest_code_ec53040fa5474816a84b45bc4316287b-3" href="#rest_code_ec53040fa5474816a84b45bc4316287b-3"></a>doint<span class="w"> </span>stuff<span class="w"> </span>on<span class="w"> </span>start
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-4" name="rest_code_ec53040fa5474816a84b45bc4316287b-4" href="#rest_code_ec53040fa5474816a84b45bc4316287b-4"></a>state:<span class="w"> </span><span class="m">42</span>
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-5" name="rest_code_ec53040fa5474816a84b45bc4316287b-5" href="#rest_code_ec53040fa5474816a84b45bc4316287b-5"></a>pid:<span class="w"> </span><span class="m">11812</span>
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-6" name="rest_code_ec53040fa5474816a84b45bc4316287b-6" href="#rest_code_ec53040fa5474816a84b45bc4316287b-6"></a>
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-7" name="rest_code_ec53040fa5474816a84b45bc4316287b-7" href="#rest_code_ec53040fa5474816a84b45bc4316287b-7"></a>handling<span class="w"> </span>message<span class="w"> </span>ping
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-8" name="rest_code_ec53040fa5474816a84b45bc4316287b-8" href="#rest_code_ec53040fa5474816a84b45bc4316287b-8"></a>pong
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-9" name="rest_code_ec53040fa5474816a84b45bc4316287b-9" href="#rest_code_ec53040fa5474816a84b45bc4316287b-9"></a>
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-10" name="rest_code_ec53040fa5474816a84b45bc4316287b-10" href="#rest_code_ec53040fa5474816a84b45bc4316287b-10"></a>handling<span class="w"> </span>message<span class="w"> </span>foo
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-11" name="rest_code_ec53040fa5474816a84b45bc4316287b-11" href="#rest_code_ec53040fa5474816a84b45bc4316287b-11"></a>unknown<span class="w"> </span>message<span class="w"> </span>foo
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-12" name="rest_code_ec53040fa5474816a84b45bc4316287b-12" href="#rest_code_ec53040fa5474816a84b45bc4316287b-12"></a>
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-13" name="rest_code_ec53040fa5474816a84b45bc4316287b-13" href="#rest_code_ec53040fa5474816a84b45bc4316287b-13"></a>handling<span class="w"> </span>message<span class="w"> </span><span class="o">(</span><span class="s1">'set-state'</span>,<span class="w"> </span><span class="s1">'hola!'</span><span class="o">)</span>
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-14" name="rest_code_ec53040fa5474816a84b45bc4316287b-14" href="#rest_code_ec53040fa5474816a84b45bc4316287b-14"></a>new<span class="w"> </span>state:<span class="w"> </span>hola!
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-15" name="rest_code_ec53040fa5474816a84b45bc4316287b-15" href="#rest_code_ec53040fa5474816a84b45bc4316287b-15"></a>
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-16" name="rest_code_ec53040fa5474816a84b45bc4316287b-16" href="#rest_code_ec53040fa5474816a84b45bc4316287b-16"></a>handling<span class="w"> </span>message<span class="w"> </span><span class="nb">exit</span>
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-17" name="rest_code_ec53040fa5474816a84b45bc4316287b-17" href="#rest_code_ec53040fa5474816a84b45bc4316287b-17"></a>
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-18" name="rest_code_ec53040fa5474816a84b45bc4316287b-18" href="#rest_code_ec53040fa5474816a84b45bc4316287b-18"></a>doint<span class="w"> </span>stuff<span class="w"> </span>on<span class="w"> </span>end
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-19" name="rest_code_ec53040fa5474816a84b45bc4316287b-19" href="#rest_code_ec53040fa5474816a84b45bc4316287b-19"></a>state:<span class="w"> </span>hola!
+<a id="rest_code_ec53040fa5474816a84b45bc4316287b-20" name="rest_code_ec53040fa5474816a84b45bc4316287b-20" href="#rest_code_ec53040fa5474816a84b45bc4316287b-20"></a>pid:<span class="w"> </span><span class="m">11812</span>
+</pre></div>
+</section>
+</div>    
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script src="../../assets/js/pyar.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
