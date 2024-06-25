@@ -25,7 +25,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <meta property="og:description" content="Este ejemplo muestra como usar gtk para mostrar el diálogo de imprimir pero sin usar el main loop.
 Es útil para aplicaciones no gtk que solo quieren usar el diálogo de impresión pero tienen otro main ">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-22T11:08:51-03:00">
+<meta property="article:published_time" content="2024-06-25T18:12:20-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -86,20 +86,20 @@ Es útil para aplicaciones no gtk que solo quieren usar el diálogo de impresió
     <p>Este ejemplo muestra como usar gtk para mostrar el diálogo de imprimir pero sin usar el main loop.</p>
 <p>Es útil para aplicaciones no gtk que solo quieren usar el diálogo de impresión pero tienen otro main loop que no es el de gtk.</p>
 <p>Explicación: Lo que hacemos después de mostrar el diálogo es procesar los eventos de gtk mientras haya eventos pendientes, luego seguimos en nuestra aplicación normalmente.</p>
-<div class="code"><pre class="code python"><a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-1" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-1" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-1"></a><span class="kn">import</span> <span class="nn">gtk</span>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-2" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-2" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-2"></a><span class="kn">import</span> <span class="nn">time</span>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-3" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-3" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-3"></a>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-4" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-4" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-4"></a><span class="n">po</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">PrintOperation</span><span class="p">()</span>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-5" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-5" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-5"></a><span class="n">pa</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">PRINT_OPERATION_ACTION_PRINT_DIALOG</span>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-6" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-6" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-6"></a><span class="n">po</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">pa</span><span class="p">)</span>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-7" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-7" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-7"></a>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-8" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-8" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-8"></a><span class="k">while</span> <span class="n">gtk</span><span class="o">.</span><span class="n">events_pending</span><span class="p">():</span>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-9" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-9" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-9"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main_iteration</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-10" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-10" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-10"></a>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-11" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-11" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-11"></a><span class="nb">print</span> <span class="s1">'y seguimos como si nada'</span>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-12" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-12" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-12"></a><span class="nb">print</span> <span class="s1">'esperamos 3 segundos'</span>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-13" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-13" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-13"></a><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<a id="rest_code_ebd41fab39024f2181ca965392a5ddb8-14" name="rest_code_ebd41fab39024f2181ca965392a5ddb8-14" href="#rest_code_ebd41fab39024f2181ca965392a5ddb8-14"></a><span class="nb">print</span> <span class="s1">'chau'</span>
+<div class="code"><pre class="code python"><a id="rest_code_6fd03d287943474a84bd22fa1c72a763-1" name="rest_code_6fd03d287943474a84bd22fa1c72a763-1" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-1"></a><span class="kn">import</span> <span class="nn">gtk</span>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-2" name="rest_code_6fd03d287943474a84bd22fa1c72a763-2" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-2"></a><span class="kn">import</span> <span class="nn">time</span>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-3" name="rest_code_6fd03d287943474a84bd22fa1c72a763-3" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-3"></a>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-4" name="rest_code_6fd03d287943474a84bd22fa1c72a763-4" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-4"></a><span class="n">po</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">PrintOperation</span><span class="p">()</span>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-5" name="rest_code_6fd03d287943474a84bd22fa1c72a763-5" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-5"></a><span class="n">pa</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">PRINT_OPERATION_ACTION_PRINT_DIALOG</span>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-6" name="rest_code_6fd03d287943474a84bd22fa1c72a763-6" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-6"></a><span class="n">po</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">pa</span><span class="p">)</span>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-7" name="rest_code_6fd03d287943474a84bd22fa1c72a763-7" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-7"></a>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-8" name="rest_code_6fd03d287943474a84bd22fa1c72a763-8" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-8"></a><span class="k">while</span> <span class="n">gtk</span><span class="o">.</span><span class="n">events_pending</span><span class="p">():</span>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-9" name="rest_code_6fd03d287943474a84bd22fa1c72a763-9" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-9"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main_iteration</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-10" name="rest_code_6fd03d287943474a84bd22fa1c72a763-10" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-10"></a>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-11" name="rest_code_6fd03d287943474a84bd22fa1c72a763-11" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-11"></a><span class="nb">print</span> <span class="s1">'y seguimos como si nada'</span>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-12" name="rest_code_6fd03d287943474a84bd22fa1c72a763-12" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-12"></a><span class="nb">print</span> <span class="s1">'esperamos 3 segundos'</span>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-13" name="rest_code_6fd03d287943474a84bd22fa1c72a763-13" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-13"></a><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="rest_code_6fd03d287943474a84bd22fa1c72a763-14" name="rest_code_6fd03d287943474a84bd22fa1c72a763-14" href="#rest_code_6fd03d287943474a84bd22fa1c72a763-14"></a><span class="nb">print</span> <span class="s1">'chau'</span>
 </pre></div>
 <img alt="/images/Recetario/Gui/Gtk/PrintNonGtk/Imprimir.png" src="../../../../images/Recetario/Gui/Gtk/PrintNonGtk/Imprimir.png">
 </div>    
