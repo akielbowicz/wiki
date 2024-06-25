@@ -24,7 +24,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <meta property="og:url" content="https://wiki.python.org.ar/recetario/creandounnuevoproyectopython/">
 <meta property="og:description" content="Así que querés comenzar un nuevo proyecto usando Python? ¡Felicitaciones! ¿Querés que tenga la estructura recomendada para proyectos modernos? ¿querés que sea instalable fácilmente? ¿Querés que no se ">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-25T18:47:25-03:00">
+<meta property="article:published_time" content="2024-06-25T18:53:10-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -93,52 +93,52 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <ol class="arabic simple">
 <li><p>Instalá pip</p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_91e8ce209f6943ae91c0fac4a04802ee-1" name="rest_code_91e8ce209f6943ae91c0fac4a04802ee-1" href="#rest_code_91e8ce209f6943ae91c0fac4a04802ee-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>curl<span class="w"> </span>https://raw.github.com/pypa/pip/master/contrib/get-pip.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>python
+<div class="code"><pre class="code bash"><a id="rest_code_d7abdddd61d943319ebf6ba9271f46cd-1" name="rest_code_d7abdddd61d943319ebf6ba9271f46cd-1" href="#rest_code_d7abdddd61d943319ebf6ba9271f46cd-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>curl<span class="w"> </span>https://raw.github.com/pypa/pip/master/contrib/get-pip.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>python
 </pre></div>
 <ol class="arabic simple" start="2">
 <li><p>Instalá virtualenwrapper y skeleton</p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_21577b9211c448d795fa5f234281218e-1" name="rest_code_21577b9211c448d795fa5f234281218e-1" href="#rest_code_21577b9211c448d795fa5f234281218e-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>virtualenwrapper
-<a id="rest_code_21577b9211c448d795fa5f234281218e-2" name="rest_code_21577b9211c448d795fa5f234281218e-2" href="#rest_code_21577b9211c448d795fa5f234281218e-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+git://github.com/stumitchell/skeleton.git#egg<span class="o">=</span>skeleton
+<div class="code"><pre class="code bash"><a id="rest_code_2d14781fbafd4b53a6cf52d6446db0ae-1" name="rest_code_2d14781fbafd4b53a6cf52d6446db0ae-1" href="#rest_code_2d14781fbafd4b53a6cf52d6446db0ae-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>virtualenwrapper
+<a id="rest_code_2d14781fbafd4b53a6cf52d6446db0ae-2" name="rest_code_2d14781fbafd4b53a6cf52d6446db0ae-2" href="#rest_code_2d14781fbafd4b53a6cf52d6446db0ae-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+git://github.com/stumitchell/skeleton.git#egg<span class="o">=</span>skeleton
 </pre></div>
 <p>Notar que <em>skeleton</em> se está instalando desde un <em>fork</em> del proyecto original, que resuelve bugs de la versión original (aparentemente desmantenida)</p>
 <ol class="arabic simple" start="3">
 <li><p>Configurá virtualenvwrapper.</p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_e8197dda61ff42d78644af93136d86f5-1" name="rest_code_e8197dda61ff42d78644af93136d86f5-1" href="#rest_code_e8197dda61ff42d78644af93136d86f5-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>~/.virtualenvs<span class="w">           </span><span class="c1"># acá se van a guardar tus entornos virtuales</span>
-<a id="rest_code_e8197dda61ff42d78644af93136d86f5-2" name="rest_code_e8197dda61ff42d78644af93136d86f5-2" href="#rest_code_e8197dda61ff42d78644af93136d86f5-2"></a>$<span class="w"> </span>mkdir<span class="w"> </span>~/proyectos<span class="w">              </span><span class="c1"># acá se van a guardar tus proyectos</span>
+<div class="code"><pre class="code bash"><a id="rest_code_700c07ad7d6e477e828314d819824647-1" name="rest_code_700c07ad7d6e477e828314d819824647-1" href="#rest_code_700c07ad7d6e477e828314d819824647-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>~/.virtualenvs<span class="w">           </span><span class="c1"># acá se van a guardar tus entornos virtuales</span>
+<a id="rest_code_700c07ad7d6e477e828314d819824647-2" name="rest_code_700c07ad7d6e477e828314d819824647-2" href="#rest_code_700c07ad7d6e477e828314d819824647-2"></a>$<span class="w"> </span>mkdir<span class="w"> </span>~/proyectos<span class="w">              </span><span class="c1"># acá se van a guardar tus proyectos</span>
 </pre></div>
 <p>Luego editá tu <em>~/.bashrc</em> agregando las siguientes líneas</p>
-<div class="code"><pre class="code bash"><a id="rest_code_5daae64f83b14f84a3e99d0e6c5a6980-1" name="rest_code_5daae64f83b14f84a3e99d0e6c5a6980-1" href="#rest_code_5daae64f83b14f84a3e99d0e6c5a6980-1"></a><span class="nv">WORKON_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/.virtualenvs
-<a id="rest_code_5daae64f83b14f84a3e99d0e6c5a6980-2" name="rest_code_5daae64f83b14f84a3e99d0e6c5a6980-2" href="#rest_code_5daae64f83b14f84a3e99d0e6c5a6980-2"></a><span class="nv">PROJECT_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/proyectos
-<a id="rest_code_5daae64f83b14f84a3e99d0e6c5a6980-3" name="rest_code_5daae64f83b14f84a3e99d0e6c5a6980-3" href="#rest_code_5daae64f83b14f84a3e99d0e6c5a6980-3"></a>
-<a id="rest_code_5daae64f83b14f84a3e99d0e6c5a6980-4" name="rest_code_5daae64f83b14f84a3e99d0e6c5a6980-4" href="#rest_code_5daae64f83b14f84a3e99d0e6c5a6980-4"></a><span class="nb">source</span><span class="w"> </span>/usr/local/bin/virtualenvwrapper.sh
+<div class="code"><pre class="code bash"><a id="rest_code_d538c221f7854681b951a13dbed22793-1" name="rest_code_d538c221f7854681b951a13dbed22793-1" href="#rest_code_d538c221f7854681b951a13dbed22793-1"></a><span class="nv">WORKON_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/.virtualenvs
+<a id="rest_code_d538c221f7854681b951a13dbed22793-2" name="rest_code_d538c221f7854681b951a13dbed22793-2" href="#rest_code_d538c221f7854681b951a13dbed22793-2"></a><span class="nv">PROJECT_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/proyectos
+<a id="rest_code_d538c221f7854681b951a13dbed22793-3" name="rest_code_d538c221f7854681b951a13dbed22793-3" href="#rest_code_d538c221f7854681b951a13dbed22793-3"></a>
+<a id="rest_code_d538c221f7854681b951a13dbed22793-4" name="rest_code_d538c221f7854681b951a13dbed22793-4" href="#rest_code_d538c221f7854681b951a13dbed22793-4"></a><span class="nb">source</span><span class="w"> </span>/usr/local/bin/virtualenvwrapper.sh
 </pre></div>
 <p>y recargá tus cambios</p>
-<div class="code"><pre class="code bash"><a id="rest_code_ac5a762180ba476583584c6c81ac3f91-1" name="rest_code_ac5a762180ba476583584c6c81ac3f91-1" href="#rest_code_ac5a762180ba476583584c6c81ac3f91-1"></a>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="code"><pre class="code bash"><a id="rest_code_c4164eb58fde4ac5b331c1c4c878b6c7-1" name="rest_code_c4164eb58fde4ac5b331c1c4c878b6c7-1" href="#rest_code_c4164eb58fde4ac5b331c1c4c878b6c7-1"></a>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </pre></div>
 <ol class="arabic simple" start="4">
 <li><p>Inicializá tu proyecto. Por ejemplo el proyecto <em>zaraza</em></p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_c08c40467e9c439f8316f385ffe49503-1" name="rest_code_c08c40467e9c439f8316f385ffe49503-1" href="#rest_code_c08c40467e9c439f8316f385ffe49503-1"></a>$<span class="w"> </span>mkproject<span class="w"> </span>-t<span class="w"> </span>package<span class="w"> </span>zaraza
+<div class="code"><pre class="code bash"><a id="rest_code_84e905d709ec41f391065d1b7c137128-1" name="rest_code_84e905d709ec41f391065d1b7c137128-1" href="#rest_code_84e905d709ec41f391065d1b7c137128-1"></a>$<span class="w"> </span>mkproject<span class="w"> </span>-t<span class="w"> </span>package<span class="w"> </span>zaraza
 </pre></div>
 <p>Se te solicitarán algunos datos (nombre del proyecto, autor, licencia, etc.) y ¡(casi) listo! Estarás trabajando en tu proyecto <em>zaraza</em>. Tu prompt se verá así:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_c6c75670d736428f95540f549fea716e-1" name="rest_code_c6c75670d736428f95540f549fea716e-1" href="#rest_code_c6c75670d736428f95540f549fea716e-1"></a><span class="o">(</span>zaraza<span class="o">)</span>tin@morocha:~/proyectos/zaraza$
+<div class="code"><pre class="code bash"><a id="rest_code_1617b1989f594b97a2e6718e1db57284-1" name="rest_code_1617b1989f594b97a2e6718e1db57284-1" href="#rest_code_1617b1989f594b97a2e6718e1db57284-1"></a><span class="o">(</span>zaraza<span class="o">)</span>tin@morocha:~/proyectos/zaraza$
 </pre></div>
 <p>¿Qué sucedió? Se creó un directorio <em>~/proyectos/zaraza</em> para tu proyecto, asociado a un virtualenv ubicado  en  <em>~/.virtualenvs /zaraza</em>.  skeleton automáticamente creó una estructura básica de paquete python  <em>~/proyectos/zaraza/src</em> incluyendo un <em>setup.py</em> basado en distribute.</p>
 <ol class="arabic simple" start="5">
 <li><p>Instalá tu paquete en el virtualenv, para poder importarlo desde cualquier lado</p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_82039cf5fc824f49b487d50d75c9f746-1" name="rest_code_82039cf5fc824f49b487d50d75c9f746-1" href="#rest_code_82039cf5fc824f49b487d50d75c9f746-1"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span><span class="nb">cd</span><span class="w">  </span>~/proyectos/zaraza/src
-<a id="rest_code_82039cf5fc824f49b487d50d75c9f746-2" name="rest_code_82039cf5fc824f49b487d50d75c9f746-2" href="#rest_code_82039cf5fc824f49b487d50d75c9f746-2"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+<div class="code"><pre class="code bash"><a id="rest_code_bd1811189ba440cc997c9424dfd0ab91-1" name="rest_code_bd1811189ba440cc997c9424dfd0ab91-1" href="#rest_code_bd1811189ba440cc997c9424dfd0ab91-1"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span><span class="nb">cd</span><span class="w">  </span>~/proyectos/zaraza/src
+<a id="rest_code_bd1811189ba440cc997c9424dfd0ab91-2" name="rest_code_bd1811189ba440cc997c9424dfd0ab91-2" href="#rest_code_bd1811189ba440cc997c9424dfd0ab91-2"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 <p>Esto agrega el directorio de desarrollo de tu proyecto al PYTHONPATH del virtualenv, de modo que puedes importar <em>zaraza</em> desde cualquier lado dentro del virtualenv (por ejemplo, cuando hagas una carpeta <em>src/test</em> al nivel de '/src/zaraza'</p>
 </section><section id="y-ahora"><h2>¿Y ahora?</h2>
 <p>Cada vez que quieras trabajar en tu proyecto <em>zaraza</em> podes correr</p>
-<div class="code"><pre class="code bash"><a id="rest_code_58ecd76d6d7649d085d9004b3e4e7da5-1" name="rest_code_58ecd76d6d7649d085d9004b3e4e7da5-1" href="#rest_code_58ecd76d6d7649d085d9004b3e4e7da5-1"></a>$<span class="w"> </span>workon<span class="w"> </span>zaraza
+<div class="code"><pre class="code bash"><a id="rest_code_c27559885dc947488287f6c334096ad6-1" name="rest_code_c27559885dc947488287f6c334096ad6-1" href="#rest_code_c27559885dc947488287f6c334096ad6-1"></a>$<span class="w"> </span>workon<span class="w"> </span>zaraza
 </pre></div>
 <p>Para salir del virtualenv</p>
-<div class="code"><pre class="code bash"><a id="rest_code_c19a26e5e9524e81a434e7e98e5ccb53-1" name="rest_code_c19a26e5e9524e81a434e7e98e5ccb53-1" href="#rest_code_c19a26e5e9524e81a434e7e98e5ccb53-1"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>deactivate
+<div class="code"><pre class="code bash"><a id="rest_code_b42eecb8e6c6444da92e6e9f6f4a7fe8-1" name="rest_code_b42eecb8e6c6444da92e6e9f6f4a7fe8-1" href="#rest_code_b42eecb8e6c6444da92e6e9f6f4a7fe8-1"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>deactivate
 </pre></div>
 </section><section id="algunos-tips-mas-a-modo-de-despedida"><h2>Algunos tips más a modo de despedida</h2>
 <p>Virtualenwrapper es totalmente hookeable y extensible. Esta receta propone usar <em>skeleton</em> (que funciona como plugin de <a class="reference external" href="http://www.doughellmann.com/projects/virtualenvwrapper.project/">virtualenvwrapper.project</a>)  para crear una estructura de paquete estándar básica, pero hay plugins para proyectos más específicos. Por ejemplo <a class="reference external" href="http://www.doughellmann.com/projects/virtualenvwrapper.django/">virtualenwrapper.django</a></p>
