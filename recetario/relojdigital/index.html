@@ -36,19 +36,19 @@ root = Tk()
 root.focus()
 root.title("ǝɯıʇ uoɥ'>
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-25T18:53:10-03:00">
+<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
 
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#">Navbar</a>
+<div class="container px-0">
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="https://www.python.org.ar/">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
 <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar"><span class="inicio"></span>Inicio</a>
                 </li>
@@ -86,7 +86,7 @@ root.title("ǝɯıʇ uoɥ'>
     <div class="body-content">
         <!--Body content-->
         
-<div class="col-lg-12">
+<div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
             <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/relojdigital.rst" id="sourcelink" class="nav-link">Editar</a>
@@ -98,36 +98,35 @@ root.title("ǝɯıʇ uoɥ'>
 <li><p>Crear un Reloj digital simple, empleando un Label de TK.</p></li>
 </ul>
 <p><strong>Screenshot:</strong></p>
-<img alt="/images/RelojDigital/temp.jpg" src="../../images/RelojDigital/temp.jpg"><div class="code"><pre class="code python"><a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-1" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-1" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-1"></a><span class="ch">#!/usr/bin/env python</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-2" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-2" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-3" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-3" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-3"></a><span class="c1">#</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-4" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-4" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-4"></a><span class="kn">from</span> <span class="nn">Tkinter</span> <span class="kn">import</span> <span class="o">*</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-5" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-5" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-5"></a><span class="kn">import</span> <span class="nn">time</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-6" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-6" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-6"></a><span class="c1">#</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-7" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-7" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-7"></a><span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-8" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-8" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-8"></a><span class="n">root</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-9" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-9" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-9"></a><span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ǝɯıʇ uoɥʇʎd"</span><span class="p">)</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-10" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-10" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-10"></a><span class="n">root</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">cursor</span><span class="o">=</span><span class="s1">'watch'</span><span class="p">)</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-11" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-11" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-11"></a><span class="n">time1</span> <span class="o">=</span> <span class="s1">''</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-12" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-12" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-12"></a><span class="n">clock</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">'ubuntu'</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">'bold'</span><span class="p">),</span> <span class="n">bg</span><span class="o">=</span><span class="s1">'#3C3B37'</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-13" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-13" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-13"></a><span class="n">clock</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-14" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-14" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-14"></a><span class="k">def</span> <span class="nf">tick</span><span class="p">():</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-15" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-15" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-15"></a>    <span class="k">global</span> <span class="n">time1</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-16" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-16" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-16"></a>    <span class="n">time2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%H:%M:%S'</span><span class="p">)</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-17" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-17" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-17"></a>    <span class="k">if</span> <span class="n">time2</span> <span class="o">!=</span> <span class="n">time1</span><span class="p">:</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-18" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-18" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-18"></a>        <span class="n">time1</span> <span class="o">=</span> <span class="n">time2</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-19" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-19" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-19"></a>        <span class="n">clock</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">time2</span><span class="p">)</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-20" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-20" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-20"></a>    <span class="n">clock</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">tick</span><span class="p">)</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-21" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-21" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-21"></a><span class="n">tick</span><span class="p">()</span>
-<a id="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-22" name="rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-22" href="#rest_code_95a44e9ac3c1487bbe5b0ae7af40a853-22"></a><span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+<img alt="/images/RelojDigital/temp.jpg" src="../../images/RelojDigital/temp.jpg"><div class="code"><pre class="code python"><a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-1" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-1" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-1"></a><span class="ch">#!/usr/bin/env python</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-2" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-2" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-3" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-3" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-3"></a><span class="c1">#</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-4" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-4" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-4"></a><span class="kn">from</span> <span class="nn">Tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-5" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-5" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-5"></a><span class="kn">import</span> <span class="nn">time</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-6" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-6" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-6"></a><span class="c1">#</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-7" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-7" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-7"></a><span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-8" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-8" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-8"></a><span class="n">root</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-9" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-9" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-9"></a><span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ǝɯıʇ uoɥʇʎd"</span><span class="p">)</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-10" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-10" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-10"></a><span class="n">root</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">cursor</span><span class="o">=</span><span class="s1">'watch'</span><span class="p">)</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-11" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-11" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-11"></a><span class="n">time1</span> <span class="o">=</span> <span class="s1">''</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-12" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-12" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-12"></a><span class="n">clock</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">'ubuntu'</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">'bold'</span><span class="p">),</span> <span class="n">bg</span><span class="o">=</span><span class="s1">'#3C3B37'</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-13" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-13" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-13"></a><span class="n">clock</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-14" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-14" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-14"></a><span class="k">def</span> <span class="nf">tick</span><span class="p">():</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-15" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-15" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-15"></a>    <span class="k">global</span> <span class="n">time1</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-16" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-16" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-16"></a>    <span class="n">time2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%H:%M:%S'</span><span class="p">)</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-17" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-17" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-17"></a>    <span class="k">if</span> <span class="n">time2</span> <span class="o">!=</span> <span class="n">time1</span><span class="p">:</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-18" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-18" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-18"></a>        <span class="n">time1</span> <span class="o">=</span> <span class="n">time2</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-19" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-19" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-19"></a>        <span class="n">clock</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">time2</span><span class="p">)</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-20" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-20" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-20"></a>    <span class="n">clock</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">tick</span><span class="p">)</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-21" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-21" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-21"></a><span class="n">tick</span><span class="p">()</span>
+<a id="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-22" name="rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-22" href="#rest_code_87c1ce1f005849a1b1f0b4a5f7db5ff1-22"></a><span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>
 <p><em>Disclaimer: el uso o no de SheBang/Declaracion de Encoding queda a criterio del usuario.</em></p>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer">
-            Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>

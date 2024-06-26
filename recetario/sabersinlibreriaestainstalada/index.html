@@ -28,19 +28,19 @@ python -c 'import libreria'&amp;&amp;echo OK
 Ejemplo:
 juan@maverick:~$ python -c 'import gtk'&amp;&amp;echo">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-25T18:53:10-03:00">
+<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
 
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#">Navbar</a>
+<div class="container px-0">
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="https://www.python.org.ar/">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
 <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar"><span class="inicio"></span>Inicio</a>
                 </li>
@@ -78,7 +78,7 @@ juan@maverick:~$ python -c 'import gtk'&amp;&amp;echo">
     <div class="body-content">
         <!--Body content-->
         
-<div class="col-lg-12">
+<div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
             <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/sabersinlibreriaestainstalada.rst" id="sourcelink" class="nav-link">Editar</a>
@@ -87,23 +87,22 @@ juan@maverick:~$ python -c 'import gtk'&amp;&amp;echo">
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Cómo saber si N librería está instalada SIN ingresar al intérprete de Python. Funciona en la Bash de Linux.</p>
-<div class="code"><pre class="code bash"><a id="rest_code_c005e663dc8e4d14961e9830c98f3817-1" name="rest_code_c005e663dc8e4d14961e9830c98f3817-1" href="#rest_code_c005e663dc8e4d14961e9830c98f3817-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import libreria'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
+<div class="code"><pre class="code bash"><a id="rest_code_0f041ba384c64bb798e7fc6df9f22bc5-1" name="rest_code_0f041ba384c64bb798e7fc6df9f22bc5-1" href="#rest_code_0f041ba384c64bb798e7fc6df9f22bc5-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import libreria'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
 </pre></div>
 <p>Ejemplo:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_333a464a37cb47b4800deb1814579006-1" name="rest_code_333a464a37cb47b4800deb1814579006-1" href="#rest_code_333a464a37cb47b4800deb1814579006-1"></a>juan@maverick:~$<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import gtk'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
-<a id="rest_code_333a464a37cb47b4800deb1814579006-2" name="rest_code_333a464a37cb47b4800deb1814579006-2" href="#rest_code_333a464a37cb47b4800deb1814579006-2"></a>OK
-<a id="rest_code_333a464a37cb47b4800deb1814579006-3" name="rest_code_333a464a37cb47b4800deb1814579006-3" href="#rest_code_333a464a37cb47b4800deb1814579006-3"></a>juan@maverick:~$<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import libreriaquenoestainstalada'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
-<a id="rest_code_333a464a37cb47b4800deb1814579006-4" name="rest_code_333a464a37cb47b4800deb1814579006-4" href="#rest_code_333a464a37cb47b4800deb1814579006-4"></a>Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
-<a id="rest_code_333a464a37cb47b4800deb1814579006-5" name="rest_code_333a464a37cb47b4800deb1814579006-5" href="#rest_code_333a464a37cb47b4800deb1814579006-5"></a><span class="w">  </span>File<span class="w"> </span><span class="s2">"&lt;string&gt;"</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;module&gt;
-<a id="rest_code_333a464a37cb47b4800deb1814579006-6" name="rest_code_333a464a37cb47b4800deb1814579006-6" href="#rest_code_333a464a37cb47b4800deb1814579006-6"></a>ImportError:<span class="w"> </span>No<span class="w"> </span>module<span class="w"> </span>named<span class="w"> </span>libreriaquenoestainstalada
-<a id="rest_code_333a464a37cb47b4800deb1814579006-7" name="rest_code_333a464a37cb47b4800deb1814579006-7" href="#rest_code_333a464a37cb47b4800deb1814579006-7"></a>juan@maverick:~$
+<div class="code"><pre class="code bash"><a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-1" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-1" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-1"></a>juan@maverick:~$<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import gtk'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
+<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-2" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-2" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-2"></a>OK
+<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-3" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-3" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-3"></a>juan@maverick:~$<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import libreriaquenoestainstalada'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
+<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-4" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-4" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-4"></a>Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
+<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-5" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-5" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-5"></a><span class="w">  </span>File<span class="w"> </span><span class="s2">"&lt;string&gt;"</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;module&gt;
+<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-6" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-6" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-6"></a>ImportError:<span class="w"> </span>No<span class="w"> </span>module<span class="w"> </span>named<span class="w"> </span>libreriaquenoestainstalada
+<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-7" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-7" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-7"></a>juan@maverick:~$
 </pre></div>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer">
-            Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>

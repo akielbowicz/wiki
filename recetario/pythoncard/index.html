@@ -26,19 +26,19 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 PythonCard es un conjunto de herramientas de construcción GUI para crear aplicaciones de escritorio multiplataforma en Windows, Mac OS X, y Linux, usando Python.
 La motivación de PythonCa">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-25T18:53:10-03:00">
+<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
 
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#">Navbar</a>
+<div class="container px-0">
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="https://www.python.org.ar/">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
 <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar"><span class="inicio"></span>Inicio</a>
                 </li>
@@ -76,7 +76,7 @@ La motivación de PythonCa">
     <div class="body-content">
         <!--Body content-->
         
-<div class="col-lg-12">
+<div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
             <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/pythoncard.rst" id="sourcelink" class="nav-link">Editar</a>
@@ -92,7 +92,7 @@ La motivación de PythonCa">
 </section><section id="como-instalar-pythoncard"><h2>Cómo instalar PythonCard:</h2>
 <section id="linux-debian-y-derivados"><h3>Linux (Debian y derivados)</h3>
 <p>Pythoncard esta soportado en Etch, así que su instalación es bastante simple.</p>
-<div class="code"><pre class="code console"><a id="rest_code_5d913e4f7520422ca5ce5af9da680020-1" name="rest_code_5d913e4f7520422ca5ce5af9da680020-1" href="#rest_code_5d913e4f7520422ca5ce5af9da680020-1"></a><span class="go">apt-get install pythoncard</span>
+<div class="code"><pre class="code console"><a id="rest_code_fef921323dd943fdb079b31ad6869726-1" name="rest_code_fef921323dd943fdb079b31ad6869726-1" href="#rest_code_fef921323dd943fdb079b31ad6869726-1"></a><span class="go">apt-get install pythoncard</span>
 </pre></div>
 </section><section id="windows"><h3>Windows</h3>
 <ul class="simple">
@@ -111,15 +111,15 @@ La motivación de PythonCa">
 <li><p><strong>Varios</strong>: mp3player, slideshow (presentaciones html), sounds (sonidos wab), textIndexer, worldclock</p></li>
 </ul>
 <p>Si algo anda mal y no se muestra la pantalla de ejemplos, podemos probar lo siguiente para ver que esta fallando en una consola Python:</p>
-<div class="code"><pre class="code python"><a id="rest_code_488a73ab8fbc453b83ac7bafabe1f560-1" name="rest_code_488a73ab8fbc453b83ac7bafabe1f560-1" href="#rest_code_488a73ab8fbc453b83ac7bafabe1f560-1"></a><span class="kn">import</span> <span class="nn">wx</span>
-<a id="rest_code_488a73ab8fbc453b83ac7bafabe1f560-2" name="rest_code_488a73ab8fbc453b83ac7bafabe1f560-2" href="#rest_code_488a73ab8fbc453b83ac7bafabe1f560-2"></a><span class="n">wx</span><span class="o">.</span><span class="n">version</span><span class="p">()</span> <span class="c1"># debería imprimir '2.8.7.1 (msw-unicode)' o similar</span>
-<a id="rest_code_488a73ab8fbc453b83ac7bafabe1f560-3" name="rest_code_488a73ab8fbc453b83ac7bafabe1f560-3" href="#rest_code_488a73ab8fbc453b83ac7bafabe1f560-3"></a>
-<a id="rest_code_488a73ab8fbc453b83ac7bafabe1f560-4" name="rest_code_488a73ab8fbc453b83ac7bafabe1f560-4" href="#rest_code_488a73ab8fbc453b83ac7bafabe1f560-4"></a><span class="kn">from</span> <span class="nn">PythonCard</span> <span class="kn">import</span> <span class="n">model</span>
-<a id="rest_code_488a73ab8fbc453b83ac7bafabe1f560-5" name="rest_code_488a73ab8fbc453b83ac7bafabe1f560-5" href="#rest_code_488a73ab8fbc453b83ac7bafabe1f560-5"></a><span class="n">rsrc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'application'</span><span class="p">:{</span><span class="s1">'type'</span><span class="p">:</span><span class="s1">'Application'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">:</span><span class="s1">'Minimal'</span><span class="p">,</span>
-<a id="rest_code_488a73ab8fbc453b83ac7bafabe1f560-6" name="rest_code_488a73ab8fbc453b83ac7bafabe1f560-6" href="#rest_code_488a73ab8fbc453b83ac7bafabe1f560-6"></a>    <span class="s1">'backgrounds'</span><span class="p">:</span> <span class="p">[{</span><span class="s1">'type'</span><span class="p">:</span><span class="s1">'Background'</span><span class="p">,</span><span class="s1">'name'</span><span class="p">:</span><span class="s1">'bgMin'</span><span class="p">,</span>
-<a id="rest_code_488a73ab8fbc453b83ac7bafabe1f560-7" name="rest_code_488a73ab8fbc453b83ac7bafabe1f560-7" href="#rest_code_488a73ab8fbc453b83ac7bafabe1f560-7"></a>        <span class="s1">'title'</span><span class="p">:</span><span class="s1">'Prueba'</span><span class="p">,</span><span class="s1">'size'</span><span class="p">:(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span><span class="s1">'components'</span><span class="p">:</span> <span class="p">[]}]}</span> <span class="p">}</span>
-<a id="rest_code_488a73ab8fbc453b83ac7bafabe1f560-8" name="rest_code_488a73ab8fbc453b83ac7bafabe1f560-8" href="#rest_code_488a73ab8fbc453b83ac7bafabe1f560-8"></a>
-<a id="rest_code_488a73ab8fbc453b83ac7bafabe1f560-9" name="rest_code_488a73ab8fbc453b83ac7bafabe1f560-9" href="#rest_code_488a73ab8fbc453b83ac7bafabe1f560-9"></a><span class="n">model</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Background</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rsrc</span><span class="p">)</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+<div class="code"><pre class="code python"><a id="rest_code_4a07e681535c46dc8979e11a9e13b7f0-1" name="rest_code_4a07e681535c46dc8979e11a9e13b7f0-1" href="#rest_code_4a07e681535c46dc8979e11a9e13b7f0-1"></a><span class="kn">import</span> <span class="nn">wx</span>
+<a id="rest_code_4a07e681535c46dc8979e11a9e13b7f0-2" name="rest_code_4a07e681535c46dc8979e11a9e13b7f0-2" href="#rest_code_4a07e681535c46dc8979e11a9e13b7f0-2"></a><span class="n">wx</span><span class="o">.</span><span class="n">version</span><span class="p">()</span> <span class="c1"># debería imprimir '2.8.7.1 (msw-unicode)' o similar</span>
+<a id="rest_code_4a07e681535c46dc8979e11a9e13b7f0-3" name="rest_code_4a07e681535c46dc8979e11a9e13b7f0-3" href="#rest_code_4a07e681535c46dc8979e11a9e13b7f0-3"></a>
+<a id="rest_code_4a07e681535c46dc8979e11a9e13b7f0-4" name="rest_code_4a07e681535c46dc8979e11a9e13b7f0-4" href="#rest_code_4a07e681535c46dc8979e11a9e13b7f0-4"></a><span class="kn">from</span> <span class="nn">PythonCard</span> <span class="kn">import</span> <span class="n">model</span>
+<a id="rest_code_4a07e681535c46dc8979e11a9e13b7f0-5" name="rest_code_4a07e681535c46dc8979e11a9e13b7f0-5" href="#rest_code_4a07e681535c46dc8979e11a9e13b7f0-5"></a><span class="n">rsrc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'application'</span><span class="p">:{</span><span class="s1">'type'</span><span class="p">:</span><span class="s1">'Application'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">:</span><span class="s1">'Minimal'</span><span class="p">,</span>
+<a id="rest_code_4a07e681535c46dc8979e11a9e13b7f0-6" name="rest_code_4a07e681535c46dc8979e11a9e13b7f0-6" href="#rest_code_4a07e681535c46dc8979e11a9e13b7f0-6"></a>    <span class="s1">'backgrounds'</span><span class="p">:</span> <span class="p">[{</span><span class="s1">'type'</span><span class="p">:</span><span class="s1">'Background'</span><span class="p">,</span><span class="s1">'name'</span><span class="p">:</span><span class="s1">'bgMin'</span><span class="p">,</span>
+<a id="rest_code_4a07e681535c46dc8979e11a9e13b7f0-7" name="rest_code_4a07e681535c46dc8979e11a9e13b7f0-7" href="#rest_code_4a07e681535c46dc8979e11a9e13b7f0-7"></a>        <span class="s1">'title'</span><span class="p">:</span><span class="s1">'Prueba'</span><span class="p">,</span><span class="s1">'size'</span><span class="p">:(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span><span class="s1">'components'</span><span class="p">:</span> <span class="p">[]}]}</span> <span class="p">}</span>
+<a id="rest_code_4a07e681535c46dc8979e11a9e13b7f0-8" name="rest_code_4a07e681535c46dc8979e11a9e13b7f0-8" href="#rest_code_4a07e681535c46dc8979e11a9e13b7f0-8"></a>
+<a id="rest_code_4a07e681535c46dc8979e11a9e13b7f0-9" name="rest_code_4a07e681535c46dc8979e11a9e13b7f0-9" href="#rest_code_4a07e681535c46dc8979e11a9e13b7f0-9"></a><span class="n">model</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Background</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rsrc</span><span class="p">)</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </pre></div>
 <p>Debería aparecer una ventanita con título "Prueba".</p>
 <p>Además, PythonCard dispone de características de depuración (depurar menú, loggeo, visor de mensajes, visor del espacio nombres, editor de propiedades, shell). Estas opciones se pueden activar al ejecutar los ejemplos para ver cómo funcionan.</p>
@@ -177,29 +177,29 @@ La motivación de PythonCa">
 <li><p>De no funcionar, se pueden cambiar las opciones de depuración en el menú <em>File</em>, <em>Run Options</em> o ejecutar con el interprete con la opción <em>Run with interpreter</em></p></li>
 </ul>
 <section id="codigo-completo-final-del-ejemplo"><h3>Código completo final del ejemplo:</h3>
-<div class="code"><pre class="code python"><a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-1" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-1" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-1"></a><span class="kn">from</span> <span class="nn">PythonCard</span> <span class="kn">import</span> <span class="n">model</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-2" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-2" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-2"></a><span class="kn">from</span> <span class="nn">PythonCard</span> <span class="kn">import</span> <span class="n">dialog</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-3" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-3" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-3"></a>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-4" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-4" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-4"></a><span class="k">class</span> <span class="nc">MyBackground</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Background</span><span class="p">):</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-5" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-5" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-5"></a>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-6" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-6" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-6"></a>    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-7" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-7" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-7"></a>        <span class="c1"># if you have any initialization</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-8" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-8" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-8"></a>        <span class="c1"># including sizer setup, do it here</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-9" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-9" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-9"></a>        <span class="k">pass</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-10" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-10" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-10"></a>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-11" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-11" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-11"></a>    <span class="k">def</span> <span class="nf">on_btnEjecutar_mouseClick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-12" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-12" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-12"></a>        <span class="n">comando</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">txtComando</span><span class="o">.</span><span class="n">text</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-13" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-13" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-13"></a>        <span class="n">resultado</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">comando</span><span class="p">))</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-14" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-14" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">txtResultados</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">resultado</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-15" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-15" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-15"></a>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-16" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-16" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-16"></a>    <span class="k">def</span> <span class="nf">on_menuFileAyuda_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-17" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-17" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-17"></a>        <span class="n">dialog</span><span class="o">.</span><span class="n">alertDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-18" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-18" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-18"></a>            <span class="s1">'Este programa de prueba ejecuta el comando ingresado por el usuario'</span><span class="p">,</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-19" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-19" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-19"></a>            <span class="s1">'Ayuda'</span><span class="p">)</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-20" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-20" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-20"></a>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-21" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-21" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-21"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-22" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-22" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-22"></a>    <span class="n">app</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">MyBackground</span><span class="p">)</span>
-<a id="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-23" name="rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-23" href="#rest_code_84091c4d5ed346928bbc0cb3fd31b5a4-23"></a>    <span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+<div class="code"><pre class="code python"><a id="rest_code_713e0acaf6104719b55758dc313c7780-1" name="rest_code_713e0acaf6104719b55758dc313c7780-1" href="#rest_code_713e0acaf6104719b55758dc313c7780-1"></a><span class="kn">from</span> <span class="nn">PythonCard</span> <span class="kn">import</span> <span class="n">model</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-2" name="rest_code_713e0acaf6104719b55758dc313c7780-2" href="#rest_code_713e0acaf6104719b55758dc313c7780-2"></a><span class="kn">from</span> <span class="nn">PythonCard</span> <span class="kn">import</span> <span class="n">dialog</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-3" name="rest_code_713e0acaf6104719b55758dc313c7780-3" href="#rest_code_713e0acaf6104719b55758dc313c7780-3"></a>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-4" name="rest_code_713e0acaf6104719b55758dc313c7780-4" href="#rest_code_713e0acaf6104719b55758dc313c7780-4"></a><span class="k">class</span> <span class="nc">MyBackground</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Background</span><span class="p">):</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-5" name="rest_code_713e0acaf6104719b55758dc313c7780-5" href="#rest_code_713e0acaf6104719b55758dc313c7780-5"></a>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-6" name="rest_code_713e0acaf6104719b55758dc313c7780-6" href="#rest_code_713e0acaf6104719b55758dc313c7780-6"></a>    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-7" name="rest_code_713e0acaf6104719b55758dc313c7780-7" href="#rest_code_713e0acaf6104719b55758dc313c7780-7"></a>        <span class="c1"># if you have any initialization</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-8" name="rest_code_713e0acaf6104719b55758dc313c7780-8" href="#rest_code_713e0acaf6104719b55758dc313c7780-8"></a>        <span class="c1"># including sizer setup, do it here</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-9" name="rest_code_713e0acaf6104719b55758dc313c7780-9" href="#rest_code_713e0acaf6104719b55758dc313c7780-9"></a>        <span class="k">pass</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-10" name="rest_code_713e0acaf6104719b55758dc313c7780-10" href="#rest_code_713e0acaf6104719b55758dc313c7780-10"></a>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-11" name="rest_code_713e0acaf6104719b55758dc313c7780-11" href="#rest_code_713e0acaf6104719b55758dc313c7780-11"></a>    <span class="k">def</span> <span class="nf">on_btnEjecutar_mouseClick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-12" name="rest_code_713e0acaf6104719b55758dc313c7780-12" href="#rest_code_713e0acaf6104719b55758dc313c7780-12"></a>        <span class="n">comando</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">txtComando</span><span class="o">.</span><span class="n">text</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-13" name="rest_code_713e0acaf6104719b55758dc313c7780-13" href="#rest_code_713e0acaf6104719b55758dc313c7780-13"></a>        <span class="n">resultado</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">comando</span><span class="p">))</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-14" name="rest_code_713e0acaf6104719b55758dc313c7780-14" href="#rest_code_713e0acaf6104719b55758dc313c7780-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">txtResultados</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">resultado</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-15" name="rest_code_713e0acaf6104719b55758dc313c7780-15" href="#rest_code_713e0acaf6104719b55758dc313c7780-15"></a>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-16" name="rest_code_713e0acaf6104719b55758dc313c7780-16" href="#rest_code_713e0acaf6104719b55758dc313c7780-16"></a>    <span class="k">def</span> <span class="nf">on_menuFileAyuda_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-17" name="rest_code_713e0acaf6104719b55758dc313c7780-17" href="#rest_code_713e0acaf6104719b55758dc313c7780-17"></a>        <span class="n">dialog</span><span class="o">.</span><span class="n">alertDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-18" name="rest_code_713e0acaf6104719b55758dc313c7780-18" href="#rest_code_713e0acaf6104719b55758dc313c7780-18"></a>            <span class="s1">'Este programa de prueba ejecuta el comando ingresado por el usuario'</span><span class="p">,</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-19" name="rest_code_713e0acaf6104719b55758dc313c7780-19" href="#rest_code_713e0acaf6104719b55758dc313c7780-19"></a>            <span class="s1">'Ayuda'</span><span class="p">)</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-20" name="rest_code_713e0acaf6104719b55758dc313c7780-20" href="#rest_code_713e0acaf6104719b55758dc313c7780-20"></a>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-21" name="rest_code_713e0acaf6104719b55758dc313c7780-21" href="#rest_code_713e0acaf6104719b55758dc313c7780-21"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-22" name="rest_code_713e0acaf6104719b55758dc313c7780-22" href="#rest_code_713e0acaf6104719b55758dc313c7780-22"></a>    <span class="n">app</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">MyBackground</span><span class="p">)</span>
+<a id="rest_code_713e0acaf6104719b55758dc313c7780-23" name="rest_code_713e0acaf6104719b55758dc313c7780-23" href="#rest_code_713e0acaf6104719b55758dc313c7780-23"></a>    <span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </pre></div>
 <p><strong>Nota</strong>: Por ser un ejemplo se obviaron temas de manejo de excepciones y cuestiones avanzadas. Se pueden descargar los archivos terminados:</p>
 <ul class="simple">
@@ -213,8 +213,7 @@ La motivación de PythonCa">
 </div>
         <!--End of body content-->
 
-        <footer id="footer">
-            Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>

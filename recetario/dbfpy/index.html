@@ -26,19 +26,19 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 Esta receta es un ejemplo de cómo acceder nativamente desde Python a bases de datos en formato DBF (dBase, Foxpro, Clipper, etc.), sin necesidad de ODBC u otras herramientas.
 Utiliza DbfPy">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-25T18:53:10-03:00">
+<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
 
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#">Navbar</a>
+<div class="container px-0">
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="https://www.python.org.ar/">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
 <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar"><span class="inicio"></span>Inicio</a>
                 </li>
@@ -76,7 +76,7 @@ Utiliza DbfPy">
     <div class="body-content">
         <!--Body content-->
         
-<div class="col-lg-12">
+<div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
             <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/dbfpy.rst" id="sourcelink" class="nav-link">Editar</a>
@@ -90,35 +90,35 @@ Utiliza DbfPy">
 <p><strong>Nota</strong>: Para nuevos proyectos utilizar una base de datos relacional (ej. PostgreSQL o MySQL), o usar shelf para guardar objetos python fácilmente.</p>
 </section><section id="ejemplo"><h2>Ejemplo:</h2>
 <p>Ejemplo original traducido y ajustado:</p>
-<div class="code"><pre class="code python"><a id="rest_code_bece8d52320e47cba97dd5ac60116813-1" name="rest_code_bece8d52320e47cba97dd5ac60116813-1" href="#rest_code_bece8d52320e47cba97dd5ac60116813-1"></a><span class="c1"># -*- coding: iso-8859-1 -*-</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-2" name="rest_code_bece8d52320e47cba97dd5ac60116813-2" href="#rest_code_bece8d52320e47cba97dd5ac60116813-2"></a>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-3" name="rest_code_bece8d52320e47cba97dd5ac60116813-3" href="#rest_code_bece8d52320e47cba97dd5ac60116813-3"></a><span class="kn">from</span> <span class="nn">dbfpy.dbf</span> <span class="kn">import</span> <span class="n">Dbf</span><span class="p">,</span> <span class="n">DbfRecord</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-4" name="rest_code_bece8d52320e47cba97dd5ac60116813-4" href="#rest_code_bece8d52320e47cba97dd5ac60116813-4"></a>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-5" name="rest_code_bece8d52320e47cba97dd5ac60116813-5" href="#rest_code_bece8d52320e47cba97dd5ac60116813-5"></a><span class="c1"># abro el archivo country.dbf(viene como ejemplo dentro de la libreria)</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-6" name="rest_code_bece8d52320e47cba97dd5ac60116813-6" href="#rest_code_bece8d52320e47cba97dd5ac60116813-6"></a><span class="n">dbf1</span> <span class="o">=</span> <span class="n">Dbf</span><span class="p">()</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-7" name="rest_code_bece8d52320e47cba97dd5ac60116813-7" href="#rest_code_bece8d52320e47cba97dd5ac60116813-7"></a><span class="n">dbf1</span><span class="o">.</span><span class="n">openFile</span><span class="p">(</span><span class="s1">'dbfpy/county.dbf'</span><span class="p">,</span> <span class="n">readOnly</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-8" name="rest_code_bece8d52320e47cba97dd5ac60116813-8" href="#rest_code_bece8d52320e47cba97dd5ac60116813-8"></a><span class="n">dbf1</span><span class="o">.</span><span class="n">reportOn</span><span class="p">()</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-9" name="rest_code_bece8d52320e47cba97dd5ac60116813-9" href="#rest_code_bece8d52320e47cba97dd5ac60116813-9"></a><span class="nb">print</span> <span class="s1">'registros de ejemplo:'</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-10" name="rest_code_bece8d52320e47cba97dd5ac60116813-10" href="#rest_code_bece8d52320e47cba97dd5ac60116813-10"></a>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-11" name="rest_code_bece8d52320e47cba97dd5ac60116813-11" href="#rest_code_bece8d52320e47cba97dd5ac60116813-11"></a><span class="c1"># recorro los registros:</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-12" name="rest_code_bece8d52320e47cba97dd5ac60116813-12" href="#rest_code_bece8d52320e47cba97dd5ac60116813-12"></a><span class="k">for</span> <span class="n">registro</span> <span class="ow">in</span> <span class="n">dbf1</span><span class="p">:</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-13" name="rest_code_bece8d52320e47cba97dd5ac60116813-13" href="#rest_code_bece8d52320e47cba97dd5ac60116813-13"></a>    <span class="c1"># recorro los campos:</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-14" name="rest_code_bece8d52320e47cba97dd5ac60116813-14" href="#rest_code_bece8d52320e47cba97dd5ac60116813-14"></a>    <span class="k">for</span> <span class="n">nombre_campo</span> <span class="ow">in</span> <span class="n">dbf1</span><span class="o">.</span><span class="n">fieldNames</span><span class="p">():</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-15" name="rest_code_bece8d52320e47cba97dd5ac60116813-15" href="#rest_code_bece8d52320e47cba97dd5ac60116813-15"></a>        <span class="nb">print</span> <span class="s1">'</span><span class="si">%s</span><span class="s1">:</span><span class="se">\t</span><span class="s1"> </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">nombre_campo</span><span class="p">,</span> <span class="n">registro</span><span class="p">[</span><span class="n">nombre_campo</span><span class="p">])</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-16" name="rest_code_bece8d52320e47cba97dd5ac60116813-16" href="#rest_code_bece8d52320e47cba97dd5ac60116813-16"></a>    <span class="nb">print</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-17" name="rest_code_bece8d52320e47cba97dd5ac60116813-17" href="#rest_code_bece8d52320e47cba97dd5ac60116813-17"></a>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-18" name="rest_code_bece8d52320e47cba97dd5ac60116813-18" href="#rest_code_bece8d52320e47cba97dd5ac60116813-18"></a>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-19" name="rest_code_bece8d52320e47cba97dd5ac60116813-19" href="#rest_code_bece8d52320e47cba97dd5ac60116813-19"></a><span class="c1"># agregar un registro (campos COUNTYNO, COUNTYNAME, COUNTYABBR)</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-20" name="rest_code_bece8d52320e47cba97dd5ac60116813-20" href="#rest_code_bece8d52320e47cba97dd5ac60116813-20"></a><span class="n">reg</span><span class="o">=</span><span class="n">DbfRecord</span><span class="p">(</span><span class="n">dbf1</span><span class="p">)</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-21" name="rest_code_bece8d52320e47cba97dd5ac60116813-21" href="#rest_code_bece8d52320e47cba97dd5ac60116813-21"></a><span class="n">reg</span><span class="p">[</span><span class="s1">'COUNTYNO'</span><span class="p">]</span><span class="o">=</span><span class="mi">116</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-22" name="rest_code_bece8d52320e47cba97dd5ac60116813-22" href="#rest_code_bece8d52320e47cba97dd5ac60116813-22"></a><span class="n">reg</span><span class="p">[</span><span class="s1">'COUNTYNAME'</span><span class="p">]</span><span class="o">=</span><span class="s2">"Prueba"</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-23" name="rest_code_bece8d52320e47cba97dd5ac60116813-23" href="#rest_code_bece8d52320e47cba97dd5ac60116813-23"></a><span class="n">reg</span><span class="p">[</span><span class="s1">'COUNTYABBR'</span><span class="p">]</span><span class="o">=</span><span class="s2">"PRUE"</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-24" name="rest_code_bece8d52320e47cba97dd5ac60116813-24" href="#rest_code_bece8d52320e47cba97dd5ac60116813-24"></a><span class="c1">#reg['FECHA']=(2000,1,12)</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-25" name="rest_code_bece8d52320e47cba97dd5ac60116813-25" href="#rest_code_bece8d52320e47cba97dd5ac60116813-25"></a><span class="n">reg</span><span class="o">.</span><span class="n">store</span><span class="p">()</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-26" name="rest_code_bece8d52320e47cba97dd5ac60116813-26" href="#rest_code_bece8d52320e47cba97dd5ac60116813-26"></a>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-27" name="rest_code_bece8d52320e47cba97dd5ac60116813-27" href="#rest_code_bece8d52320e47cba97dd5ac60116813-27"></a>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-28" name="rest_code_bece8d52320e47cba97dd5ac60116813-28" href="#rest_code_bece8d52320e47cba97dd5ac60116813-28"></a><span class="c1"># cierro el archivo</span>
-<a id="rest_code_bece8d52320e47cba97dd5ac60116813-29" name="rest_code_bece8d52320e47cba97dd5ac60116813-29" href="#rest_code_bece8d52320e47cba97dd5ac60116813-29"></a><span class="n">dbf1</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="code"><pre class="code python"><a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-1" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-1" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-1"></a><span class="c1"># -*- coding: iso-8859-1 -*-</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-2" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-2" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-2"></a>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-3" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-3" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-3"></a><span class="kn">from</span> <span class="nn">dbfpy.dbf</span> <span class="kn">import</span> <span class="n">Dbf</span><span class="p">,</span> <span class="n">DbfRecord</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-4" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-4" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-4"></a>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-5" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-5" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-5"></a><span class="c1"># abro el archivo country.dbf(viene como ejemplo dentro de la libreria)</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-6" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-6" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-6"></a><span class="n">dbf1</span> <span class="o">=</span> <span class="n">Dbf</span><span class="p">()</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-7" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-7" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-7"></a><span class="n">dbf1</span><span class="o">.</span><span class="n">openFile</span><span class="p">(</span><span class="s1">'dbfpy/county.dbf'</span><span class="p">,</span> <span class="n">readOnly</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-8" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-8" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-8"></a><span class="n">dbf1</span><span class="o">.</span><span class="n">reportOn</span><span class="p">()</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-9" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-9" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-9"></a><span class="nb">print</span> <span class="s1">'registros de ejemplo:'</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-10" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-10" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-10"></a>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-11" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-11" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-11"></a><span class="c1"># recorro los registros:</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-12" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-12" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-12"></a><span class="k">for</span> <span class="n">registro</span> <span class="ow">in</span> <span class="n">dbf1</span><span class="p">:</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-13" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-13" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-13"></a>    <span class="c1"># recorro los campos:</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-14" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-14" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-14"></a>    <span class="k">for</span> <span class="n">nombre_campo</span> <span class="ow">in</span> <span class="n">dbf1</span><span class="o">.</span><span class="n">fieldNames</span><span class="p">():</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-15" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-15" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-15"></a>        <span class="nb">print</span> <span class="s1">'</span><span class="si">%s</span><span class="s1">:</span><span class="se">\t</span><span class="s1"> </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">nombre_campo</span><span class="p">,</span> <span class="n">registro</span><span class="p">[</span><span class="n">nombre_campo</span><span class="p">])</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-16" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-16" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-16"></a>    <span class="nb">print</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-17" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-17" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-17"></a>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-18" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-18" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-18"></a>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-19" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-19" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-19"></a><span class="c1"># agregar un registro (campos COUNTYNO, COUNTYNAME, COUNTYABBR)</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-20" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-20" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-20"></a><span class="n">reg</span><span class="o">=</span><span class="n">DbfRecord</span><span class="p">(</span><span class="n">dbf1</span><span class="p">)</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-21" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-21" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-21"></a><span class="n">reg</span><span class="p">[</span><span class="s1">'COUNTYNO'</span><span class="p">]</span><span class="o">=</span><span class="mi">116</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-22" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-22" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-22"></a><span class="n">reg</span><span class="p">[</span><span class="s1">'COUNTYNAME'</span><span class="p">]</span><span class="o">=</span><span class="s2">"Prueba"</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-23" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-23" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-23"></a><span class="n">reg</span><span class="p">[</span><span class="s1">'COUNTYABBR'</span><span class="p">]</span><span class="o">=</span><span class="s2">"PRUE"</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-24" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-24" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-24"></a><span class="c1">#reg['FECHA']=(2000,1,12)</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-25" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-25" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-25"></a><span class="n">reg</span><span class="o">.</span><span class="n">store</span><span class="p">()</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-26" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-26" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-26"></a>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-27" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-27" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-27"></a>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-28" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-28" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-28"></a><span class="c1"># cierro el archivo</span>
+<a id="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-29" name="rest_code_9b5db526cff94483bf2c549fe4ae9d6e-29" href="#rest_code_9b5db526cff94483bf2c549fe4ae9d6e-29"></a><span class="n">dbf1</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </section><section id="autor-autores"><h2>Autor / Autores:</h2>
 <p><a class="reference external" href="../../marianoreingart">MarianoReingart</a></p>
@@ -128,8 +128,7 @@ Utiliza DbfPy">
 </div>
         <!--End of body content-->
 
-        <footer id="footer">
-            Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>

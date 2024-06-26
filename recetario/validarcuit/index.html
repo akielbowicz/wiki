@@ -25,19 +25,19 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <meta property="og:description" content="Descripción
 validar_cuit(cuit) es una función a la que se le pasa un CUIT/CUIL (cadena '00-00000000-0') y devuelve True si el CUIT es válido (tiene la longitud y formato correcto, y su digito verifica">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-25T18:53:10-03:00">
+<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
 
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#">Navbar</a>
+<div class="container px-0">
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="https://www.python.org.ar/">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
 <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar"><span class="inicio"></span>Inicio</a>
                 </li>
@@ -75,7 +75,7 @@ validar_cuit(cuit) es una función a la que se le pasa un CUIT/CUIL (cadena '00-
     <div class="body-content">
         <!--Body content-->
         
-<div class="col-lg-12">
+<div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
             <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/validarcuit.rst" id="sourcelink" class="nav-link">Editar</a>
@@ -89,34 +89,34 @@ validar_cuit(cuit) es una función a la que se le pasa un CUIT/CUIL (cadena '00-
 <p><strong>Aclaración</strong>: que el CUIT sea válido no quiere decir que la persona titular exista y esté habilitada por los organismos correspondientes.</p>
 <p>Siempre se debe verificar la vigencia del CUIT en la página de la AFIP (Administración Federal de Ingresos Públicos). Por el momento es una página web, quizas en un futuro ofrezcan un servicio web para automatizar el proceso. Tambien es posible bajarse un padrón (archivo de texto plano), tarea para otra receta 🙂</p>
 </section><section id="ejemplos"><h2>Ejemplos:</h2>
-<div class="code"><pre class="code python"><a id="rest_code_996948a4f2b64b37aa2d5062fdb4aec2-1" name="rest_code_996948a4f2b64b37aa2d5062fdb4aec2-1" href="#rest_code_996948a4f2b64b37aa2d5062fdb4aec2-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">validar_cuit</span><span class="p">(</span><span class="s2">"00-00000000-0"</span><span class="p">)</span>
-<a id="rest_code_996948a4f2b64b37aa2d5062fdb4aec2-2" name="rest_code_996948a4f2b64b37aa2d5062fdb4aec2-2" href="#rest_code_996948a4f2b64b37aa2d5062fdb4aec2-2"></a><span class="kc">True</span>
-<a id="rest_code_996948a4f2b64b37aa2d5062fdb4aec2-3" name="rest_code_996948a4f2b64b37aa2d5062fdb4aec2-3" href="#rest_code_996948a4f2b64b37aa2d5062fdb4aec2-3"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">validar_cuit</span><span class="p">(</span><span class="s2">"00-00000000-1"</span><span class="p">)</span>
-<a id="rest_code_996948a4f2b64b37aa2d5062fdb4aec2-4" name="rest_code_996948a4f2b64b37aa2d5062fdb4aec2-4" href="#rest_code_996948a4f2b64b37aa2d5062fdb4aec2-4"></a><span class="kc">False</span>
+<div class="code"><pre class="code python"><a id="rest_code_04f4cc8f53b14ca4af418582c0aacc64-1" name="rest_code_04f4cc8f53b14ca4af418582c0aacc64-1" href="#rest_code_04f4cc8f53b14ca4af418582c0aacc64-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">validar_cuit</span><span class="p">(</span><span class="s2">"00-00000000-0"</span><span class="p">)</span>
+<a id="rest_code_04f4cc8f53b14ca4af418582c0aacc64-2" name="rest_code_04f4cc8f53b14ca4af418582c0aacc64-2" href="#rest_code_04f4cc8f53b14ca4af418582c0aacc64-2"></a><span class="kc">True</span>
+<a id="rest_code_04f4cc8f53b14ca4af418582c0aacc64-3" name="rest_code_04f4cc8f53b14ca4af418582c0aacc64-3" href="#rest_code_04f4cc8f53b14ca4af418582c0aacc64-3"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">validar_cuit</span><span class="p">(</span><span class="s2">"00-00000000-1"</span><span class="p">)</span>
+<a id="rest_code_04f4cc8f53b14ca4af418582c0aacc64-4" name="rest_code_04f4cc8f53b14ca4af418582c0aacc64-4" href="#rest_code_04f4cc8f53b14ca4af418582c0aacc64-4"></a><span class="kc">False</span>
 </pre></div>
 </section><section id="codigo"><h2>Código:</h2>
-<div class="code"><pre class="code python"><a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-1" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-1" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-1"></a><span class="k">def</span> <span class="nf">validar_cuit</span><span class="p">(</span><span class="n">cuit</span><span class="p">):</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-2" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-2" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-2"></a>    <span class="c1"># validaciones minimas</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-3" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-3" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-3"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cuit</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">13</span> <span class="ow">or</span> <span class="n">cuit</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"-"</span> <span class="ow">or</span> <span class="n">cuit</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"-"</span><span class="p">:</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-4" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-4" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-4"></a>        <span class="k">return</span> <span class="kc">False</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-5" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-5" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-5"></a>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-6" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-6" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-6"></a>    <span class="n">base</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-7" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-7" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-7"></a>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-8" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-8" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-8"></a>    <span class="n">cuit</span> <span class="o">=</span> <span class="n">cuit</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"-"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="c1"># remuevo las barras</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-9" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-9" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-9"></a>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-10" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-10" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-10"></a>    <span class="c1"># calculo el digito verificador:</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-11" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-11" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-11"></a>    <span class="n">aux</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-12" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-12" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-12"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-13" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-13" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-13"></a>        <span class="n">aux</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cuit</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">base</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-14" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-14" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-14"></a>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-15" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-15" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-15"></a>    <span class="n">aux</span> <span class="o">=</span> <span class="mi">11</span> <span class="o">-</span> <span class="p">(</span><span class="n">aux</span> <span class="o">-</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">aux</span> <span class="o">/</span> <span class="mi">11</span><span class="p">)</span> <span class="o">*</span> <span class="mi">11</span><span class="p">))</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-16" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-16" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-16"></a>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-17" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-17" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-17"></a>    <span class="k">if</span> <span class="n">aux</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-18" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-18" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-18"></a>        <span class="n">aux</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-19" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-19" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-19"></a>    <span class="k">if</span> <span class="n">aux</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-20" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-20" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-20"></a>        <span class="n">aux</span> <span class="o">=</span> <span class="mi">9</span>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-21" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-21" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-21"></a>
-<a id="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-22" name="rest_code_7e2983f8f4dd42279d56f9e56a4046a5-22" href="#rest_code_7e2983f8f4dd42279d56f9e56a4046a5-22"></a>    <span class="k">return</span> <span class="n">aux</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">cuit</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
+<div class="code"><pre class="code python"><a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-1" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-1" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-1"></a><span class="k">def</span> <span class="nf">validar_cuit</span><span class="p">(</span><span class="n">cuit</span><span class="p">):</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-2" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-2" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-2"></a>    <span class="c1"># validaciones minimas</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-3" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-3" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-3"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cuit</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">13</span> <span class="ow">or</span> <span class="n">cuit</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"-"</span> <span class="ow">or</span> <span class="n">cuit</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"-"</span><span class="p">:</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-4" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-4" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-4"></a>        <span class="k">return</span> <span class="kc">False</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-5" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-5" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-5"></a>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-6" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-6" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-6"></a>    <span class="n">base</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-7" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-7" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-7"></a>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-8" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-8" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-8"></a>    <span class="n">cuit</span> <span class="o">=</span> <span class="n">cuit</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"-"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="c1"># remuevo las barras</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-9" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-9" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-9"></a>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-10" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-10" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-10"></a>    <span class="c1"># calculo el digito verificador:</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-11" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-11" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-11"></a>    <span class="n">aux</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-12" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-12" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-12"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-13" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-13" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-13"></a>        <span class="n">aux</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cuit</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">base</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-14" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-14" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-14"></a>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-15" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-15" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-15"></a>    <span class="n">aux</span> <span class="o">=</span> <span class="mi">11</span> <span class="o">-</span> <span class="p">(</span><span class="n">aux</span> <span class="o">-</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">aux</span> <span class="o">/</span> <span class="mi">11</span><span class="p">)</span> <span class="o">*</span> <span class="mi">11</span><span class="p">))</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-16" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-16" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-16"></a>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-17" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-17" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-17"></a>    <span class="k">if</span> <span class="n">aux</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-18" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-18" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-18"></a>        <span class="n">aux</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-19" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-19" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-19"></a>    <span class="k">if</span> <span class="n">aux</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-20" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-20" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-20"></a>        <span class="n">aux</span> <span class="o">=</span> <span class="mi">9</span>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-21" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-21" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-21"></a>
+<a id="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-22" name="rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-22" href="#rest_code_0d0f8675c57b4e5a8fce6b8d7e9a2d3f-22"></a>    <span class="k">return</span> <span class="n">aux</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">cuit</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </section><section id="autor-autores"><h2>Autor / Autores:</h2>
 <p><a class="reference external" href="../../marianoreingart">MarianoReingart</a></p>
@@ -125,8 +125,7 @@ validar_cuit(cuit) es una función a la que se le pasa un CUIT/CUIL (cadena '00-
 </div>
         <!--End of body content-->
 
-        <footer id="footer">
-            Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
