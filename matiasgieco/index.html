@@ -27,7 +27,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 Soy Matías Gieco, nacido bajo el mes de virgo allá por el 77. ¿Qué hago? Poco y nada.
 En la lista de PyA">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
+<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -62,14 +62,23 @@ En la lista de PyA">
                     <a class="nav-link" href="http://www.python.org.ar/eventos/"><span class="eventos"></span>Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://planeta.python.org.ar/"><span class="pyar"></span>Planeta</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar/trabajo/"><span class="jobs"></span>Trabajos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://ac.python.org.ar/"><span class="quienes_somos"></span>Asoc. Civil</a>
+                </li>                
             </ul>
 </div>
-    </nav>
+
+    </nav><div id="search_bar">
+            <div id="search_overlay" style="display:none;">
+                <div id="search_content">
+                    <button onclick="closeSearch()">Cerrar</button>
+                    <div id="search_results"></div>
+                </div>
+            </div>
+            <input type="text" id="search_input"><button id="search_button">Buscar en la wiki</button>
+        </div>
 </div>
 
 <!-- Header and menu bar -->
@@ -80,7 +89,7 @@ En la lista de PyA">
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages/matiasgieco.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages\matiasgieco.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Matias Gieco</h2>
     </div>
@@ -103,12 +112,12 @@ En la lista de PyA">
 <li><p>Estoy en <a class="reference external" href="http://www.linkedin.com/in/matiasgieco">LinkedIn</a>, en los grupos de python y <a class="reference external" href="../pyar">PyAr</a>, porque da chapa de que se algo.</p></li>
 </ul>
 <p>Si quieren algún otro usuario y contraseña de algún otro servicio, manden un email a la dirección escrita y se las doy, total quien va a romper lo que no es suyo.</p>
-<div class="code"><pre class="code python"><a id="rest_code_54798f4b431148fab31f79bf22282ecb-1" name="rest_code_54798f4b431148fab31f79bf22282ecb-1" href="#rest_code_54798f4b431148fab31f79bf22282ecb-1"></a><span class="k">def</span> <span class="nf">tiempo_de_vida</span><span class="p">(</span><span class="n">fecha_nac</span><span class="p">):</span>
-<a id="rest_code_54798f4b431148fab31f79bf22282ecb-2" name="rest_code_54798f4b431148fab31f79bf22282ecb-2" href="#rest_code_54798f4b431148fab31f79bf22282ecb-2"></a>  <span class="n">hoy</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
-<a id="rest_code_54798f4b431148fab31f79bf22282ecb-3" name="rest_code_54798f4b431148fab31f79bf22282ecb-3" href="#rest_code_54798f4b431148fab31f79bf22282ecb-3"></a>  <span class="k">return</span><span class="p">(</span><span class="n">hoy</span><span class="o">-</span><span class="n">fecha_nac</span><span class="p">)</span>
-<a id="rest_code_54798f4b431148fab31f79bf22282ecb-4" name="rest_code_54798f4b431148fab31f79bf22282ecb-4" href="#rest_code_54798f4b431148fab31f79bf22282ecb-4"></a>
-<a id="rest_code_54798f4b431148fab31f79bf22282ecb-5" name="rest_code_54798f4b431148fab31f79bf22282ecb-5" href="#rest_code_54798f4b431148fab31f79bf22282ecb-5"></a><span class="n">nac_bb</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span><span class="mi">04</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
-<a id="rest_code_54798f4b431148fab31f79bf22282ecb-6" name="rest_code_54798f4b431148fab31f79bf22282ecb-6" href="#rest_code_54798f4b431148fab31f79bf22282ecb-6"></a><span class="n">nac_bullie</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span><span class="mi">04</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span> <span class="o">-</span>  <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="mi">366</span><span class="p">)</span> <span class="c1"># si, un año justo justo!</span>
+<div class="code"><pre class="code python"><a id="rest_code_5ab2caa879864759ae4e4393f877c692-1" name="rest_code_5ab2caa879864759ae4e4393f877c692-1" href="#rest_code_5ab2caa879864759ae4e4393f877c692-1"></a><span class="k">def</span> <span class="nf">tiempo_de_vida</span><span class="p">(</span><span class="n">fecha_nac</span><span class="p">):</span>
+<a id="rest_code_5ab2caa879864759ae4e4393f877c692-2" name="rest_code_5ab2caa879864759ae4e4393f877c692-2" href="#rest_code_5ab2caa879864759ae4e4393f877c692-2"></a>  <span class="n">hoy</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<a id="rest_code_5ab2caa879864759ae4e4393f877c692-3" name="rest_code_5ab2caa879864759ae4e4393f877c692-3" href="#rest_code_5ab2caa879864759ae4e4393f877c692-3"></a>  <span class="k">return</span><span class="p">(</span><span class="n">hoy</span><span class="o">-</span><span class="n">fecha_nac</span><span class="p">)</span>
+<a id="rest_code_5ab2caa879864759ae4e4393f877c692-4" name="rest_code_5ab2caa879864759ae4e4393f877c692-4" href="#rest_code_5ab2caa879864759ae4e4393f877c692-4"></a>
+<a id="rest_code_5ab2caa879864759ae4e4393f877c692-5" name="rest_code_5ab2caa879864759ae4e4393f877c692-5" href="#rest_code_5ab2caa879864759ae4e4393f877c692-5"></a><span class="n">nac_bb</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span><span class="mi">04</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+<a id="rest_code_5ab2caa879864759ae4e4393f877c692-6" name="rest_code_5ab2caa879864759ae4e4393f877c692-6" href="#rest_code_5ab2caa879864759ae4e4393f877c692-6"></a><span class="n">nac_bullie</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span><span class="mi">04</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span> <span class="o">-</span>  <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="mi">366</span><span class="p">)</span> <span class="c1"># si, un año justo justo!</span>
 </pre></div>
 <hr class="docutils">
 <blockquote>
@@ -120,7 +129,7 @@ En la lista de PyA">
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -132,6 +141,74 @@ En la lista de PyA">
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
+    var index = {};  // This will store the index data globally within this script block
+
+    // Fetch the generated JSON file
+    fetch('/search_index.json')
+    .then(response => response.json())
+    .then(data => {
+        index = data;  // Store the fetched data in the 'index' variable
+        for (var key in index) {
+            if (index.hasOwnProperty(key)) {
+                searchIndex.add(key, index[key].content);
+            }
+        }
+    });
+
+    var input = document.getElementById('search_input');
+    var button = document.getElementById('search_button');
+
+    // Function to perform search
+    function performSearch() {
+        var query = input.value;
+        var results = searchIndex.search(query);
+        var resultsContainer = document.getElementById('search_results');
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        var ul = document.createElement('ul'); // Create a UL element to hold the results
+
+        // Display results
+        results.forEach(function(result) {
+            var li = document.createElement('li'); // Create a LI element for each result
+            var link = document.createElement('a');
+            link.href = index[result].url;
+            link.textContent = index[result].title;
+            li.appendChild(link);
+            ul.appendChild(li); // Append the LI to the UL
+        });
+
+        resultsContainer.appendChild(ul); // Append the UL to the results container
+        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
+    }
+
+    // Event listener for search button click
+    button.addEventListener('click', performSearch);
+
+    // Event listener for pressing enter key in the search input
+    input.addEventListener('keypress', function(event) {
+        if (event.key === "Enter" || event.keyCode === 13) {
+            event.preventDefault();  // Prevent the form from being submitted
+            performSearch();
+        }
+    });
+});
+
+// Function to close the search overlay
+function closeSearch() {
+    document.getElementById('search_overlay').style.display = 'none';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        var searchOverlay = document.getElementById('search_overlay');
+        if (searchOverlay !== null) {
+            closeSearch();
+        }
+    }
+});
+</script>
 </body>
 </html>

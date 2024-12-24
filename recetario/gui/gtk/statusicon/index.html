@@ -31,7 +31,7 @@ import gtk
 
 class Tr">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
+<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -66,14 +66,23 @@ class Tr">
                     <a class="nav-link" href="http://www.python.org.ar/eventos/"><span class="eventos"></span>Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://planeta.python.org.ar/"><span class="pyar"></span>Planeta</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar/trabajo/"><span class="jobs"></span>Trabajos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://ac.python.org.ar/"><span class="quienes_somos"></span>Asoc. Civil</a>
+                </li>                
             </ul>
 </div>
-    </nav>
+
+    </nav><div id="search_bar">
+            <div id="search_overlay" style="display:none;">
+                <div id="search_content">
+                    <button onclick="closeSearch()">Cerrar</button>
+                    <div id="search_results"></div>
+                </div>
+            </div>
+            <input type="text" id="search_input"><button id="search_button">Buscar en la wiki</button>
+        </div>
 </div>
 
 <!-- Header and menu bar -->
@@ -84,74 +93,74 @@ class Tr">
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/gui/gtk/statusicon.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages\recetario\gui\gtk\statusicon.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Gtkstatusicon</h2>
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Aplicación con ícono en el área de notificaciones.</p>
 <p>Tiene un menú contextual (About/Quit) y con el botón izquierdo abre una ventana simple.</p>
-<img alt="/images/Recetario/Gui/Gtk/StatusIcon/trayapp.png" src="../../../../images/Recetario/Gui/Gtk/StatusIcon/trayapp.png"><div class="code"><pre class="code python"><a id="rest_code_7fdceea0105343a595122b185c77d0cd-1" name="rest_code_7fdceea0105343a595122b185c77d0cd-1" href="#rest_code_7fdceea0105343a595122b185c77d0cd-1"></a><span class="sd">'''Mini ejemplo de system tray app.'''</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-2" name="rest_code_7fdceea0105343a595122b185c77d0cd-2" href="#rest_code_7fdceea0105343a595122b185c77d0cd-2"></a>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-3" name="rest_code_7fdceea0105343a595122b185c77d0cd-3" href="#rest_code_7fdceea0105343a595122b185c77d0cd-3"></a><span class="kn">import</span> <span class="nn">gtk</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-4" name="rest_code_7fdceea0105343a595122b185c77d0cd-4" href="#rest_code_7fdceea0105343a595122b185c77d0cd-4"></a>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-5" name="rest_code_7fdceea0105343a595122b185c77d0cd-5" href="#rest_code_7fdceea0105343a595122b185c77d0cd-5"></a><span class="k">class</span> <span class="nc">TrayApp</span><span class="p">:</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-6" name="rest_code_7fdceea0105343a595122b185c77d0cd-6" href="#rest_code_7fdceea0105343a595122b185c77d0cd-6"></a>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-7" name="rest_code_7fdceea0105343a595122b185c77d0cd-7" href="#rest_code_7fdceea0105343a595122b185c77d0cd-7"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-8" name="rest_code_7fdceea0105343a595122b185c77d0cd-8" href="#rest_code_7fdceea0105343a595122b185c77d0cd-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">StatusIcon</span><span class="p">()</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-9" name="rest_code_7fdceea0105343a595122b185c77d0cd-9" href="#rest_code_7fdceea0105343a595122b185c77d0cd-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span><span class="o">.</span><span class="n">set_from_stock</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">STOCK_INFO</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-10" name="rest_code_7fdceea0105343a595122b185c77d0cd-10" href="#rest_code_7fdceea0105343a595122b185c77d0cd-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span><span class="o">.</span><span class="n">set_tooltip</span><span class="p">(</span><span class="s1">'StatusIcon Example'</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-11" name="rest_code_7fdceea0105343a595122b185c77d0cd-11" href="#rest_code_7fdceea0105343a595122b185c77d0cd-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'popup-menu'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">right_click_event</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-12" name="rest_code_7fdceea0105343a595122b185c77d0cd-12" href="#rest_code_7fdceea0105343a595122b185c77d0cd-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'activate'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">left_click_event</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-13" name="rest_code_7fdceea0105343a595122b185c77d0cd-13" href="#rest_code_7fdceea0105343a595122b185c77d0cd-13"></a>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-14" name="rest_code_7fdceea0105343a595122b185c77d0cd-14" href="#rest_code_7fdceea0105343a595122b185c77d0cd-14"></a>    <span class="k">def</span> <span class="nf">left_click_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status_icon</span><span class="p">):</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-15" name="rest_code_7fdceea0105343a595122b185c77d0cd-15" href="#rest_code_7fdceea0105343a595122b185c77d0cd-15"></a>        <span class="c1"># Para que solo abra una ventana</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-16" name="rest_code_7fdceea0105343a595122b185c77d0cd-16" href="#rest_code_7fdceea0105343a595122b185c77d0cd-16"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'window'</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-17" name="rest_code_7fdceea0105343a595122b185c77d0cd-17" href="#rest_code_7fdceea0105343a595122b185c77d0cd-17"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s1">'Hola pyar'</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-18" name="rest_code_7fdceea0105343a595122b185c77d0cd-18" href="#rest_code_7fdceea0105343a595122b185c77d0cd-18"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="p">()</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-19" name="rest_code_7fdceea0105343a595122b185c77d0cd-19" href="#rest_code_7fdceea0105343a595122b185c77d0cd-19"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">set_default_size</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-20" name="rest_code_7fdceea0105343a595122b185c77d0cd-20" href="#rest_code_7fdceea0105343a595122b185c77d0cd-20"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Hello world'</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-21" name="rest_code_7fdceea0105343a595122b185c77d0cd-21" href="#rest_code_7fdceea0105343a595122b185c77d0cd-21"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'delete_event'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exit_window</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-22" name="rest_code_7fdceea0105343a595122b185c77d0cd-22" href="#rest_code_7fdceea0105343a595122b185c77d0cd-22"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-23" name="rest_code_7fdceea0105343a595122b185c77d0cd-23" href="#rest_code_7fdceea0105343a595122b185c77d0cd-23"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-24" name="rest_code_7fdceea0105343a595122b185c77d0cd-24" href="#rest_code_7fdceea0105343a595122b185c77d0cd-24"></a>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-25" name="rest_code_7fdceea0105343a595122b185c77d0cd-25" href="#rest_code_7fdceea0105343a595122b185c77d0cd-25"></a>    <span class="k">def</span> <span class="nf">exit_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-26" name="rest_code_7fdceea0105343a595122b185c77d0cd-26" href="#rest_code_7fdceea0105343a595122b185c77d0cd-26"></a>        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-27" name="rest_code_7fdceea0105343a595122b185c77d0cd-27" href="#rest_code_7fdceea0105343a595122b185c77d0cd-27"></a>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-28" name="rest_code_7fdceea0105343a595122b185c77d0cd-28" href="#rest_code_7fdceea0105343a595122b185c77d0cd-28"></a>    <span class="k">def</span> <span class="nf">right_click_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status_icon</span><span class="p">,</span> <span class="n">button</span><span class="p">,</span> <span class="n">activate_time</span><span class="p">):</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-29" name="rest_code_7fdceea0105343a595122b185c77d0cd-29" href="#rest_code_7fdceea0105343a595122b185c77d0cd-29"></a>        <span class="n">menu</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Menu</span><span class="p">()</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-30" name="rest_code_7fdceea0105343a595122b185c77d0cd-30" href="#rest_code_7fdceea0105343a595122b185c77d0cd-30"></a>        <span class="n">about</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="s1">'About'</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-31" name="rest_code_7fdceea0105343a595122b185c77d0cd-31" href="#rest_code_7fdceea0105343a595122b185c77d0cd-31"></a>        <span class="n">quit</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="s1">'Quit'</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-32" name="rest_code_7fdceea0105343a595122b185c77d0cd-32" href="#rest_code_7fdceea0105343a595122b185c77d0cd-32"></a>        <span class="n">about</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'activate'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">show_about_dialog</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-33" name="rest_code_7fdceea0105343a595122b185c77d0cd-33" href="#rest_code_7fdceea0105343a595122b185c77d0cd-33"></a>        <span class="n">quit</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'activate'</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-34" name="rest_code_7fdceea0105343a595122b185c77d0cd-34" href="#rest_code_7fdceea0105343a595122b185c77d0cd-34"></a>        <span class="n">menu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">about</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-35" name="rest_code_7fdceea0105343a595122b185c77d0cd-35" href="#rest_code_7fdceea0105343a595122b185c77d0cd-35"></a>        <span class="n">menu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quit</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-36" name="rest_code_7fdceea0105343a595122b185c77d0cd-36" href="#rest_code_7fdceea0105343a595122b185c77d0cd-36"></a>        <span class="n">menu</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-37" name="rest_code_7fdceea0105343a595122b185c77d0cd-37" href="#rest_code_7fdceea0105343a595122b185c77d0cd-37"></a>        <span class="n">menu</span><span class="o">.</span><span class="n">popup</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">status_icon_position_menu</span><span class="p">,</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-38" name="rest_code_7fdceea0105343a595122b185c77d0cd-38" href="#rest_code_7fdceea0105343a595122b185c77d0cd-38"></a>                   <span class="n">button</span><span class="p">,</span> <span class="n">activate_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-39" name="rest_code_7fdceea0105343a595122b185c77d0cd-39" href="#rest_code_7fdceea0105343a595122b185c77d0cd-39"></a>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-40" name="rest_code_7fdceea0105343a595122b185c77d0cd-40" href="#rest_code_7fdceea0105343a595122b185c77d0cd-40"></a>    <span class="k">def</span> <span class="nf">show_about_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-41" name="rest_code_7fdceea0105343a595122b185c77d0cd-41" href="#rest_code_7fdceea0105343a595122b185c77d0cd-41"></a>                <span class="n">about_dialog</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">AboutDialog</span><span class="p">()</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-42" name="rest_code_7fdceea0105343a595122b185c77d0cd-42" href="#rest_code_7fdceea0105343a595122b185c77d0cd-42"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">set_destroy_with_parent</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-43" name="rest_code_7fdceea0105343a595122b185c77d0cd-43" href="#rest_code_7fdceea0105343a595122b185c77d0cd-43"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s1">'StatusIcon Example'</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-44" name="rest_code_7fdceea0105343a595122b185c77d0cd-44" href="#rest_code_7fdceea0105343a595122b185c77d0cd-44"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">set_version</span><span class="p">(</span><span class="s1">'1.0'</span><span class="p">)</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-45" name="rest_code_7fdceea0105343a595122b185c77d0cd-45" href="#rest_code_7fdceea0105343a595122b185c77d0cd-45"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">set_authors</span><span class="p">([</span><span class="s1">'Name Lastname'</span><span class="p">])</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-46" name="rest_code_7fdceea0105343a595122b185c77d0cd-46" href="#rest_code_7fdceea0105343a595122b185c77d0cd-46"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-47" name="rest_code_7fdceea0105343a595122b185c77d0cd-47" href="#rest_code_7fdceea0105343a595122b185c77d0cd-47"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-48" name="rest_code_7fdceea0105343a595122b185c77d0cd-48" href="#rest_code_7fdceea0105343a595122b185c77d0cd-48"></a>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-49" name="rest_code_7fdceea0105343a595122b185c77d0cd-49" href="#rest_code_7fdceea0105343a595122b185c77d0cd-49"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-50" name="rest_code_7fdceea0105343a595122b185c77d0cd-50" href="#rest_code_7fdceea0105343a595122b185c77d0cd-50"></a>        <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-51" name="rest_code_7fdceea0105343a595122b185c77d0cd-51" href="#rest_code_7fdceea0105343a595122b185c77d0cd-51"></a>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-52" name="rest_code_7fdceea0105343a595122b185c77d0cd-52" href="#rest_code_7fdceea0105343a595122b185c77d0cd-52"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-53" name="rest_code_7fdceea0105343a595122b185c77d0cd-53" href="#rest_code_7fdceea0105343a595122b185c77d0cd-53"></a>    <span class="n">tray_app</span> <span class="o">=</span> <span class="n">TrayApp</span><span class="p">()</span>
-<a id="rest_code_7fdceea0105343a595122b185c77d0cd-54" name="rest_code_7fdceea0105343a595122b185c77d0cd-54" href="#rest_code_7fdceea0105343a595122b185c77d0cd-54"></a>    <span class="n">tray_app</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<img alt="/images/Recetario/Gui/Gtk/StatusIcon/trayapp.png" src="../../../../images/Recetario/Gui/Gtk/StatusIcon/trayapp.png"><div class="code"><pre class="code python"><a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-1" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-1" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-1"></a><span class="sd">'''Mini ejemplo de system tray app.'''</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-2" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-2" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-2"></a>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-3" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-3" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-3"></a><span class="kn">import</span> <span class="nn">gtk</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-4" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-4" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-4"></a>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-5" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-5" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-5"></a><span class="k">class</span> <span class="nc">TrayApp</span><span class="p">:</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-6" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-6" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-6"></a>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-7" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-7" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-7"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-8" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-8" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">StatusIcon</span><span class="p">()</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-9" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-9" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span><span class="o">.</span><span class="n">set_from_stock</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">STOCK_INFO</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-10" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-10" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span><span class="o">.</span><span class="n">set_tooltip</span><span class="p">(</span><span class="s1">'StatusIcon Example'</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-11" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-11" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'popup-menu'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">right_click_event</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-12" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-12" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'activate'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">left_click_event</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-13" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-13" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-13"></a>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-14" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-14" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-14"></a>    <span class="k">def</span> <span class="nf">left_click_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status_icon</span><span class="p">):</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-15" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-15" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-15"></a>        <span class="c1"># Para que solo abra una ventana</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-16" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-16" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-16"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'window'</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-17" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-17" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-17"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s1">'Hola pyar'</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-18" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-18" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-18"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="p">()</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-19" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-19" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-19"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">set_default_size</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-20" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-20" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-20"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Hello world'</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-21" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-21" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-21"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'delete_event'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exit_window</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-22" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-22" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-22"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-23" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-23" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-23"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-24" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-24" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-24"></a>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-25" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-25" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-25"></a>    <span class="k">def</span> <span class="nf">exit_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-26" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-26" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-26"></a>        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-27" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-27" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-27"></a>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-28" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-28" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-28"></a>    <span class="k">def</span> <span class="nf">right_click_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status_icon</span><span class="p">,</span> <span class="n">button</span><span class="p">,</span> <span class="n">activate_time</span><span class="p">):</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-29" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-29" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-29"></a>        <span class="n">menu</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Menu</span><span class="p">()</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-30" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-30" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-30"></a>        <span class="n">about</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="s1">'About'</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-31" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-31" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-31"></a>        <span class="n">quit</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="s1">'Quit'</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-32" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-32" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-32"></a>        <span class="n">about</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'activate'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">show_about_dialog</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-33" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-33" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-33"></a>        <span class="n">quit</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'activate'</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-34" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-34" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-34"></a>        <span class="n">menu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">about</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-35" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-35" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-35"></a>        <span class="n">menu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quit</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-36" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-36" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-36"></a>        <span class="n">menu</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-37" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-37" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-37"></a>        <span class="n">menu</span><span class="o">.</span><span class="n">popup</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">status_icon_position_menu</span><span class="p">,</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-38" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-38" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-38"></a>                   <span class="n">button</span><span class="p">,</span> <span class="n">activate_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">statusicon</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-39" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-39" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-39"></a>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-40" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-40" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-40"></a>    <span class="k">def</span> <span class="nf">show_about_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-41" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-41" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-41"></a>                <span class="n">about_dialog</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">AboutDialog</span><span class="p">()</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-42" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-42" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-42"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">set_destroy_with_parent</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-43" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-43" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-43"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s1">'StatusIcon Example'</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-44" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-44" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-44"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">set_version</span><span class="p">(</span><span class="s1">'1.0'</span><span class="p">)</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-45" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-45" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-45"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">set_authors</span><span class="p">([</span><span class="s1">'Name Lastname'</span><span class="p">])</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-46" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-46" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-46"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-47" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-47" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-47"></a>                <span class="n">about_dialog</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-48" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-48" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-48"></a>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-49" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-49" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-49"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-50" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-50" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-50"></a>        <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-51" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-51" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-51"></a>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-52" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-52" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-52"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-53" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-53" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-53"></a>    <span class="n">tray_app</span> <span class="o">=</span> <span class="n">TrayApp</span><span class="p">()</span>
+<a id="rest_code_c21c32cae5f54c83b3526a9ee809281c-54" name="rest_code_c21c32cae5f54c83b3526a9ee809281c-54" href="#rest_code_c21c32cae5f54c83b3526a9ee809281c-54"></a>    <span class="n">tray_app</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 <p>Más info en <a class="reference external" href="http://www.learnpygtk.org/pygtktutorial/statusicon.html">http://www.learnpygtk.org/pygtktutorial/statusicon.html</a></p>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -163,6 +172,74 @@ class Tr">
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
+    var index = {};  // This will store the index data globally within this script block
+
+    // Fetch the generated JSON file
+    fetch('/search_index.json')
+    .then(response => response.json())
+    .then(data => {
+        index = data;  // Store the fetched data in the 'index' variable
+        for (var key in index) {
+            if (index.hasOwnProperty(key)) {
+                searchIndex.add(key, index[key].content);
+            }
+        }
+    });
+
+    var input = document.getElementById('search_input');
+    var button = document.getElementById('search_button');
+
+    // Function to perform search
+    function performSearch() {
+        var query = input.value;
+        var results = searchIndex.search(query);
+        var resultsContainer = document.getElementById('search_results');
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        var ul = document.createElement('ul'); // Create a UL element to hold the results
+
+        // Display results
+        results.forEach(function(result) {
+            var li = document.createElement('li'); // Create a LI element for each result
+            var link = document.createElement('a');
+            link.href = index[result].url;
+            link.textContent = index[result].title;
+            li.appendChild(link);
+            ul.appendChild(li); // Append the LI to the UL
+        });
+
+        resultsContainer.appendChild(ul); // Append the UL to the results container
+        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
+    }
+
+    // Event listener for search button click
+    button.addEventListener('click', performSearch);
+
+    // Event listener for pressing enter key in the search input
+    input.addEventListener('keypress', function(event) {
+        if (event.key === "Enter" || event.keyCode === 13) {
+            event.preventDefault();  // Prevent the form from being submitted
+            performSearch();
+        }
+    });
+});
+
+// Function to close the search overlay
+function closeSearch() {
+    document.getElementById('search_overlay').style.display = 'none';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        var searchOverlay = document.getElementById('search_overlay');
+        if (searchOverlay !== null) {
+            closeSearch();
+        }
+    }
+});
+</script>
 </body>
 </html>

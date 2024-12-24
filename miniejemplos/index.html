@@ -27,7 +27,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 Hola mundo
 El">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
+<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -62,14 +62,23 @@ El">
                     <a class="nav-link" href="http://www.python.org.ar/eventos/"><span class="eventos"></span>Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://planeta.python.org.ar/"><span class="pyar"></span>Planeta</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar/trabajo/"><span class="jobs"></span>Trabajos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://ac.python.org.ar/"><span class="quienes_somos"></span>Asoc. Civil</a>
+                </li>                
             </ul>
 </div>
-    </nav>
+
+    </nav><div id="search_bar">
+            <div id="search_overlay" style="display:none;">
+                <div id="search_content">
+                    <button onclick="closeSearch()">Cerrar</button>
+                    <div id="search_results"></div>
+                </div>
+            </div>
+            <input type="text" id="search_input"><button id="search_button">Buscar en la wiki</button>
+        </div>
 </div>
 
 <!-- Header and menu bar -->
@@ -80,7 +89,7 @@ El">
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages/miniejemplos.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages\miniejemplos.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Mini Ejemplos</h2>
     </div>
@@ -105,22 +114,22 @@ odnum aloH -->
 >>> [numero ** 3 for numero in range(1, 11)]
 [1, 8, 27, 64, 125, 216, 343, 512, 729, 1000] -->
 <p>Generar una lista de los cubos de los números <em>impares</em> entre 1 y 10</p>
-<div class="code"><pre class="code python"><a id="rest_code_a4798f7880e847fb80d82fba97d71d56-1" name="rest_code_a4798f7880e847fb80d82fba97d71d56-1" href="#rest_code_a4798f7880e847fb80d82fba97d71d56-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">numero</span> <span class="o">**</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="k">if</span> <span class="n">numero</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
-<a id="rest_code_a4798f7880e847fb80d82fba97d71d56-2" name="rest_code_a4798f7880e847fb80d82fba97d71d56-2" href="#rest_code_a4798f7880e847fb80d82fba97d71d56-2"></a><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">343</span><span class="p">,</span> <span class="mi">729</span><span class="p">]</span>
+<div class="code"><pre class="code python"><a id="rest_code_309dcb895fc64b5c856247c92e7ca479-1" name="rest_code_309dcb895fc64b5c856247c92e7ca479-1" href="#rest_code_309dcb895fc64b5c856247c92e7ca479-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">numero</span> <span class="o">**</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="k">if</span> <span class="n">numero</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<a id="rest_code_309dcb895fc64b5c856247c92e7ca479-2" name="rest_code_309dcb895fc64b5c856247c92e7ca479-2" href="#rest_code_309dcb895fc64b5c856247c92e7ca479-2"></a><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">343</span><span class="p">,</span> <span class="mi">729</span><span class="p">]</span>
 </pre></div>
 </section><section id="funciones"><h2>Funciones</h2>
-<div class="code"><pre class="code python"><a id="rest_code_1f781d65642a42b39c629d94b5dfce76-1" name="rest_code_1f781d65642a42b39c629d94b5dfce76-1" href="#rest_code_1f781d65642a42b39c629d94b5dfce76-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">hola</span><span class="p">(</span><span class="n">nombre</span><span class="p">):</span>
-<a id="rest_code_1f781d65642a42b39c629d94b5dfce76-2" name="rest_code_1f781d65642a42b39c629d94b5dfce76-2" href="#rest_code_1f781d65642a42b39c629d94b5dfce76-2"></a><span class="o">...</span>     <span class="nb">print</span> <span class="sa">u</span><span class="s2">"Hola, </span><span class="si">%s</span><span class="s2">, ¿cómo estás?"</span> <span class="o">%</span> <span class="n">nombre</span>
-<a id="rest_code_1f781d65642a42b39c629d94b5dfce76-3" name="rest_code_1f781d65642a42b39c629d94b5dfce76-3" href="#rest_code_1f781d65642a42b39c629d94b5dfce76-3"></a><span class="o">...</span>
-<a id="rest_code_1f781d65642a42b39c629d94b5dfce76-4" name="rest_code_1f781d65642a42b39c629d94b5dfce76-4" href="#rest_code_1f781d65642a42b39c629d94b5dfce76-4"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">hola</span><span class="p">(</span><span class="s1">'Mls'</span><span class="p">)</span>
-<a id="rest_code_1f781d65642a42b39c629d94b5dfce76-5" name="rest_code_1f781d65642a42b39c629d94b5dfce76-5" href="#rest_code_1f781d65642a42b39c629d94b5dfce76-5"></a><span class="n">Hola</span><span class="p">,</span> <span class="n">Matías</span><span class="p">,</span> <span class="err">¿</span><span class="n">cómo</span> <span class="n">estás</span><span class="err">?</span>
+<div class="code"><pre class="code python"><a id="rest_code_ce6902c63669442dace5a891798e4275-1" name="rest_code_ce6902c63669442dace5a891798e4275-1" href="#rest_code_ce6902c63669442dace5a891798e4275-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">hola</span><span class="p">(</span><span class="n">nombre</span><span class="p">):</span>
+<a id="rest_code_ce6902c63669442dace5a891798e4275-2" name="rest_code_ce6902c63669442dace5a891798e4275-2" href="#rest_code_ce6902c63669442dace5a891798e4275-2"></a><span class="o">...</span>     <span class="nb">print</span> <span class="sa">u</span><span class="s2">"Hola, </span><span class="si">%s</span><span class="s2">, ¿cómo estás?"</span> <span class="o">%</span> <span class="n">nombre</span>
+<a id="rest_code_ce6902c63669442dace5a891798e4275-3" name="rest_code_ce6902c63669442dace5a891798e4275-3" href="#rest_code_ce6902c63669442dace5a891798e4275-3"></a><span class="o">...</span>
+<a id="rest_code_ce6902c63669442dace5a891798e4275-4" name="rest_code_ce6902c63669442dace5a891798e4275-4" href="#rest_code_ce6902c63669442dace5a891798e4275-4"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">hola</span><span class="p">(</span><span class="s1">'Mls'</span><span class="p">)</span>
+<a id="rest_code_ce6902c63669442dace5a891798e4275-5" name="rest_code_ce6902c63669442dace5a891798e4275-5" href="#rest_code_ce6902c63669442dace5a891798e4275-5"></a><span class="n">Hola</span><span class="p">,</span> <span class="n">Matías</span><span class="p">,</span> <span class="err">¿</span><span class="n">cómo</span> <span class="n">estás</span><span class="err">?</span>
 </pre></div>
 </section>
 </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -132,6 +141,74 @@ odnum aloH -->
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
+    var index = {};  // This will store the index data globally within this script block
+
+    // Fetch the generated JSON file
+    fetch('/search_index.json')
+    .then(response => response.json())
+    .then(data => {
+        index = data;  // Store the fetched data in the 'index' variable
+        for (var key in index) {
+            if (index.hasOwnProperty(key)) {
+                searchIndex.add(key, index[key].content);
+            }
+        }
+    });
+
+    var input = document.getElementById('search_input');
+    var button = document.getElementById('search_button');
+
+    // Function to perform search
+    function performSearch() {
+        var query = input.value;
+        var results = searchIndex.search(query);
+        var resultsContainer = document.getElementById('search_results');
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        var ul = document.createElement('ul'); // Create a UL element to hold the results
+
+        // Display results
+        results.forEach(function(result) {
+            var li = document.createElement('li'); // Create a LI element for each result
+            var link = document.createElement('a');
+            link.href = index[result].url;
+            link.textContent = index[result].title;
+            li.appendChild(link);
+            ul.appendChild(li); // Append the LI to the UL
+        });
+
+        resultsContainer.appendChild(ul); // Append the UL to the results container
+        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
+    }
+
+    // Event listener for search button click
+    button.addEventListener('click', performSearch);
+
+    // Event listener for pressing enter key in the search input
+    input.addEventListener('keypress', function(event) {
+        if (event.key === "Enter" || event.keyCode === 13) {
+            event.preventDefault();  // Prevent the form from being submitted
+            performSearch();
+        }
+    });
+});
+
+// Function to close the search overlay
+function closeSearch() {
+    document.getElementById('search_overlay').style.display = 'none';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        var searchOverlay = document.getElementById('search_overlay');
+        if (searchOverlay !== null) {
+            closeSearch();
+        }
+    }
+});
+</script>
 </body>
 </html>

@@ -31,7 +31,7 @@ import gtk
 def run():
     '''muestra una ventana ">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
+<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -66,14 +66,23 @@ def run():
                     <a class="nav-link" href="http://www.python.org.ar/eventos/"><span class="eventos"></span>Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://planeta.python.org.ar/"><span class="pyar"></span>Planeta</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar/trabajo/"><span class="jobs"></span>Trabajos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://ac.python.org.ar/"><span class="quienes_somos"></span>Asoc. Civil</a>
+                </li>                
             </ul>
 </div>
-    </nav>
+
+    </nav><div id="search_bar">
+            <div id="search_overlay" style="display:none;">
+                <div id="search_content">
+                    <button onclick="closeSearch()">Cerrar</button>
+                    <div id="search_results"></div>
+                </div>
+            </div>
+            <input type="text" id="search_input"><button id="search_button">Buscar en la wiki</button>
+        </div>
 </div>
 
 <!-- Header and menu bar -->
@@ -84,56 +93,56 @@ def run():
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/gui/gtk/stockitems.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages\recetario\gui\gtk\stockitems.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Gtk Stock Items</h2>
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Ejemplo que muestra todos los íconos stock de gtk con su respectivo nombre.</p>
 <p>Un screenshot:</p>
-<img alt="/images/Recetario/Gui/Gtk/StockItems/stock-gtk.png" src="../../../../images/Recetario/Gui/Gtk/StockItems/stock-gtk.png"><div class="code"><pre class="code python"><a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-1" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-1" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-1"></a><span class="sd">'''modulo que muestra el uso de los stock icons en gtk'''</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-2" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-2" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-2"></a><span class="kn">import</span> <span class="nn">gtk</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-3" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-3" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-3"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-4" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-4" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-4"></a><span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-5" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-5" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-5"></a><span class="w">    </span><span class="sd">'''muestra una ventana con algunos elementos con stock icons'''</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-6" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-6" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-6"></a>    <span class="n">ventana</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="p">()</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-7" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-7" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-7"></a>    <span class="n">ventana</span><span class="o">.</span><span class="n">set_default_size</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-8" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-8" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-8"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-9" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-9" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-9"></a>    <span class="n">box</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-10" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-10" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-10"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-11" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-11" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-11"></a>    <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">gtk</span><span class="o">.</span><span class="n">stock_list_ids</span><span class="p">():</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-12" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-12" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-12"></a>        <span class="n">imagen</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Image</span><span class="p">()</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-13" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-13" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-13"></a>        <span class="n">imagen</span><span class="o">.</span><span class="n">set_from_stock</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">ICON_SIZE_BUTTON</span><span class="p">)</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-14" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-14" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-14"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-15" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-15" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-15"></a>        <span class="n">etiqueta</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">"gtk.STOCK"</span> <span class="o">+</span> <span class="nb">id</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"-"</span><span class="p">,</span> <span class="s2">"_"</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-16" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-16" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-16"></a>        <span class="n">etiqueta</span><span class="o">.</span><span class="n">set_alignment</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-17" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-17" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-17"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-18" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-18" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-18"></a>        <span class="n">caja</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">HBox</span><span class="p">()</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-19" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-19" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-19"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-20" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-20" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-20"></a>        <span class="n">caja</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">imagen</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-21" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-21" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-21"></a>        <span class="n">caja</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">etiqueta</span><span class="p">)</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-22" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-22" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-22"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-23" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-23" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-23"></a>        <span class="n">box</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">caja</span><span class="p">)</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-24" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-24" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-24"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-25" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-25" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-25"></a>    <span class="n">scroll</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">ScrolledWindow</span><span class="p">()</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-26" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-26" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-26"></a>    <span class="n">scroll</span><span class="o">.</span><span class="n">add_with_viewport</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-27" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-27" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-27"></a>    <span class="n">scroll</span><span class="o">.</span><span class="n">set_policy</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">POLICY_AUTOMATIC</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">POLICY_AUTOMATIC</span><span class="p">)</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-28" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-28" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-28"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-29" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-29" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-29"></a>    <span class="n">ventana</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">scroll</span><span class="p">)</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-30" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-30" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-30"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-31" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-31" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-31"></a>    <span class="n">ventana</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'delete-event'</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">)</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-32" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-32" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-32"></a>    <span class="n">ventana</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-33" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-33" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-33"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-34" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-34" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-34"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-35" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-35" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-35"></a>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-36" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-36" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-36"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-<a id="rest_code_9b886c8a9a1b467f83b08a44ba41d577-37" name="rest_code_9b886c8a9a1b467f83b08a44ba41d577-37" href="#rest_code_9b886c8a9a1b467f83b08a44ba41d577-37"></a>    <span class="n">run</span><span class="p">()</span>
+<img alt="/images/Recetario/Gui/Gtk/StockItems/stock-gtk.png" src="../../../../images/Recetario/Gui/Gtk/StockItems/stock-gtk.png"><div class="code"><pre class="code python"><a id="rest_code_9d01f4da4bb44723a916637bd4586d27-1" name="rest_code_9d01f4da4bb44723a916637bd4586d27-1" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-1"></a><span class="sd">'''modulo que muestra el uso de los stock icons en gtk'''</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-2" name="rest_code_9d01f4da4bb44723a916637bd4586d27-2" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-2"></a><span class="kn">import</span> <span class="nn">gtk</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-3" name="rest_code_9d01f4da4bb44723a916637bd4586d27-3" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-3"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-4" name="rest_code_9d01f4da4bb44723a916637bd4586d27-4" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-4"></a><span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-5" name="rest_code_9d01f4da4bb44723a916637bd4586d27-5" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-5"></a><span class="w">    </span><span class="sd">'''muestra una ventana con algunos elementos con stock icons'''</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-6" name="rest_code_9d01f4da4bb44723a916637bd4586d27-6" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-6"></a>    <span class="n">ventana</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="p">()</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-7" name="rest_code_9d01f4da4bb44723a916637bd4586d27-7" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-7"></a>    <span class="n">ventana</span><span class="o">.</span><span class="n">set_default_size</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-8" name="rest_code_9d01f4da4bb44723a916637bd4586d27-8" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-8"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-9" name="rest_code_9d01f4da4bb44723a916637bd4586d27-9" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-9"></a>    <span class="n">box</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-10" name="rest_code_9d01f4da4bb44723a916637bd4586d27-10" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-10"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-11" name="rest_code_9d01f4da4bb44723a916637bd4586d27-11" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-11"></a>    <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">gtk</span><span class="o">.</span><span class="n">stock_list_ids</span><span class="p">():</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-12" name="rest_code_9d01f4da4bb44723a916637bd4586d27-12" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-12"></a>        <span class="n">imagen</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Image</span><span class="p">()</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-13" name="rest_code_9d01f4da4bb44723a916637bd4586d27-13" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-13"></a>        <span class="n">imagen</span><span class="o">.</span><span class="n">set_from_stock</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">ICON_SIZE_BUTTON</span><span class="p">)</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-14" name="rest_code_9d01f4da4bb44723a916637bd4586d27-14" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-14"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-15" name="rest_code_9d01f4da4bb44723a916637bd4586d27-15" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-15"></a>        <span class="n">etiqueta</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">"gtk.STOCK"</span> <span class="o">+</span> <span class="nb">id</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"-"</span><span class="p">,</span> <span class="s2">"_"</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-16" name="rest_code_9d01f4da4bb44723a916637bd4586d27-16" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-16"></a>        <span class="n">etiqueta</span><span class="o">.</span><span class="n">set_alignment</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-17" name="rest_code_9d01f4da4bb44723a916637bd4586d27-17" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-17"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-18" name="rest_code_9d01f4da4bb44723a916637bd4586d27-18" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-18"></a>        <span class="n">caja</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">HBox</span><span class="p">()</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-19" name="rest_code_9d01f4da4bb44723a916637bd4586d27-19" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-19"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-20" name="rest_code_9d01f4da4bb44723a916637bd4586d27-20" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-20"></a>        <span class="n">caja</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">imagen</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-21" name="rest_code_9d01f4da4bb44723a916637bd4586d27-21" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-21"></a>        <span class="n">caja</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">etiqueta</span><span class="p">)</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-22" name="rest_code_9d01f4da4bb44723a916637bd4586d27-22" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-22"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-23" name="rest_code_9d01f4da4bb44723a916637bd4586d27-23" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-23"></a>        <span class="n">box</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">caja</span><span class="p">)</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-24" name="rest_code_9d01f4da4bb44723a916637bd4586d27-24" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-24"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-25" name="rest_code_9d01f4da4bb44723a916637bd4586d27-25" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-25"></a>    <span class="n">scroll</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">ScrolledWindow</span><span class="p">()</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-26" name="rest_code_9d01f4da4bb44723a916637bd4586d27-26" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-26"></a>    <span class="n">scroll</span><span class="o">.</span><span class="n">add_with_viewport</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-27" name="rest_code_9d01f4da4bb44723a916637bd4586d27-27" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-27"></a>    <span class="n">scroll</span><span class="o">.</span><span class="n">set_policy</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">POLICY_AUTOMATIC</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">POLICY_AUTOMATIC</span><span class="p">)</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-28" name="rest_code_9d01f4da4bb44723a916637bd4586d27-28" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-28"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-29" name="rest_code_9d01f4da4bb44723a916637bd4586d27-29" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-29"></a>    <span class="n">ventana</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">scroll</span><span class="p">)</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-30" name="rest_code_9d01f4da4bb44723a916637bd4586d27-30" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-30"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-31" name="rest_code_9d01f4da4bb44723a916637bd4586d27-31" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-31"></a>    <span class="n">ventana</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'delete-event'</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">main_quit</span><span class="p">)</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-32" name="rest_code_9d01f4da4bb44723a916637bd4586d27-32" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-32"></a>    <span class="n">ventana</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-33" name="rest_code_9d01f4da4bb44723a916637bd4586d27-33" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-33"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-34" name="rest_code_9d01f4da4bb44723a916637bd4586d27-34" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-34"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-35" name="rest_code_9d01f4da4bb44723a916637bd4586d27-35" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-35"></a>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-36" name="rest_code_9d01f4da4bb44723a916637bd4586d27-36" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-36"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<a id="rest_code_9d01f4da4bb44723a916637bd4586d27-37" name="rest_code_9d01f4da4bb44723a916637bd4586d27-37" href="#rest_code_9d01f4da4bb44723a916637bd4586d27-37"></a>    <span class="n">run</span><span class="p">()</span>
 </pre></div>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -145,6 +154,74 @@ def run():
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
+    var index = {};  // This will store the index data globally within this script block
+
+    // Fetch the generated JSON file
+    fetch('/search_index.json')
+    .then(response => response.json())
+    .then(data => {
+        index = data;  // Store the fetched data in the 'index' variable
+        for (var key in index) {
+            if (index.hasOwnProperty(key)) {
+                searchIndex.add(key, index[key].content);
+            }
+        }
+    });
+
+    var input = document.getElementById('search_input');
+    var button = document.getElementById('search_button');
+
+    // Function to perform search
+    function performSearch() {
+        var query = input.value;
+        var results = searchIndex.search(query);
+        var resultsContainer = document.getElementById('search_results');
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        var ul = document.createElement('ul'); // Create a UL element to hold the results
+
+        // Display results
+        results.forEach(function(result) {
+            var li = document.createElement('li'); // Create a LI element for each result
+            var link = document.createElement('a');
+            link.href = index[result].url;
+            link.textContent = index[result].title;
+            li.appendChild(link);
+            ul.appendChild(li); // Append the LI to the UL
+        });
+
+        resultsContainer.appendChild(ul); // Append the UL to the results container
+        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
+    }
+
+    // Event listener for search button click
+    button.addEventListener('click', performSearch);
+
+    // Event listener for pressing enter key in the search input
+    input.addEventListener('keypress', function(event) {
+        if (event.key === "Enter" || event.keyCode === 13) {
+            event.preventDefault();  // Prevent the form from being submitted
+            performSearch();
+        }
+    });
+});
+
+// Function to close the search overlay
+function closeSearch() {
+    document.getElementById('search_overlay').style.display = 'none';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        var searchOverlay = document.getElementById('search_overlay');
+        if (searchOverlay !== null) {
+            closeSearch();
+        }
+    }
+});
+</script>
 </body>
 </html>

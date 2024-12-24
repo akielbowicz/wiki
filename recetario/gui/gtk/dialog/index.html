@@ -29,7 +29,7 @@ import sys
 # por defecto crea un mensaje de informacion sin botones
 info = gtk.MessageDialog(message_format="i'>
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
+<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -64,14 +64,23 @@ info = gtk.MessageDialog(message_format="i'>
                     <a class="nav-link" href="http://www.python.org.ar/eventos/"><span class="eventos"></span>Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://planeta.python.org.ar/"><span class="pyar"></span>Planeta</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar/trabajo/"><span class="jobs"></span>Trabajos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://ac.python.org.ar/"><span class="quienes_somos"></span>Asoc. Civil</a>
+                </li>                
             </ul>
 </div>
-    </nav>
+
+    </nav><div id="search_bar">
+            <div id="search_overlay" style="display:none;">
+                <div id="search_content">
+                    <button onclick="closeSearch()">Cerrar</button>
+                    <div id="search_results"></div>
+                </div>
+            </div>
+            <input type="text" id="search_input"><button id="search_button">Buscar en la wiki</button>
+        </div>
 </div>
 
 <!-- Header and menu bar -->
@@ -82,64 +91,64 @@ info = gtk.MessageDialog(message_format="i'>
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/gui/gtk/dialog.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages\recetario\gui\gtk\dialog.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Gtkdialog</h2>
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Ejemplo para crear diálogos modales de distintos tipos con distintos botones.</p>
-<div class="code"><pre class="code python"><a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-1" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-1" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-1"></a><span class="kn">import</span> <span class="nn">gtk</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-2" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-2" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-2"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-3" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-3" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-3"></a>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-4" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-4" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-4"></a><span class="c1"># por defecto crea un mensaje de informacion sin botones</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-5" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-5" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-5"></a><span class="n">info</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="n">message_format</span><span class="o">=</span><span class="s2">"informacion!"</span><span class="p">)</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-6" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-6" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-6"></a><span class="c1"># tipo advertencia con un boton de ok</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-7" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-7" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-7"></a><span class="n">warning</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">MESSAGE_WARNING</span><span class="p">,</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-8" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-8" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-8"></a>    <span class="n">buttons</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">BUTTONS_OK_CANCEL</span><span class="p">,</span> <span class="n">message_format</span><span class="o">=</span><span class="s2">"advertencia.."</span><span class="p">)</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-9" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-9" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-9"></a><span class="c1"># pregunta con botones si no</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-10" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-10" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-10"></a><span class="n">question</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">MESSAGE_QUESTION</span><span class="p">,</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-11" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-11" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-11"></a>    <span class="n">buttons</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">BUTTONS_YES_NO</span><span class="p">,</span> <span class="n">message_format</span><span class="o">=</span><span class="s2">"pregunta?"</span><span class="p">)</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-12" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-12" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-12"></a><span class="c1"># error con boton ok</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-13" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-13" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-13"></a><span class="n">error</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">MESSAGE_ERROR</span><span class="p">,</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-14" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-14" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-14"></a>    <span class="n">buttons</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">BUTTONS_OK</span><span class="p">,</span> <span class="n">message_format</span><span class="o">=</span><span class="s2">"error!?!"</span><span class="p">)</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-15" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-15" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-15"></a>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-16" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-16" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-16"></a><span class="c1"># run bloquea hasta que se produzca un evento y devuelve el valor del evento</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-17" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-17" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-17"></a><span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">run</span><span class="p">()</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_DELETE_EVENT</span><span class="p">:</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-18" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-18" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-18"></a>    <span class="nb">print</span> <span class="s2">"si, es la unica senial que puede emitir, ya que no tiene botones"</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-19" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-19" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-19"></a><span class="c1"># hay que esconder el dialogo</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-20" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-20" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-20"></a><span class="n">info</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-21" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-21" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-21"></a>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-22" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-22" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-22"></a><span class="c1"># almacenamos el valor de retorno en una variable para controlar varios valores</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-23" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-23" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-23"></a><span class="n">response</span> <span class="o">=</span> <span class="n">warning</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-24" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-24" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-24"></a><span class="n">warning</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-25" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-25" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-25"></a>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-26" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-26" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-26"></a><span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_OK</span><span class="p">:</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-27" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-27" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-27"></a>    <span class="nb">print</span> <span class="s2">"advertencia respondio aceptar"</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-28" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-28" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-28"></a><span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_CANCEL</span><span class="p">:</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-29" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-29" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-29"></a>    <span class="nb">print</span> <span class="s2">"advertencia respondio cancel"</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-30" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-30" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-30"></a>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-31" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-31" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-31"></a><span class="n">response</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-32" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-32" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-32"></a>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-33" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-33" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-33"></a><span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_YES</span><span class="p">:</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-34" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-34" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-34"></a>    <span class="nb">print</span> <span class="s2">"respondio si!"</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-35" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-35" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-35"></a><span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_NO</span><span class="p">:</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-36" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-36" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-36"></a>    <span class="nb">print</span> <span class="s2">"respondio no :("</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-37" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-37" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-37"></a>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-38" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-38" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-38"></a><span class="n">question</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-39" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-39" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-39"></a>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-40" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-40" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-40"></a><span class="k">if</span> <span class="n">error</span><span class="o">.</span><span class="n">run</span><span class="p">()</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_OK</span><span class="p">:</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-41" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-41" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-41"></a>    <span class="nb">print</span> <span class="s2">"error OK"</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-42" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-42" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-42"></a>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-43" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-43" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-43"></a><span class="n">error</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-44" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-44" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-44"></a><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-45" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-45" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-45"></a>
-<a id="rest_code_8a732f74d8724a0bb0b5893ee4b84400-46" name="rest_code_8a732f74d8724a0bb0b5893ee4b84400-46" href="#rest_code_8a732f74d8724a0bb0b5893ee4b84400-46"></a><span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<div class="code"><pre class="code python"><a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-1" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-1" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-1"></a><span class="kn">import</span> <span class="nn">gtk</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-2" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-2" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-2"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-3" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-3" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-3"></a>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-4" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-4" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-4"></a><span class="c1"># por defecto crea un mensaje de informacion sin botones</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-5" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-5" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-5"></a><span class="n">info</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="n">message_format</span><span class="o">=</span><span class="s2">"informacion!"</span><span class="p">)</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-6" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-6" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-6"></a><span class="c1"># tipo advertencia con un boton de ok</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-7" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-7" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-7"></a><span class="n">warning</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">MESSAGE_WARNING</span><span class="p">,</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-8" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-8" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-8"></a>    <span class="n">buttons</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">BUTTONS_OK_CANCEL</span><span class="p">,</span> <span class="n">message_format</span><span class="o">=</span><span class="s2">"advertencia.."</span><span class="p">)</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-9" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-9" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-9"></a><span class="c1"># pregunta con botones si no</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-10" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-10" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-10"></a><span class="n">question</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">MESSAGE_QUESTION</span><span class="p">,</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-11" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-11" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-11"></a>    <span class="n">buttons</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">BUTTONS_YES_NO</span><span class="p">,</span> <span class="n">message_format</span><span class="o">=</span><span class="s2">"pregunta?"</span><span class="p">)</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-12" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-12" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-12"></a><span class="c1"># error con boton ok</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-13" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-13" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-13"></a><span class="n">error</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">MESSAGE_ERROR</span><span class="p">,</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-14" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-14" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-14"></a>    <span class="n">buttons</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">BUTTONS_OK</span><span class="p">,</span> <span class="n">message_format</span><span class="o">=</span><span class="s2">"error!?!"</span><span class="p">)</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-15" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-15" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-15"></a>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-16" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-16" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-16"></a><span class="c1"># run bloquea hasta que se produzca un evento y devuelve el valor del evento</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-17" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-17" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-17"></a><span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">run</span><span class="p">()</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_DELETE_EVENT</span><span class="p">:</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-18" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-18" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-18"></a>    <span class="nb">print</span> <span class="s2">"si, es la unica senial que puede emitir, ya que no tiene botones"</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-19" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-19" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-19"></a><span class="c1"># hay que esconder el dialogo</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-20" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-20" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-20"></a><span class="n">info</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-21" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-21" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-21"></a>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-22" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-22" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-22"></a><span class="c1"># almacenamos el valor de retorno en una variable para controlar varios valores</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-23" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-23" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-23"></a><span class="n">response</span> <span class="o">=</span> <span class="n">warning</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-24" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-24" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-24"></a><span class="n">warning</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-25" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-25" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-25"></a>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-26" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-26" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-26"></a><span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_OK</span><span class="p">:</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-27" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-27" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-27"></a>    <span class="nb">print</span> <span class="s2">"advertencia respondio aceptar"</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-28" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-28" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-28"></a><span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_CANCEL</span><span class="p">:</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-29" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-29" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-29"></a>    <span class="nb">print</span> <span class="s2">"advertencia respondio cancel"</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-30" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-30" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-30"></a>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-31" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-31" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-31"></a><span class="n">response</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-32" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-32" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-32"></a>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-33" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-33" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-33"></a><span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_YES</span><span class="p">:</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-34" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-34" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-34"></a>    <span class="nb">print</span> <span class="s2">"respondio si!"</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-35" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-35" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-35"></a><span class="k">elif</span> <span class="n">response</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_NO</span><span class="p">:</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-36" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-36" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-36"></a>    <span class="nb">print</span> <span class="s2">"respondio no :("</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-37" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-37" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-37"></a>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-38" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-38" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-38"></a><span class="n">question</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-39" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-39" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-39"></a>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-40" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-40" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-40"></a><span class="k">if</span> <span class="n">error</span><span class="o">.</span><span class="n">run</span><span class="p">()</span> <span class="o">==</span> <span class="n">gtk</span><span class="o">.</span><span class="n">RESPONSE_OK</span><span class="p">:</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-41" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-41" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-41"></a>    <span class="nb">print</span> <span class="s2">"error OK"</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-42" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-42" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-42"></a>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-43" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-43" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-43"></a><span class="n">error</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-44" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-44" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-44"></a><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-45" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-45" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-45"></a>
+<a id="rest_code_28d8bfe15c5d45e7ae93c15173918c92-46" name="rest_code_28d8bfe15c5d45e7ae93c15173918c92-46" href="#rest_code_28d8bfe15c5d45e7ae93c15173918c92-46"></a><span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -151,6 +160,74 @@ info = gtk.MessageDialog(message_format="i'>
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
+    var index = {};  // This will store the index data globally within this script block
+
+    // Fetch the generated JSON file
+    fetch('/search_index.json')
+    .then(response => response.json())
+    .then(data => {
+        index = data;  // Store the fetched data in the 'index' variable
+        for (var key in index) {
+            if (index.hasOwnProperty(key)) {
+                searchIndex.add(key, index[key].content);
+            }
+        }
+    });
+
+    var input = document.getElementById('search_input');
+    var button = document.getElementById('search_button');
+
+    // Function to perform search
+    function performSearch() {
+        var query = input.value;
+        var results = searchIndex.search(query);
+        var resultsContainer = document.getElementById('search_results');
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        var ul = document.createElement('ul'); // Create a UL element to hold the results
+
+        // Display results
+        results.forEach(function(result) {
+            var li = document.createElement('li'); // Create a LI element for each result
+            var link = document.createElement('a');
+            link.href = index[result].url;
+            link.textContent = index[result].title;
+            li.appendChild(link);
+            ul.appendChild(li); // Append the LI to the UL
+        });
+
+        resultsContainer.appendChild(ul); // Append the UL to the results container
+        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
+    }
+
+    // Event listener for search button click
+    button.addEventListener('click', performSearch);
+
+    // Event listener for pressing enter key in the search input
+    input.addEventListener('keypress', function(event) {
+        if (event.key === "Enter" || event.keyCode === 13) {
+            event.preventDefault();  // Prevent the form from being submitted
+            performSearch();
+        }
+    });
+});
+
+// Function to close the search overlay
+function closeSearch() {
+    document.getElementById('search_overlay').style.display = 'none';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        var searchOverlay = document.getElementById('search_overlay');
+        if (searchOverlay !== null) {
+            closeSearch();
+        }
+    }
+});
+</script>
 </body>
 </html>

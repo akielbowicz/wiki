@@ -26,7 +26,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 if sys.hexversion &gt; 0x02060000: # Python version check
     print "\n Python version &gt; 2.6.0\n" # Aca va que hacer si es mayor'>
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
+<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -61,14 +61,23 @@ if sys.hexversion &gt; 0x02060000: # Python version check
                     <a class="nav-link" href="http://www.python.org.ar/eventos/"><span class="eventos"></span>Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://planeta.python.org.ar/"><span class="pyar"></span>Planeta</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar/trabajo/"><span class="jobs"></span>Trabajos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://ac.python.org.ar/"><span class="quienes_somos"></span>Asoc. Civil</a>
+                </li>                
             </ul>
 </div>
-    </nav>
+
+    </nav><div id="search_bar">
+            <div id="search_overlay" style="display:none;">
+                <div id="search_content">
+                    <button onclick="closeSearch()">Cerrar</button>
+                    <div id="search_results"></div>
+                </div>
+            </div>
+            <input type="text" id="search_input"><button id="search_button">Buscar en la wiki</button>
+        </div>
 </div>
 
 <!-- Header and menu bar -->
@@ -79,27 +88,27 @@ if sys.hexversion &gt; 0x02060000: # Python version check
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/pythonversioncheck.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages\recetario\pythonversioncheck.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Python Version Check</h2>
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Chequear la versión de Python, y salir o imprimir error en funcion de eso.</p>
-<div class="code"><pre class="code python"><a id="rest_code_e7c90589a2be43afbb534c76e3b7bc55-1" name="rest_code_e7c90589a2be43afbb534c76e3b7bc55-1" href="#rest_code_e7c90589a2be43afbb534c76e3b7bc55-1"></a><span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">hexversion</span> <span class="o">&gt;</span> <span class="mh">0x02060000</span><span class="p">:</span> <span class="c1"># Python version check</span>
-<a id="rest_code_e7c90589a2be43afbb534c76e3b7bc55-2" name="rest_code_e7c90589a2be43afbb534c76e3b7bc55-2" href="#rest_code_e7c90589a2be43afbb534c76e3b7bc55-2"></a>    <span class="nb">print</span> <span class="s2">"</span><span class="se">\n</span><span class="s2"> Python version &gt; 2.6.0</span><span class="se">\n</span><span class="s2">"</span> <span class="c1"># Aca va que hacer si es mayor, continua</span>
-<a id="rest_code_e7c90589a2be43afbb534c76e3b7bc55-3" name="rest_code_e7c90589a2be43afbb534c76e3b7bc55-3" href="#rest_code_e7c90589a2be43afbb534c76e3b7bc55-3"></a><span class="k">else</span><span class="p">:</span>
-<a id="rest_code_e7c90589a2be43afbb534c76e3b7bc55-4" name="rest_code_e7c90589a2be43afbb534c76e3b7bc55-4" href="#rest_code_e7c90589a2be43afbb534c76e3b7bc55-4"></a>    <span class="nb">print</span> <span class="s2">"</span><span class="se">\n</span><span class="s2"> ERROR: Python version &lt; 2.6.0</span><span class="se">\n</span><span class="s2">"</span> <span class="c1"># Aca va que hacer si es menor, error</span>
+<div class="code"><pre class="code python"><a id="rest_code_2f1872ca45074f729f610f3b5e0920ad-1" name="rest_code_2f1872ca45074f729f610f3b5e0920ad-1" href="#rest_code_2f1872ca45074f729f610f3b5e0920ad-1"></a><span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">hexversion</span> <span class="o">&gt;</span> <span class="mh">0x02060000</span><span class="p">:</span> <span class="c1"># Python version check</span>
+<a id="rest_code_2f1872ca45074f729f610f3b5e0920ad-2" name="rest_code_2f1872ca45074f729f610f3b5e0920ad-2" href="#rest_code_2f1872ca45074f729f610f3b5e0920ad-2"></a>    <span class="nb">print</span> <span class="s2">"</span><span class="se">\n</span><span class="s2"> Python version &gt; 2.6.0</span><span class="se">\n</span><span class="s2">"</span> <span class="c1"># Aca va que hacer si es mayor, continua</span>
+<a id="rest_code_2f1872ca45074f729f610f3b5e0920ad-3" name="rest_code_2f1872ca45074f729f610f3b5e0920ad-3" href="#rest_code_2f1872ca45074f729f610f3b5e0920ad-3"></a><span class="k">else</span><span class="p">:</span>
+<a id="rest_code_2f1872ca45074f729f610f3b5e0920ad-4" name="rest_code_2f1872ca45074f729f610f3b5e0920ad-4" href="#rest_code_2f1872ca45074f729f610f3b5e0920ad-4"></a>    <span class="nb">print</span> <span class="s2">"</span><span class="se">\n</span><span class="s2"> ERROR: Python version &lt; 2.6.0</span><span class="se">\n</span><span class="s2">"</span> <span class="c1"># Aca va que hacer si es menor, error</span>
 </pre></div>
 <p>Ejemplo:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_9b686fc245d24244bda245766ae0c9ad-1" name="rest_code_9b686fc245d24244bda245766ae0c9ad-1" href="#rest_code_9b686fc245d24244bda245766ae0c9ad-1"></a>juan@maverick:~$<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>test.py
-<a id="rest_code_9b686fc245d24244bda245766ae0c9ad-2" name="rest_code_9b686fc245d24244bda245766ae0c9ad-2" href="#rest_code_9b686fc245d24244bda245766ae0c9ad-2"></a>
-<a id="rest_code_9b686fc245d24244bda245766ae0c9ad-3" name="rest_code_9b686fc245d24244bda245766ae0c9ad-3" href="#rest_code_9b686fc245d24244bda245766ae0c9ad-3"></a><span class="w"> </span>Python<span class="w"> </span>version<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.6.0
+<div class="code"><pre class="code bash"><a id="rest_code_e973e2efa81e42ee83ba3048ad9fad92-1" name="rest_code_e973e2efa81e42ee83ba3048ad9fad92-1" href="#rest_code_e973e2efa81e42ee83ba3048ad9fad92-1"></a>juan@maverick:~$<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>test.py
+<a id="rest_code_e973e2efa81e42ee83ba3048ad9fad92-2" name="rest_code_e973e2efa81e42ee83ba3048ad9fad92-2" href="#rest_code_e973e2efa81e42ee83ba3048ad9fad92-2"></a>
+<a id="rest_code_e973e2efa81e42ee83ba3048ad9fad92-3" name="rest_code_e973e2efa81e42ee83ba3048ad9fad92-3" href="#rest_code_e973e2efa81e42ee83ba3048ad9fad92-3"></a><span class="w"> </span>Python<span class="w"> </span>version<span class="w"> </span>&gt;<span class="w"> </span><span class="m">2</span>.6.0
 </pre></div>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -111,6 +120,74 @@ if sys.hexversion &gt; 0x02060000: # Python version check
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
+    var index = {};  // This will store the index data globally within this script block
+
+    // Fetch the generated JSON file
+    fetch('/search_index.json')
+    .then(response => response.json())
+    .then(data => {
+        index = data;  // Store the fetched data in the 'index' variable
+        for (var key in index) {
+            if (index.hasOwnProperty(key)) {
+                searchIndex.add(key, index[key].content);
+            }
+        }
+    });
+
+    var input = document.getElementById('search_input');
+    var button = document.getElementById('search_button');
+
+    // Function to perform search
+    function performSearch() {
+        var query = input.value;
+        var results = searchIndex.search(query);
+        var resultsContainer = document.getElementById('search_results');
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        var ul = document.createElement('ul'); // Create a UL element to hold the results
+
+        // Display results
+        results.forEach(function(result) {
+            var li = document.createElement('li'); // Create a LI element for each result
+            var link = document.createElement('a');
+            link.href = index[result].url;
+            link.textContent = index[result].title;
+            li.appendChild(link);
+            ul.appendChild(li); // Append the LI to the UL
+        });
+
+        resultsContainer.appendChild(ul); // Append the UL to the results container
+        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
+    }
+
+    // Event listener for search button click
+    button.addEventListener('click', performSearch);
+
+    // Event listener for pressing enter key in the search input
+    input.addEventListener('keypress', function(event) {
+        if (event.key === "Enter" || event.keyCode === 13) {
+            event.preventDefault();  // Prevent the form from being submitted
+            performSearch();
+        }
+    });
+});
+
+// Function to close the search overlay
+function closeSearch() {
+    document.getElementById('search_overlay').style.display = 'none';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        var searchOverlay = document.getElementById('search_overlay');
+        if (searchOverlay !== null) {
+            closeSearch();
+        }
+    }
+});
+</script>
 </body>
 </html>

@@ -28,7 +28,7 @@ python -c 'import libreria'&amp;&amp;echo OK
 Ejemplo:
 juan@maverick:~$ python -c 'import gtk'&amp;&amp;echo">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
+<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -63,14 +63,23 @@ juan@maverick:~$ python -c 'import gtk'&amp;&amp;echo">
                     <a class="nav-link" href="http://www.python.org.ar/eventos/"><span class="eventos"></span>Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://planeta.python.org.ar/"><span class="pyar"></span>Planeta</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar/trabajo/"><span class="jobs"></span>Trabajos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://ac.python.org.ar/"><span class="quienes_somos"></span>Asoc. Civil</a>
+                </li>                
             </ul>
 </div>
-    </nav>
+
+    </nav><div id="search_bar">
+            <div id="search_overlay" style="display:none;">
+                <div id="search_content">
+                    <button onclick="closeSearch()">Cerrar</button>
+                    <div id="search_results"></div>
+                </div>
+            </div>
+            <input type="text" id="search_input"><button id="search_button">Buscar en la wiki</button>
+        </div>
 </div>
 
 <!-- Header and menu bar -->
@@ -81,28 +90,28 @@ juan@maverick:~$ python -c 'import gtk'&amp;&amp;echo">
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/sabersinlibreriaestainstalada.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages\recetario\sabersinlibreriaestainstalada.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Saber Si N Libreria Esta Instalada</h2>
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Cómo saber si N librería está instalada SIN ingresar al intérprete de Python. Funciona en la Bash de Linux.</p>
-<div class="code"><pre class="code bash"><a id="rest_code_0f041ba384c64bb798e7fc6df9f22bc5-1" name="rest_code_0f041ba384c64bb798e7fc6df9f22bc5-1" href="#rest_code_0f041ba384c64bb798e7fc6df9f22bc5-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import libreria'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
+<div class="code"><pre class="code bash"><a id="rest_code_14e6da70261d4efeb88a74d7d95e32d2-1" name="rest_code_14e6da70261d4efeb88a74d7d95e32d2-1" href="#rest_code_14e6da70261d4efeb88a74d7d95e32d2-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import libreria'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
 </pre></div>
 <p>Ejemplo:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-1" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-1" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-1"></a>juan@maverick:~$<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import gtk'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
-<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-2" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-2" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-2"></a>OK
-<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-3" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-3" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-3"></a>juan@maverick:~$<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import libreriaquenoestainstalada'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
-<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-4" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-4" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-4"></a>Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
-<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-5" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-5" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-5"></a><span class="w">  </span>File<span class="w"> </span><span class="s2">"&lt;string&gt;"</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;module&gt;
-<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-6" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-6" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-6"></a>ImportError:<span class="w"> </span>No<span class="w"> </span>module<span class="w"> </span>named<span class="w"> </span>libreriaquenoestainstalada
-<a id="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-7" name="rest_code_ee5aa114b2224e7ca74d529fe3f681a7-7" href="#rest_code_ee5aa114b2224e7ca74d529fe3f681a7-7"></a>juan@maverick:~$
+<div class="code"><pre class="code bash"><a id="rest_code_0c6dbed233fa469f994624a971ae7b92-1" name="rest_code_0c6dbed233fa469f994624a971ae7b92-1" href="#rest_code_0c6dbed233fa469f994624a971ae7b92-1"></a>juan@maverick:~$<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import gtk'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
+<a id="rest_code_0c6dbed233fa469f994624a971ae7b92-2" name="rest_code_0c6dbed233fa469f994624a971ae7b92-2" href="#rest_code_0c6dbed233fa469f994624a971ae7b92-2"></a>OK
+<a id="rest_code_0c6dbed233fa469f994624a971ae7b92-3" name="rest_code_0c6dbed233fa469f994624a971ae7b92-3" href="#rest_code_0c6dbed233fa469f994624a971ae7b92-3"></a>juan@maverick:~$<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import libreriaquenoestainstalada'</span><span class="o">&amp;&amp;</span><span class="nb">echo</span><span class="w"> </span>OK
+<a id="rest_code_0c6dbed233fa469f994624a971ae7b92-4" name="rest_code_0c6dbed233fa469f994624a971ae7b92-4" href="#rest_code_0c6dbed233fa469f994624a971ae7b92-4"></a>Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
+<a id="rest_code_0c6dbed233fa469f994624a971ae7b92-5" name="rest_code_0c6dbed233fa469f994624a971ae7b92-5" href="#rest_code_0c6dbed233fa469f994624a971ae7b92-5"></a><span class="w">  </span>File<span class="w"> </span><span class="s2">"&lt;string&gt;"</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;module&gt;
+<a id="rest_code_0c6dbed233fa469f994624a971ae7b92-6" name="rest_code_0c6dbed233fa469f994624a971ae7b92-6" href="#rest_code_0c6dbed233fa469f994624a971ae7b92-6"></a>ImportError:<span class="w"> </span>No<span class="w"> </span>module<span class="w"> </span>named<span class="w"> </span>libreriaquenoestainstalada
+<a id="rest_code_0c6dbed233fa469f994624a971ae7b92-7" name="rest_code_0c6dbed233fa469f994624a971ae7b92-7" href="#rest_code_0c6dbed233fa469f994624a971ae7b92-7"></a>juan@maverick:~$
 </pre></div>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -114,6 +123,74 @@ juan@maverick:~$ python -c 'import gtk'&amp;&amp;echo">
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
+    var index = {};  // This will store the index data globally within this script block
+
+    // Fetch the generated JSON file
+    fetch('/search_index.json')
+    .then(response => response.json())
+    .then(data => {
+        index = data;  // Store the fetched data in the 'index' variable
+        for (var key in index) {
+            if (index.hasOwnProperty(key)) {
+                searchIndex.add(key, index[key].content);
+            }
+        }
+    });
+
+    var input = document.getElementById('search_input');
+    var button = document.getElementById('search_button');
+
+    // Function to perform search
+    function performSearch() {
+        var query = input.value;
+        var results = searchIndex.search(query);
+        var resultsContainer = document.getElementById('search_results');
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        var ul = document.createElement('ul'); // Create a UL element to hold the results
+
+        // Display results
+        results.forEach(function(result) {
+            var li = document.createElement('li'); // Create a LI element for each result
+            var link = document.createElement('a');
+            link.href = index[result].url;
+            link.textContent = index[result].title;
+            li.appendChild(link);
+            ul.appendChild(li); // Append the LI to the UL
+        });
+
+        resultsContainer.appendChild(ul); // Append the UL to the results container
+        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
+    }
+
+    // Event listener for search button click
+    button.addEventListener('click', performSearch);
+
+    // Event listener for pressing enter key in the search input
+    input.addEventListener('keypress', function(event) {
+        if (event.key === "Enter" || event.keyCode === 13) {
+            event.preventDefault();  // Prevent the form from being submitted
+            performSearch();
+        }
+    });
+});
+
+// Function to close the search overlay
+function closeSearch() {
+    document.getElementById('search_overlay').style.display = 'none';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        var searchOverlay = document.getElementById('search_overlay');
+        if (searchOverlay !== null) {
+            closeSearch();
+        }
+    }
+});
+</script>
 </body>
 </html>

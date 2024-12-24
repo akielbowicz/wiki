@@ -26,7 +26,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 #!/usr/bin/env python
 #-*- ">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-26T19:34:22-03:00">
+<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -61,14 +61,23 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
                     <a class="nav-link" href="http://www.python.org.ar/eventos/"><span class="eventos"></span>Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://planeta.python.org.ar/"><span class="pyar"></span>Planeta</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="http://www.python.org.ar/trabajo/"><span class="jobs"></span>Trabajos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://ac.python.org.ar/"><span class="quienes_somos"></span>Asoc. Civil</a>
+                </li>                
             </ul>
 </div>
-    </nav>
+
+    </nav><div id="search_bar">
+            <div id="search_overlay" style="display:none;">
+                <div id="search_content">
+                    <button onclick="closeSearch()">Cerrar</button>
+                    <div id="search_results"></div>
+                </div>
+            </div>
+            <input type="text" id="search_input"><button id="search_button">Buscar en la wiki</button>
+        </div>
 </div>
 
 <!-- Header and menu bar -->
@@ -79,42 +88,42 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/tkonlineofflineicon.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages\recetario\tkonlineofflineicon.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Tkonlineofflineicon</h2>
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Crea un ícono que cambia de estado según si se esta o no conectado a Internet. Notar que se pueden cambiar más propiedades del botón que las que este simple ejemplo cambia.</p>
-<div class="code"><pre class="code python"><a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-1" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-1" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-1"></a><span class="ch">#!/usr/bin/env python</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-2" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-2" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-2"></a><span class="c1">#-*- coding:utf-8 -*-</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-3" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-3" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-3"></a>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-4" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-4" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-4"></a><span class="kn">from</span> <span class="nn">Tkinter</span> <span class="kn">import</span> <span class="o">*</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-5" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-5" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-5"></a><span class="kn">import</span> <span class="nn">socket</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-6" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-6" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-6"></a><span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-7" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-7" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-7"></a><span class="c1"># Comprobador de conexion a Internet</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-8" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-8" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-8"></a><span class="n">inet</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bitmap</span><span class="o">=</span><span class="s1">'info'</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-9" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-9" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-9"></a><span class="n">inet</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-10" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-10" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-10"></a><span class="c1">#</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-11" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-11" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-11"></a><span class="k">try</span><span class="p">:</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-12" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-12" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-12"></a>    <span class="n">socket</span><span class="o">.</span><span class="n">gethostbyname</span><span class="p">(</span><span class="s1">'google.com'</span><span class="p">)</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-13" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-13" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-13"></a>    <span class="n">c</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="s1">'google.com'</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-14" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-14" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-14"></a>    <span class="n">m</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostbyname</span><span class="p">(</span><span class="s1">'google.com'</span><span class="p">)</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-15" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-15" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-15"></a>    <span class="nb">print</span> <span class="n">m</span>  <span class="c1"># imprime la ip de google.com para pruebas</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-16" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-16" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-16"></a>    <span class="n">c</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-17" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-17" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-17"></a><span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">gaierror</span><span class="p">:</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-18" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-18" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-18"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s2">" ERROR: DNS Error... "</span><span class="p">)</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-19" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-19" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-19"></a>    <span class="n">inet</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">bitmap</span><span class="o">=</span><span class="s1">'error'</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span> <span class="c1"># cambia a un icono de error</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-20" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-20" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-20"></a><span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-21" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-21" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-21"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s2">" ERROR: Connection error... "</span><span class="p">)</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-22" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-22" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-22"></a>    <span class="n">inet</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">bitmap</span><span class="o">=</span><span class="s1">'error'</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span> <span class="c1"># cambia a un icono de error</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-23" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-23" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-23"></a><span class="c1">#</span>
-<a id="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-24" name="rest_code_3be4ed95ea314e35b9e8feb8020c81e9-24" href="#rest_code_3be4ed95ea314e35b9e8feb8020c81e9-24"></a><span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+<div class="code"><pre class="code python"><a id="rest_code_2cad17edebce40c7a87b3990591271fc-1" name="rest_code_2cad17edebce40c7a87b3990591271fc-1" href="#rest_code_2cad17edebce40c7a87b3990591271fc-1"></a><span class="ch">#!/usr/bin/env python</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-2" name="rest_code_2cad17edebce40c7a87b3990591271fc-2" href="#rest_code_2cad17edebce40c7a87b3990591271fc-2"></a><span class="c1">#-*- coding:utf-8 -*-</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-3" name="rest_code_2cad17edebce40c7a87b3990591271fc-3" href="#rest_code_2cad17edebce40c7a87b3990591271fc-3"></a>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-4" name="rest_code_2cad17edebce40c7a87b3990591271fc-4" href="#rest_code_2cad17edebce40c7a87b3990591271fc-4"></a><span class="kn">from</span> <span class="nn">Tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-5" name="rest_code_2cad17edebce40c7a87b3990591271fc-5" href="#rest_code_2cad17edebce40c7a87b3990591271fc-5"></a><span class="kn">import</span> <span class="nn">socket</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-6" name="rest_code_2cad17edebce40c7a87b3990591271fc-6" href="#rest_code_2cad17edebce40c7a87b3990591271fc-6"></a><span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-7" name="rest_code_2cad17edebce40c7a87b3990591271fc-7" href="#rest_code_2cad17edebce40c7a87b3990591271fc-7"></a><span class="c1"># Comprobador de conexion a Internet</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-8" name="rest_code_2cad17edebce40c7a87b3990591271fc-8" href="#rest_code_2cad17edebce40c7a87b3990591271fc-8"></a><span class="n">inet</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bitmap</span><span class="o">=</span><span class="s1">'info'</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-9" name="rest_code_2cad17edebce40c7a87b3990591271fc-9" href="#rest_code_2cad17edebce40c7a87b3990591271fc-9"></a><span class="n">inet</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-10" name="rest_code_2cad17edebce40c7a87b3990591271fc-10" href="#rest_code_2cad17edebce40c7a87b3990591271fc-10"></a><span class="c1">#</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-11" name="rest_code_2cad17edebce40c7a87b3990591271fc-11" href="#rest_code_2cad17edebce40c7a87b3990591271fc-11"></a><span class="k">try</span><span class="p">:</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-12" name="rest_code_2cad17edebce40c7a87b3990591271fc-12" href="#rest_code_2cad17edebce40c7a87b3990591271fc-12"></a>    <span class="n">socket</span><span class="o">.</span><span class="n">gethostbyname</span><span class="p">(</span><span class="s1">'google.com'</span><span class="p">)</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-13" name="rest_code_2cad17edebce40c7a87b3990591271fc-13" href="#rest_code_2cad17edebce40c7a87b3990591271fc-13"></a>    <span class="n">c</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="s1">'google.com'</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-14" name="rest_code_2cad17edebce40c7a87b3990591271fc-14" href="#rest_code_2cad17edebce40c7a87b3990591271fc-14"></a>    <span class="n">m</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostbyname</span><span class="p">(</span><span class="s1">'google.com'</span><span class="p">)</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-15" name="rest_code_2cad17edebce40c7a87b3990591271fc-15" href="#rest_code_2cad17edebce40c7a87b3990591271fc-15"></a>    <span class="nb">print</span> <span class="n">m</span>  <span class="c1"># imprime la ip de google.com para pruebas</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-16" name="rest_code_2cad17edebce40c7a87b3990591271fc-16" href="#rest_code_2cad17edebce40c7a87b3990591271fc-16"></a>    <span class="n">c</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-17" name="rest_code_2cad17edebce40c7a87b3990591271fc-17" href="#rest_code_2cad17edebce40c7a87b3990591271fc-17"></a><span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">gaierror</span><span class="p">:</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-18" name="rest_code_2cad17edebce40c7a87b3990591271fc-18" href="#rest_code_2cad17edebce40c7a87b3990591271fc-18"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s2">" ERROR: DNS Error... "</span><span class="p">)</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-19" name="rest_code_2cad17edebce40c7a87b3990591271fc-19" href="#rest_code_2cad17edebce40c7a87b3990591271fc-19"></a>    <span class="n">inet</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">bitmap</span><span class="o">=</span><span class="s1">'error'</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span> <span class="c1"># cambia a un icono de error</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-20" name="rest_code_2cad17edebce40c7a87b3990591271fc-20" href="#rest_code_2cad17edebce40c7a87b3990591271fc-20"></a><span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-21" name="rest_code_2cad17edebce40c7a87b3990591271fc-21" href="#rest_code_2cad17edebce40c7a87b3990591271fc-21"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s2">" ERROR: Connection error... "</span><span class="p">)</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-22" name="rest_code_2cad17edebce40c7a87b3990591271fc-22" href="#rest_code_2cad17edebce40c7a87b3990591271fc-22"></a>    <span class="n">inet</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">bitmap</span><span class="o">=</span><span class="s1">'error'</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span> <span class="c1"># cambia a un icono de error</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-23" name="rest_code_2cad17edebce40c7a87b3990591271fc-23" href="#rest_code_2cad17edebce40c7a87b3990591271fc-23"></a><span class="c1">#</span>
+<a id="rest_code_2cad17edebce40c7a87b3990591271fc-24" name="rest_code_2cad17edebce40c7a87b3990591271fc-24" href="#rest_code_2cad17edebce40c7a87b3990591271fc-24"></a><span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="#" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -126,6 +135,74 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
+    var index = {};  // This will store the index data globally within this script block
+
+    // Fetch the generated JSON file
+    fetch('/search_index.json')
+    .then(response => response.json())
+    .then(data => {
+        index = data;  // Store the fetched data in the 'index' variable
+        for (var key in index) {
+            if (index.hasOwnProperty(key)) {
+                searchIndex.add(key, index[key].content);
+            }
+        }
+    });
+
+    var input = document.getElementById('search_input');
+    var button = document.getElementById('search_button');
+
+    // Function to perform search
+    function performSearch() {
+        var query = input.value;
+        var results = searchIndex.search(query);
+        var resultsContainer = document.getElementById('search_results');
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        var ul = document.createElement('ul'); // Create a UL element to hold the results
+
+        // Display results
+        results.forEach(function(result) {
+            var li = document.createElement('li'); // Create a LI element for each result
+            var link = document.createElement('a');
+            link.href = index[result].url;
+            link.textContent = index[result].title;
+            li.appendChild(link);
+            ul.appendChild(li); // Append the LI to the UL
+        });
+
+        resultsContainer.appendChild(ul); // Append the UL to the results container
+        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
+    }
+
+    // Event listener for search button click
+    button.addEventListener('click', performSearch);
+
+    // Event listener for pressing enter key in the search input
+    input.addEventListener('keypress', function(event) {
+        if (event.key === "Enter" || event.keyCode === 13) {
+            event.preventDefault();  // Prevent the form from being submitted
+            performSearch();
+        }
+    });
+});
+
+// Function to close the search overlay
+function closeSearch() {
+    document.getElementById('search_overlay').style.display = 'none';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        var searchOverlay = document.getElementById('search_overlay');
+        if (searchOverlay !== null) {
+            closeSearch();
+        }
+    }
+});
+</script>
 </body>
 </html>
