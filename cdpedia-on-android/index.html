@@ -94,10 +94,10 @@ Para que funcione correctamente es necesario tener descomprimido (no soporta el 
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Cdpedia-on-android es una aplicación android que permite correr la Cdpedia en este sistema operativo.</p>
 <p>Para que funcione correctamente es necesario tener descomprimido (no soporta el archivo .iso) alguno de los releases de la cdpedia en la carpeta /mnt/sdcard/cdpedia. A continuación una mini receta:</p>
-<div class="code"><pre class="code console"><a id="rest_code_39ba1ec400af4367a6e1ebd15b367266-1" name="rest_code_39ba1ec400af4367a6e1ebd15b367266-1" href="#rest_code_39ba1ec400af4367a6e1ebd15b367266-1"></a><span class="go">mount -t iso9660 -o loop cdpedia-0.8-cd.iso /mnt</span>
-<a id="rest_code_39ba1ec400af4367a6e1ebd15b367266-2" name="rest_code_39ba1ec400af4367a6e1ebd15b367266-2" href="#rest_code_39ba1ec400af4367a6e1ebd15b367266-2"></a><span class="go">cp -R /mnt/cdpedia /media/android_sdcard</span>
-<a id="rest_code_39ba1ec400af4367a6e1ebd15b367266-3" name="rest_code_39ba1ec400af4367a6e1ebd15b367266-3" href="#rest_code_39ba1ec400af4367a6e1ebd15b367266-3"></a><span class="go">sync</span>
-<a id="rest_code_39ba1ec400af4367a6e1ebd15b367266-4" name="rest_code_39ba1ec400af4367a6e1ebd15b367266-4" href="#rest_code_39ba1ec400af4367a6e1ebd15b367266-4"></a><span class="go">umount /mnt</span>
+<div class="code"><pre class="code console"><a id="rest_code_6d2d36dd2451424d9184af4d19776ed9-1" name="rest_code_6d2d36dd2451424d9184af4d19776ed9-1" href="#rest_code_6d2d36dd2451424d9184af4d19776ed9-1"></a><span class="go">mount -t iso9660 -o loop cdpedia-0.8-cd.iso /mnt</span>
+<a id="rest_code_6d2d36dd2451424d9184af4d19776ed9-2" name="rest_code_6d2d36dd2451424d9184af4d19776ed9-2" href="#rest_code_6d2d36dd2451424d9184af4d19776ed9-2"></a><span class="go">cp -R /mnt/cdpedia /media/android_sdcard</span>
+<a id="rest_code_6d2d36dd2451424d9184af4d19776ed9-3" name="rest_code_6d2d36dd2451424d9184af4d19776ed9-3" href="#rest_code_6d2d36dd2451424d9184af4d19776ed9-3"></a><span class="go">sync</span>
+<a id="rest_code_6d2d36dd2451424d9184af4d19776ed9-4" name="rest_code_6d2d36dd2451424d9184af4d19776ed9-4" href="#rest_code_6d2d36dd2451424d9184af4d19776ed9-4"></a><span class="go">umount /mnt</span>
 </pre></div>
 <p>Si querés probar la primera versión de la aplicación para android, podés descargarte el .apk desde
 <a class="reference external" href="http://cdpedia.python.org.ar/CDPedia-release.apk">acá</a>.</p>
