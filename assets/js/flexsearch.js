@@ -3,8 +3,8 @@
     var index = {};  // This will store the index data globally within this script block
 
     // Fetch the generated JSON file
-    const base = "/wiki"
-    var indexPath = document.location.origin + wiki + "/search_index.json"
+    const basePath = "/wiki" //Parche para probar en las GHP de mi fork ak.saxa.xyz/wiki
+    var indexPath = document.location.origin + basePath + "/search_index.json"
     fetch(indexPath)
     .then(response => response.json())
     .then(data => {
@@ -32,7 +32,7 @@
         results.forEach(function(result) {
             var li = document.createElement('li'); // Create a LI element for each result
             var link = document.createElement('a');
-            link.href = wiki + index[result].url;
+            link.href = basePath + index[result].url;
             link.textContent = index[result].title;
             li.appendChild(link);
             ul.appendChild(li); // Append the LI to the UL
