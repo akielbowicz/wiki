@@ -117,11 +117,11 @@ Web2Py es un framework WEB (marco de trabajo / herramienta de desarrollo) de muy
 <li><p>Iniciar <code class="docutils literal">web2py.py</code></p></li>
 </ul>
 <p>Ejemplo:</p>
-<div class="code"><pre class="code console"><a id="rest_code_07603fc711424dc0bbad9e5c14aaf013-1" name="rest_code_07603fc711424dc0bbad9e5c14aaf013-1" href="#rest_code_07603fc711424dc0bbad9e5c14aaf013-1"></a><span class="go">sudo apt-get install python psycopg2</span>
-<a id="rest_code_07603fc711424dc0bbad9e5c14aaf013-2" name="rest_code_07603fc711424dc0bbad9e5c14aaf013-2" href="#rest_code_07603fc711424dc0bbad9e5c14aaf013-2"></a><span class="go">wget http://www.web2py.com/examples/static/web2py_src.zip</span>
-<a id="rest_code_07603fc711424dc0bbad9e5c14aaf013-3" name="rest_code_07603fc711424dc0bbad9e5c14aaf013-3" href="#rest_code_07603fc711424dc0bbad9e5c14aaf013-3"></a><span class="go">unzip web2py_src.zip</span>
-<a id="rest_code_07603fc711424dc0bbad9e5c14aaf013-4" name="rest_code_07603fc711424dc0bbad9e5c14aaf013-4" href="#rest_code_07603fc711424dc0bbad9e5c14aaf013-4"></a><span class="go">cd web2py</span>
-<a id="rest_code_07603fc711424dc0bbad9e5c14aaf013-5" name="rest_code_07603fc711424dc0bbad9e5c14aaf013-5" href="#rest_code_07603fc711424dc0bbad9e5c14aaf013-5"></a><span class="go">python web2py.py</span>
+<div class="code"><pre class="code console"><a id="rest_code_6a0363a73cf34eb2ac10e9fad6935165-1" name="rest_code_6a0363a73cf34eb2ac10e9fad6935165-1" href="#rest_code_6a0363a73cf34eb2ac10e9fad6935165-1"></a><span class="go">sudo apt-get install python psycopg2</span>
+<a id="rest_code_6a0363a73cf34eb2ac10e9fad6935165-2" name="rest_code_6a0363a73cf34eb2ac10e9fad6935165-2" href="#rest_code_6a0363a73cf34eb2ac10e9fad6935165-2"></a><span class="go">wget http://www.web2py.com/examples/static/web2py_src.zip</span>
+<a id="rest_code_6a0363a73cf34eb2ac10e9fad6935165-3" name="rest_code_6a0363a73cf34eb2ac10e9fad6935165-3" href="#rest_code_6a0363a73cf34eb2ac10e9fad6935165-3"></a><span class="go">unzip web2py_src.zip</span>
+<a id="rest_code_6a0363a73cf34eb2ac10e9fad6935165-4" name="rest_code_6a0363a73cf34eb2ac10e9fad6935165-4" href="#rest_code_6a0363a73cf34eb2ac10e9fad6935165-4"></a><span class="go">cd web2py</span>
+<a id="rest_code_6a0363a73cf34eb2ac10e9fad6935165-5" name="rest_code_6a0363a73cf34eb2ac10e9fad6935165-5" href="#rest_code_6a0363a73cf34eb2ac10e9fad6935165-5"></a><span class="go">python web2py.py</span>
 </pre></div>
 </section></section><section id="recorrida"><h2>Recorrida</h2>
 <p>A continuación mostraremos una breve recorrida sobre las características principales de web2py.</p>
@@ -145,7 +145,7 @@ Web2Py es un framework WEB (marco de trabajo / herramienta de desarrollo) de muy
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -157,74 +157,6 @@ Web2Py es un framework WEB (marco de trabajo / herramienta de desarrollo) de muy
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../assets/js/flexsearch.js"></script>
 </body>
 </html>

@@ -106,7 +106,7 @@ Para visualizarlos hacer click en "Editar" y luego en "Archivos adjuntos"**</p>
 <p>Doble, a color y blanco y negro (por Facundo Batista):</p>
 <p>Con algunos cambios:  - Viene con un micro-tutorial de python.</p>
 <p>Este archivo utiliza el font , que puede instalarse en ubuntu asi:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_fedfa4be4878455fa32e39281d6c66d3-1" name="rest_code_fedfa4be4878455fa32e39281d6c66d3-1" href="#rest_code_fedfa4be4878455fa32e39281d6c66d3-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ttf-dejavu
+<div class="code"><pre class="code bash"><a id="rest_code_dd0bf83a105a4216869a977a01858c10-1" name="rest_code_dd0bf83a105a4216869a977a01858c10-1" href="#rest_code_dd0bf83a105a4216869a977a01858c10-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ttf-dejavu
 </pre></div>
 </section><section id="logo"><h2>Logo</h2>
 <ul class="simple">
@@ -141,7 +141,7 @@ Para visualizarlos hacer click en "Editar" y luego en "Archivos adjuntos"**</p>
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -153,74 +153,6 @@ Para visualizarlos hacer click en "Editar" y luego en "Archivos adjuntos"**</p>
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../assets/js/flexsearch.js"></script>
 </body>
 </html>

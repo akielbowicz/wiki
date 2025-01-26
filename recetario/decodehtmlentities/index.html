@@ -98,47 +98,47 @@ def unescape(text, encoding="UTF-8"):
         <h2>Decodificar Entities De Html</h2>
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
-    <div class="code"><pre class="code python"><a id="rest_code_2f54615603b341f799285ffb2dc7fd22-1" name="rest_code_2f54615603b341f799285ffb2dc7fd22-1" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-1"></a><span class="kn">import</span> <span class="nn">re</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-2" name="rest_code_2f54615603b341f799285ffb2dc7fd22-2" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-2"></a><span class="kn">import</span> <span class="nn">htmlentitydefs</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-3" name="rest_code_2f54615603b341f799285ffb2dc7fd22-3" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-3"></a>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-4" name="rest_code_2f54615603b341f799285ffb2dc7fd22-4" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-4"></a><span class="k">def</span> <span class="nf">unescape</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="p">):</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-5" name="rest_code_2f54615603b341f799285ffb2dc7fd22-5" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-5"></a><span class="w">    </span><span class="sd">"""</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-6" name="rest_code_2f54615603b341f799285ffb2dc7fd22-6" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-6"></a><span class="sd">    Removes HTML or XML character references and entities from a text string.</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-7" name="rest_code_2f54615603b341f799285ffb2dc7fd22-7" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-7"></a>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-8" name="rest_code_2f54615603b341f799285ffb2dc7fd22-8" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-8"></a><span class="sd">    @param text The HTML (or XML) source text.</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-9" name="rest_code_2f54615603b341f799285ffb2dc7fd22-9" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-9"></a><span class="sd">    @return The unescaped text as a Unicode.</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-10" name="rest_code_2f54615603b341f799285ffb2dc7fd22-10" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-10"></a><span class="sd">    """</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-11" name="rest_code_2f54615603b341f799285ffb2dc7fd22-11" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-11"></a>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-12" name="rest_code_2f54615603b341f799285ffb2dc7fd22-12" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-12"></a>    <span class="k">def</span> <span class="nf">fixup</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-13" name="rest_code_2f54615603b341f799285ffb2dc7fd22-13" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-13"></a>        <span class="n">text</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-14" name="rest_code_2f54615603b341f799285ffb2dc7fd22-14" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-14"></a>        <span class="k">if</span> <span class="n">text</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"&amp;#"</span><span class="p">:</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-15" name="rest_code_2f54615603b341f799285ffb2dc7fd22-15" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-15"></a>            <span class="c1"># character reference</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-16" name="rest_code_2f54615603b341f799285ffb2dc7fd22-16" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-16"></a>            <span class="k">try</span><span class="p">:</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-17" name="rest_code_2f54615603b341f799285ffb2dc7fd22-17" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-17"></a>                <span class="k">if</span> <span class="n">text</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"&amp;#x"</span><span class="p">:</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-18" name="rest_code_2f54615603b341f799285ffb2dc7fd22-18" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-18"></a>                    <span class="n">text</span> <span class="o">=</span> <span class="n">unichr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">16</span><span class="p">))</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-19" name="rest_code_2f54615603b341f799285ffb2dc7fd22-19" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-19"></a>                <span class="k">else</span><span class="p">:</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-20" name="rest_code_2f54615603b341f799285ffb2dc7fd22-20" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-20"></a>                    <span class="n">text</span> <span class="o">=</span> <span class="n">unichr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-21" name="rest_code_2f54615603b341f799285ffb2dc7fd22-21" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-21"></a>            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-22" name="rest_code_2f54615603b341f799285ffb2dc7fd22-22" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-22"></a>                <span class="k">pass</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-23" name="rest_code_2f54615603b341f799285ffb2dc7fd22-23" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-23"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-24" name="rest_code_2f54615603b341f799285ffb2dc7fd22-24" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-24"></a>            <span class="c1"># named entity</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-25" name="rest_code_2f54615603b341f799285ffb2dc7fd22-25" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-25"></a>            <span class="k">try</span><span class="p">:</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-26" name="rest_code_2f54615603b341f799285ffb2dc7fd22-26" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-26"></a>                <span class="n">text</span> <span class="o">=</span> <span class="n">unichr</span><span class="p">(</span><span class="n">htmlentitydefs</span><span class="o">.</span><span class="n">name2codepoint</span><span class="p">[</span><span class="n">text</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-27" name="rest_code_2f54615603b341f799285ffb2dc7fd22-27" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-27"></a>            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-28" name="rest_code_2f54615603b341f799285ffb2dc7fd22-28" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-28"></a>                <span class="k">pass</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-29" name="rest_code_2f54615603b341f799285ffb2dc7fd22-29" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-29"></a>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-30" name="rest_code_2f54615603b341f799285ffb2dc7fd22-30" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-30"></a>        <span class="k">return</span> <span class="n">text</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-31" name="rest_code_2f54615603b341f799285ffb2dc7fd22-31" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-31"></a>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-32" name="rest_code_2f54615603b341f799285ffb2dc7fd22-32" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-32"></a>    <span class="c1"># Decode string as needed</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-33" name="rest_code_2f54615603b341f799285ffb2dc7fd22-33" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-33"></a>    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">text</span>
-<a id="rest_code_2f54615603b341f799285ffb2dc7fd22-34" name="rest_code_2f54615603b341f799285ffb2dc7fd22-34" href="#rest_code_2f54615603b341f799285ffb2dc7fd22-34"></a>    <span class="k">return</span> <span class="n">text</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">"&amp;#?\w+;"</span><span class="p">,</span> <span class="n">fixup</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <div class="code"><pre class="code python"><a id="rest_code_e537446969df4b01a4a05c81d783d4b6-1" name="rest_code_e537446969df4b01a4a05c81d783d4b6-1" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-1"></a><span class="kn">import</span> <span class="nn">re</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-2" name="rest_code_e537446969df4b01a4a05c81d783d4b6-2" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-2"></a><span class="kn">import</span> <span class="nn">htmlentitydefs</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-3" name="rest_code_e537446969df4b01a4a05c81d783d4b6-3" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-3"></a>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-4" name="rest_code_e537446969df4b01a4a05c81d783d4b6-4" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-4"></a><span class="k">def</span> <span class="nf">unescape</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="p">):</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-5" name="rest_code_e537446969df4b01a4a05c81d783d4b6-5" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-5"></a><span class="w">    </span><span class="sd">"""</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-6" name="rest_code_e537446969df4b01a4a05c81d783d4b6-6" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-6"></a><span class="sd">    Removes HTML or XML character references and entities from a text string.</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-7" name="rest_code_e537446969df4b01a4a05c81d783d4b6-7" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-7"></a>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-8" name="rest_code_e537446969df4b01a4a05c81d783d4b6-8" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-8"></a><span class="sd">    @param text The HTML (or XML) source text.</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-9" name="rest_code_e537446969df4b01a4a05c81d783d4b6-9" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-9"></a><span class="sd">    @return The unescaped text as a Unicode.</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-10" name="rest_code_e537446969df4b01a4a05c81d783d4b6-10" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-10"></a><span class="sd">    """</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-11" name="rest_code_e537446969df4b01a4a05c81d783d4b6-11" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-11"></a>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-12" name="rest_code_e537446969df4b01a4a05c81d783d4b6-12" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-12"></a>    <span class="k">def</span> <span class="nf">fixup</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-13" name="rest_code_e537446969df4b01a4a05c81d783d4b6-13" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-13"></a>        <span class="n">text</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-14" name="rest_code_e537446969df4b01a4a05c81d783d4b6-14" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-14"></a>        <span class="k">if</span> <span class="n">text</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"&amp;#"</span><span class="p">:</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-15" name="rest_code_e537446969df4b01a4a05c81d783d4b6-15" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-15"></a>            <span class="c1"># character reference</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-16" name="rest_code_e537446969df4b01a4a05c81d783d4b6-16" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-16"></a>            <span class="k">try</span><span class="p">:</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-17" name="rest_code_e537446969df4b01a4a05c81d783d4b6-17" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-17"></a>                <span class="k">if</span> <span class="n">text</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"&amp;#x"</span><span class="p">:</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-18" name="rest_code_e537446969df4b01a4a05c81d783d4b6-18" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-18"></a>                    <span class="n">text</span> <span class="o">=</span> <span class="n">unichr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">16</span><span class="p">))</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-19" name="rest_code_e537446969df4b01a4a05c81d783d4b6-19" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-19"></a>                <span class="k">else</span><span class="p">:</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-20" name="rest_code_e537446969df4b01a4a05c81d783d4b6-20" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-20"></a>                    <span class="n">text</span> <span class="o">=</span> <span class="n">unichr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-21" name="rest_code_e537446969df4b01a4a05c81d783d4b6-21" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-21"></a>            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-22" name="rest_code_e537446969df4b01a4a05c81d783d4b6-22" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-22"></a>                <span class="k">pass</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-23" name="rest_code_e537446969df4b01a4a05c81d783d4b6-23" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-23"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-24" name="rest_code_e537446969df4b01a4a05c81d783d4b6-24" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-24"></a>            <span class="c1"># named entity</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-25" name="rest_code_e537446969df4b01a4a05c81d783d4b6-25" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-25"></a>            <span class="k">try</span><span class="p">:</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-26" name="rest_code_e537446969df4b01a4a05c81d783d4b6-26" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-26"></a>                <span class="n">text</span> <span class="o">=</span> <span class="n">unichr</span><span class="p">(</span><span class="n">htmlentitydefs</span><span class="o">.</span><span class="n">name2codepoint</span><span class="p">[</span><span class="n">text</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-27" name="rest_code_e537446969df4b01a4a05c81d783d4b6-27" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-27"></a>            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-28" name="rest_code_e537446969df4b01a4a05c81d783d4b6-28" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-28"></a>                <span class="k">pass</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-29" name="rest_code_e537446969df4b01a4a05c81d783d4b6-29" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-29"></a>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-30" name="rest_code_e537446969df4b01a4a05c81d783d4b6-30" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-30"></a>        <span class="k">return</span> <span class="n">text</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-31" name="rest_code_e537446969df4b01a4a05c81d783d4b6-31" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-31"></a>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-32" name="rest_code_e537446969df4b01a4a05c81d783d4b6-32" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-32"></a>    <span class="c1"># Decode string as needed</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-33" name="rest_code_e537446969df4b01a4a05c81d783d4b6-33" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-33"></a>    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">text</span>
+<a id="rest_code_e537446969df4b01a4a05c81d783d4b6-34" name="rest_code_e537446969df4b01a4a05c81d783d4b6-34" href="#rest_code_e537446969df4b01a4a05c81d783d4b6-34"></a>    <span class="k">return</span> <span class="n">text</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">"&amp;#?\w+;"</span><span class="p">,</span> <span class="n">fixup</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
 </pre></div>
 <p>Gracias Martin Conte Mac Donell! 😉</p>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -150,74 +150,6 @@ def unescape(text, encoding="UTF-8"):
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>

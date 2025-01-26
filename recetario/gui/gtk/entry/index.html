@@ -98,60 +98,60 @@ class Ventana(gtk.Window):
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Crear una ventana con un label, un campo de texto y mostrar el mensaje hola <strong>nombre</strong> con el valor ingresado en el entry.</p>
-<img alt="/images/Recetario/Gui/Gtk/Entry/Entry.png" src="../../../../images/Recetario/Gui/Gtk/Entry/Entry.png"><div class="code"><pre class="code python"><a id="rest_code_28907c7430974b01850344e6ecc76cec-1" name="rest_code_28907c7430974b01850344e6ecc76cec-1" href="#rest_code_28907c7430974b01850344e6ecc76cec-1"></a><span class="kn">import</span> <span class="nn">gtk</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-2" name="rest_code_28907c7430974b01850344e6ecc76cec-2" href="#rest_code_28907c7430974b01850344e6ecc76cec-2"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-3" name="rest_code_28907c7430974b01850344e6ecc76cec-3" href="#rest_code_28907c7430974b01850344e6ecc76cec-3"></a>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-4" name="rest_code_28907c7430974b01850344e6ecc76cec-4" href="#rest_code_28907c7430974b01850344e6ecc76cec-4"></a><span class="k">class</span> <span class="nc">Ventana</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="p">):</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-5" name="rest_code_28907c7430974b01850344e6ecc76cec-5" href="#rest_code_28907c7430974b01850344e6ecc76cec-5"></a><span class="w">    </span><span class="sd">'''clase que define una ventana que saluda'''</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-6" name="rest_code_28907c7430974b01850344e6ecc76cec-6" href="#rest_code_28907c7430974b01850344e6ecc76cec-6"></a>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-7" name="rest_code_28907c7430974b01850344e6ecc76cec-7" href="#rest_code_28907c7430974b01850344e6ecc76cec-7"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-8" name="rest_code_28907c7430974b01850344e6ecc76cec-8" href="#rest_code_28907c7430974b01850344e6ecc76cec-8"></a><span class="w">        </span><span class="sd">'''constructor, se llama al constructor de la clase padre'''</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-9" name="rest_code_28907c7430974b01850344e6ecc76cec-9" href="#rest_code_28907c7430974b01850344e6ecc76cec-9"></a>        <span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-10" name="rest_code_28907c7430974b01850344e6ecc76cec-10" href="#rest_code_28907c7430974b01850344e6ecc76cec-10"></a>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-11" name="rest_code_28907c7430974b01850344e6ecc76cec-11" href="#rest_code_28907c7430974b01850344e6ecc76cec-11"></a>        <span class="c1"># un tamanio muy chico para que se expanda el minimo tamanio necesario</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-12" name="rest_code_28907c7430974b01850344e6ecc76cec-12" href="#rest_code_28907c7430974b01850344e6ecc76cec-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_default_size</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-13" name="rest_code_28907c7430974b01850344e6ecc76cec-13" href="#rest_code_28907c7430974b01850344e6ecc76cec-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">"nombre"</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-14" name="rest_code_28907c7430974b01850344e6ecc76cec-14" href="#rest_code_28907c7430974b01850344e6ecc76cec-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">entry</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Entry</span><span class="p">()</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-15" name="rest_code_28907c7430974b01850344e6ecc76cec-15" href="#rest_code_28907c7430974b01850344e6ecc76cec-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"entry"</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-16" name="rest_code_28907c7430974b01850344e6ecc76cec-16" href="#rest_code_28907c7430974b01850344e6ecc76cec-16"></a>        <span class="c1"># 5 pixeles de espacio entre el borde de la ventana y el primer</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-17" name="rest_code_28907c7430974b01850344e6ecc76cec-17" href="#rest_code_28907c7430974b01850344e6ecc76cec-17"></a>        <span class="c1"># contenedor</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-18" name="rest_code_28907c7430974b01850344e6ecc76cec-18" href="#rest_code_28907c7430974b01850344e6ecc76cec-18"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_border_width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-19" name="rest_code_28907c7430974b01850344e6ecc76cec-19" href="#rest_code_28907c7430974b01850344e6ecc76cec-19"></a>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-20" name="rest_code_28907c7430974b01850344e6ecc76cec-20" href="#rest_code_28907c7430974b01850344e6ecc76cec-20"></a>        <span class="c1"># 5 pixeles de espaciado entre cada widget</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-21" name="rest_code_28907c7430974b01850344e6ecc76cec-21" href="#rest_code_28907c7430974b01850344e6ecc76cec-21"></a>        <span class="n">hbox</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">HBox</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-22" name="rest_code_28907c7430974b01850344e6ecc76cec-22" href="#rest_code_28907c7430974b01850344e6ecc76cec-22"></a>        <span class="n">hbox</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-23" name="rest_code_28907c7430974b01850344e6ecc76cec-23" href="#rest_code_28907c7430974b01850344e6ecc76cec-23"></a>        <span class="n">hbox</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entry</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-24" name="rest_code_28907c7430974b01850344e6ecc76cec-24" href="#rest_code_28907c7430974b01850344e6ecc76cec-24"></a>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-25" name="rest_code_28907c7430974b01850344e6ecc76cec-25" href="#rest_code_28907c7430974b01850344e6ecc76cec-25"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">hbox</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-26" name="rest_code_28907c7430974b01850344e6ecc76cec-26" href="#rest_code_28907c7430974b01850344e6ecc76cec-26"></a>        <span class="n">hbox</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-27" name="rest_code_28907c7430974b01850344e6ecc76cec-27" href="#rest_code_28907c7430974b01850344e6ecc76cec-27"></a>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-28" name="rest_code_28907c7430974b01850344e6ecc76cec-28" href="#rest_code_28907c7430974b01850344e6ecc76cec-28"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"delete-event"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_delete</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-29" name="rest_code_28907c7430974b01850344e6ecc76cec-29" href="#rest_code_28907c7430974b01850344e6ecc76cec-29"></a>        <span class="c1"># conectamos la senial activate (el usuario presiona enter)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-30" name="rest_code_28907c7430974b01850344e6ecc76cec-30" href="#rest_code_28907c7430974b01850344e6ecc76cec-30"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">entry</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_entry_activate</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-31" name="rest_code_28907c7430974b01850344e6ecc76cec-31" href="#rest_code_28907c7430974b01850344e6ecc76cec-31"></a>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-32" name="rest_code_28907c7430974b01850344e6ecc76cec-32" href="#rest_code_28907c7430974b01850344e6ecc76cec-32"></a>    <span class="k">def</span> <span class="nf">on_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-33" name="rest_code_28907c7430974b01850344e6ecc76cec-33" href="#rest_code_28907c7430974b01850344e6ecc76cec-33"></a><span class="w">        </span><span class="sd">'''llamado cuando se cierra la ventana'''</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-34" name="rest_code_28907c7430974b01850344e6ecc76cec-34" href="#rest_code_28907c7430974b01850344e6ecc76cec-34"></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-35" name="rest_code_28907c7430974b01850344e6ecc76cec-35" href="#rest_code_28907c7430974b01850344e6ecc76cec-35"></a>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-36" name="rest_code_28907c7430974b01850344e6ecc76cec-36" href="#rest_code_28907c7430974b01850344e6ecc76cec-36"></a>    <span class="k">def</span> <span class="nf">on_entry_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-37" name="rest_code_28907c7430974b01850344e6ecc76cec-37" href="#rest_code_28907c7430974b01850344e6ecc76cec-37"></a><span class="w">        </span><span class="sd">'''llamada cuando se presiona enter en el entry, el primer elemento</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-38" name="rest_code_28907c7430974b01850344e6ecc76cec-38" href="#rest_code_28907c7430974b01850344e6ecc76cec-38"></a><span class="sd">        de toda senial de gtk es el elemento que emite la senial, asi que no</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-39" name="rest_code_28907c7430974b01850344e6ecc76cec-39" href="#rest_code_28907c7430974b01850344e6ecc76cec-39"></a><span class="sd">        necesitamos tener una referencia al elemento para interactuar con el'''</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-40" name="rest_code_28907c7430974b01850344e6ecc76cec-40" href="#rest_code_28907c7430974b01850344e6ecc76cec-40"></a>        <span class="n">message</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="n">buttons</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">BUTTONS_OK</span><span class="p">,</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-41" name="rest_code_28907c7430974b01850344e6ecc76cec-41" href="#rest_code_28907c7430974b01850344e6ecc76cec-41"></a>            <span class="n">message_format</span><span class="o">=</span><span class="s2">"hola "</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-42" name="rest_code_28907c7430974b01850344e6ecc76cec-42" href="#rest_code_28907c7430974b01850344e6ecc76cec-42"></a>        <span class="n">message</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-43" name="rest_code_28907c7430974b01850344e6ecc76cec-43" href="#rest_code_28907c7430974b01850344e6ecc76cec-43"></a>        <span class="n">message</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-44" name="rest_code_28907c7430974b01850344e6ecc76cec-44" href="#rest_code_28907c7430974b01850344e6ecc76cec-44"></a>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-45" name="rest_code_28907c7430974b01850344e6ecc76cec-45" href="#rest_code_28907c7430974b01850344e6ecc76cec-45"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-46" name="rest_code_28907c7430974b01850344e6ecc76cec-46" href="#rest_code_28907c7430974b01850344e6ecc76cec-46"></a>    <span class="n">hola</span> <span class="o">=</span> <span class="n">Ventana</span><span class="p">()</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-47" name="rest_code_28907c7430974b01850344e6ecc76cec-47" href="#rest_code_28907c7430974b01850344e6ecc76cec-47"></a>    <span class="n">hola</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<a id="rest_code_28907c7430974b01850344e6ecc76cec-48" name="rest_code_28907c7430974b01850344e6ecc76cec-48" href="#rest_code_28907c7430974b01850344e6ecc76cec-48"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<img alt="/images/Recetario/Gui/Gtk/Entry/Entry.png" src="../../../../images/Recetario/Gui/Gtk/Entry/Entry.png"><div class="code"><pre class="code python"><a id="rest_code_0f43d865366047d7934f81da0cce55b5-1" name="rest_code_0f43d865366047d7934f81da0cce55b5-1" href="#rest_code_0f43d865366047d7934f81da0cce55b5-1"></a><span class="kn">import</span> <span class="nn">gtk</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-2" name="rest_code_0f43d865366047d7934f81da0cce55b5-2" href="#rest_code_0f43d865366047d7934f81da0cce55b5-2"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-3" name="rest_code_0f43d865366047d7934f81da0cce55b5-3" href="#rest_code_0f43d865366047d7934f81da0cce55b5-3"></a>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-4" name="rest_code_0f43d865366047d7934f81da0cce55b5-4" href="#rest_code_0f43d865366047d7934f81da0cce55b5-4"></a><span class="k">class</span> <span class="nc">Ventana</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="p">):</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-5" name="rest_code_0f43d865366047d7934f81da0cce55b5-5" href="#rest_code_0f43d865366047d7934f81da0cce55b5-5"></a><span class="w">    </span><span class="sd">'''clase que define una ventana que saluda'''</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-6" name="rest_code_0f43d865366047d7934f81da0cce55b5-6" href="#rest_code_0f43d865366047d7934f81da0cce55b5-6"></a>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-7" name="rest_code_0f43d865366047d7934f81da0cce55b5-7" href="#rest_code_0f43d865366047d7934f81da0cce55b5-7"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-8" name="rest_code_0f43d865366047d7934f81da0cce55b5-8" href="#rest_code_0f43d865366047d7934f81da0cce55b5-8"></a><span class="w">        </span><span class="sd">'''constructor, se llama al constructor de la clase padre'''</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-9" name="rest_code_0f43d865366047d7934f81da0cce55b5-9" href="#rest_code_0f43d865366047d7934f81da0cce55b5-9"></a>        <span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-10" name="rest_code_0f43d865366047d7934f81da0cce55b5-10" href="#rest_code_0f43d865366047d7934f81da0cce55b5-10"></a>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-11" name="rest_code_0f43d865366047d7934f81da0cce55b5-11" href="#rest_code_0f43d865366047d7934f81da0cce55b5-11"></a>        <span class="c1"># un tamanio muy chico para que se expanda el minimo tamanio necesario</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-12" name="rest_code_0f43d865366047d7934f81da0cce55b5-12" href="#rest_code_0f43d865366047d7934f81da0cce55b5-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_default_size</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-13" name="rest_code_0f43d865366047d7934f81da0cce55b5-13" href="#rest_code_0f43d865366047d7934f81da0cce55b5-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">"nombre"</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-14" name="rest_code_0f43d865366047d7934f81da0cce55b5-14" href="#rest_code_0f43d865366047d7934f81da0cce55b5-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">entry</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Entry</span><span class="p">()</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-15" name="rest_code_0f43d865366047d7934f81da0cce55b5-15" href="#rest_code_0f43d865366047d7934f81da0cce55b5-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"entry"</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-16" name="rest_code_0f43d865366047d7934f81da0cce55b5-16" href="#rest_code_0f43d865366047d7934f81da0cce55b5-16"></a>        <span class="c1"># 5 pixeles de espacio entre el borde de la ventana y el primer</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-17" name="rest_code_0f43d865366047d7934f81da0cce55b5-17" href="#rest_code_0f43d865366047d7934f81da0cce55b5-17"></a>        <span class="c1"># contenedor</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-18" name="rest_code_0f43d865366047d7934f81da0cce55b5-18" href="#rest_code_0f43d865366047d7934f81da0cce55b5-18"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_border_width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-19" name="rest_code_0f43d865366047d7934f81da0cce55b5-19" href="#rest_code_0f43d865366047d7934f81da0cce55b5-19"></a>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-20" name="rest_code_0f43d865366047d7934f81da0cce55b5-20" href="#rest_code_0f43d865366047d7934f81da0cce55b5-20"></a>        <span class="c1"># 5 pixeles de espaciado entre cada widget</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-21" name="rest_code_0f43d865366047d7934f81da0cce55b5-21" href="#rest_code_0f43d865366047d7934f81da0cce55b5-21"></a>        <span class="n">hbox</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">HBox</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-22" name="rest_code_0f43d865366047d7934f81da0cce55b5-22" href="#rest_code_0f43d865366047d7934f81da0cce55b5-22"></a>        <span class="n">hbox</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-23" name="rest_code_0f43d865366047d7934f81da0cce55b5-23" href="#rest_code_0f43d865366047d7934f81da0cce55b5-23"></a>        <span class="n">hbox</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entry</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-24" name="rest_code_0f43d865366047d7934f81da0cce55b5-24" href="#rest_code_0f43d865366047d7934f81da0cce55b5-24"></a>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-25" name="rest_code_0f43d865366047d7934f81da0cce55b5-25" href="#rest_code_0f43d865366047d7934f81da0cce55b5-25"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">hbox</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-26" name="rest_code_0f43d865366047d7934f81da0cce55b5-26" href="#rest_code_0f43d865366047d7934f81da0cce55b5-26"></a>        <span class="n">hbox</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-27" name="rest_code_0f43d865366047d7934f81da0cce55b5-27" href="#rest_code_0f43d865366047d7934f81da0cce55b5-27"></a>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-28" name="rest_code_0f43d865366047d7934f81da0cce55b5-28" href="#rest_code_0f43d865366047d7934f81da0cce55b5-28"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"delete-event"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_delete</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-29" name="rest_code_0f43d865366047d7934f81da0cce55b5-29" href="#rest_code_0f43d865366047d7934f81da0cce55b5-29"></a>        <span class="c1"># conectamos la senial activate (el usuario presiona enter)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-30" name="rest_code_0f43d865366047d7934f81da0cce55b5-30" href="#rest_code_0f43d865366047d7934f81da0cce55b5-30"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">entry</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"activate"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_entry_activate</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-31" name="rest_code_0f43d865366047d7934f81da0cce55b5-31" href="#rest_code_0f43d865366047d7934f81da0cce55b5-31"></a>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-32" name="rest_code_0f43d865366047d7934f81da0cce55b5-32" href="#rest_code_0f43d865366047d7934f81da0cce55b5-32"></a>    <span class="k">def</span> <span class="nf">on_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-33" name="rest_code_0f43d865366047d7934f81da0cce55b5-33" href="#rest_code_0f43d865366047d7934f81da0cce55b5-33"></a><span class="w">        </span><span class="sd">'''llamado cuando se cierra la ventana'''</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-34" name="rest_code_0f43d865366047d7934f81da0cce55b5-34" href="#rest_code_0f43d865366047d7934f81da0cce55b5-34"></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-35" name="rest_code_0f43d865366047d7934f81da0cce55b5-35" href="#rest_code_0f43d865366047d7934f81da0cce55b5-35"></a>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-36" name="rest_code_0f43d865366047d7934f81da0cce55b5-36" href="#rest_code_0f43d865366047d7934f81da0cce55b5-36"></a>    <span class="k">def</span> <span class="nf">on_entry_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-37" name="rest_code_0f43d865366047d7934f81da0cce55b5-37" href="#rest_code_0f43d865366047d7934f81da0cce55b5-37"></a><span class="w">        </span><span class="sd">'''llamada cuando se presiona enter en el entry, el primer elemento</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-38" name="rest_code_0f43d865366047d7934f81da0cce55b5-38" href="#rest_code_0f43d865366047d7934f81da0cce55b5-38"></a><span class="sd">        de toda senial de gtk es el elemento que emite la senial, asi que no</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-39" name="rest_code_0f43d865366047d7934f81da0cce55b5-39" href="#rest_code_0f43d865366047d7934f81da0cce55b5-39"></a><span class="sd">        necesitamos tener una referencia al elemento para interactuar con el'''</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-40" name="rest_code_0f43d865366047d7934f81da0cce55b5-40" href="#rest_code_0f43d865366047d7934f81da0cce55b5-40"></a>        <span class="n">message</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="n">buttons</span><span class="o">=</span><span class="n">gtk</span><span class="o">.</span><span class="n">BUTTONS_OK</span><span class="p">,</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-41" name="rest_code_0f43d865366047d7934f81da0cce55b5-41" href="#rest_code_0f43d865366047d7934f81da0cce55b5-41"></a>            <span class="n">message_format</span><span class="o">=</span><span class="s2">"hola "</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-42" name="rest_code_0f43d865366047d7934f81da0cce55b5-42" href="#rest_code_0f43d865366047d7934f81da0cce55b5-42"></a>        <span class="n">message</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-43" name="rest_code_0f43d865366047d7934f81da0cce55b5-43" href="#rest_code_0f43d865366047d7934f81da0cce55b5-43"></a>        <span class="n">message</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-44" name="rest_code_0f43d865366047d7934f81da0cce55b5-44" href="#rest_code_0f43d865366047d7934f81da0cce55b5-44"></a>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-45" name="rest_code_0f43d865366047d7934f81da0cce55b5-45" href="#rest_code_0f43d865366047d7934f81da0cce55b5-45"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-46" name="rest_code_0f43d865366047d7934f81da0cce55b5-46" href="#rest_code_0f43d865366047d7934f81da0cce55b5-46"></a>    <span class="n">hola</span> <span class="o">=</span> <span class="n">Ventana</span><span class="p">()</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-47" name="rest_code_0f43d865366047d7934f81da0cce55b5-47" href="#rest_code_0f43d865366047d7934f81da0cce55b5-47"></a>    <span class="n">hola</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="rest_code_0f43d865366047d7934f81da0cce55b5-48" name="rest_code_0f43d865366047d7934f81da0cce55b5-48" href="#rest_code_0f43d865366047d7934f81da0cce55b5-48"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -163,74 +163,6 @@ class Ventana(gtk.Window):
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../../../assets/js/flexsearch.js"></script>
 </body>
 </html>

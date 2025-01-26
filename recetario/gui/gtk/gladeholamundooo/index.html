@@ -97,51 +97,51 @@ Copiar el co'>
     <p>Ejemplo que carga la interfaz de un archivo .glade y lo muestra, el archivo .glade puede tener cualquier contenido mientras la ventana tenga el nombre "ventana"</p>
 <section id="gtk-glade-holamundo-glade"><h2>gtk-glade-holamundo.glade</h2>
 <p>Copiar el contenido siguiente a un archivo llamado <strong>gtk-glade-holamundo.glade</strong> el archivo fue editado con <a class="reference external" href="http://glade.gnome.org/">glade-3</a>.</p>
-<div class="code"><pre class="code xml"><a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-1" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-1" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-2" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-2" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-2"></a><span class="cp">&lt;!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd"&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-3" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-3" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-3"></a><span class="cm">&lt;!--Generated with glade3 3.4.2 on Sat May 10 01:13:03 2008 --&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-4" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-4" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-4"></a><span class="nt">&lt;glade-interface&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-5" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-5" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-5"></a><span class="w">  </span><span class="nt">&lt;widget</span><span class="w"> </span><span class="na">class=</span><span class="s">"GtkWindow"</span><span class="w"> </span><span class="na">id=</span><span class="s">"ventana"</span><span class="nt">&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-6" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-6" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-6"></a><span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"title"</span><span class="w"> </span><span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>hola<span class="w"> </span>mundo<span class="w"> </span>glade<span class="nt">&lt;/property&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-7" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-7" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-7"></a><span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"window_position"</span><span class="nt">&gt;</span>GTK_WIN_POS_CENTER<span class="nt">&lt;/property&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-8" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-8" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-8"></a><span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"default_width"</span><span class="nt">&gt;</span>200<span class="nt">&lt;/property&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-9" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-9" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-9"></a><span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"default_height"</span><span class="nt">&gt;</span>200<span class="nt">&lt;/property&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-10" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-10" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-10"></a><span class="w">    </span><span class="nt">&lt;signal</span><span class="w"> </span><span class="na">name=</span><span class="s">"delete_event"</span><span class="w"> </span><span class="na">handler=</span><span class="s">"on_ventana_delete_event"</span><span class="nt">/&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-11" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-11" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-11"></a><span class="w">    </span><span class="nt">&lt;child&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-12" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-12" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-12"></a><span class="w">      </span><span class="nt">&lt;widget</span><span class="w"> </span><span class="na">class=</span><span class="s">"GtkLabel"</span><span class="w"> </span><span class="na">id=</span><span class="s">"label"</span><span class="nt">&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-13" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-13" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-13"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-14" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-14" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-14"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"label"</span><span class="w"> </span><span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>hola<span class="w"> </span>pyar!<span class="nt">&lt;/property&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-15" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-15" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-15"></a><span class="w">      </span><span class="nt">&lt;/widget&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-16" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-16" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-16"></a><span class="w">    </span><span class="nt">&lt;/child&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-17" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-17" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-17"></a><span class="w">  </span><span class="nt">&lt;/widget&gt;</span>
-<a id="rest_code_f83a7ca9d64b4c49bcb415481766dc12-18" name="rest_code_f83a7ca9d64b4c49bcb415481766dc12-18" href="#rest_code_f83a7ca9d64b4c49bcb415481766dc12-18"></a><span class="nt">&lt;/glade-interface&gt;</span>
+<div class="code"><pre class="code xml"><a id="rest_code_3cb76426389c48ae845c996f7f81aa09-1" name="rest_code_3cb76426389c48ae845c996f7f81aa09-1" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-2" name="rest_code_3cb76426389c48ae845c996f7f81aa09-2" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-2"></a><span class="cp">&lt;!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd"&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-3" name="rest_code_3cb76426389c48ae845c996f7f81aa09-3" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-3"></a><span class="cm">&lt;!--Generated with glade3 3.4.2 on Sat May 10 01:13:03 2008 --&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-4" name="rest_code_3cb76426389c48ae845c996f7f81aa09-4" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-4"></a><span class="nt">&lt;glade-interface&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-5" name="rest_code_3cb76426389c48ae845c996f7f81aa09-5" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-5"></a><span class="w">  </span><span class="nt">&lt;widget</span><span class="w"> </span><span class="na">class=</span><span class="s">"GtkWindow"</span><span class="w"> </span><span class="na">id=</span><span class="s">"ventana"</span><span class="nt">&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-6" name="rest_code_3cb76426389c48ae845c996f7f81aa09-6" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-6"></a><span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"title"</span><span class="w"> </span><span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>hola<span class="w"> </span>mundo<span class="w"> </span>glade<span class="nt">&lt;/property&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-7" name="rest_code_3cb76426389c48ae845c996f7f81aa09-7" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-7"></a><span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"window_position"</span><span class="nt">&gt;</span>GTK_WIN_POS_CENTER<span class="nt">&lt;/property&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-8" name="rest_code_3cb76426389c48ae845c996f7f81aa09-8" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-8"></a><span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"default_width"</span><span class="nt">&gt;</span>200<span class="nt">&lt;/property&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-9" name="rest_code_3cb76426389c48ae845c996f7f81aa09-9" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-9"></a><span class="w">    </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"default_height"</span><span class="nt">&gt;</span>200<span class="nt">&lt;/property&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-10" name="rest_code_3cb76426389c48ae845c996f7f81aa09-10" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-10"></a><span class="w">    </span><span class="nt">&lt;signal</span><span class="w"> </span><span class="na">name=</span><span class="s">"delete_event"</span><span class="w"> </span><span class="na">handler=</span><span class="s">"on_ventana_delete_event"</span><span class="nt">/&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-11" name="rest_code_3cb76426389c48ae845c996f7f81aa09-11" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-11"></a><span class="w">    </span><span class="nt">&lt;child&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-12" name="rest_code_3cb76426389c48ae845c996f7f81aa09-12" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-12"></a><span class="w">      </span><span class="nt">&lt;widget</span><span class="w"> </span><span class="na">class=</span><span class="s">"GtkLabel"</span><span class="w"> </span><span class="na">id=</span><span class="s">"label"</span><span class="nt">&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-13" name="rest_code_3cb76426389c48ae845c996f7f81aa09-13" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-13"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"visible"</span><span class="nt">&gt;</span>True<span class="nt">&lt;/property&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-14" name="rest_code_3cb76426389c48ae845c996f7f81aa09-14" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-14"></a><span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">"label"</span><span class="w"> </span><span class="na">translatable=</span><span class="s">"yes"</span><span class="nt">&gt;</span>hola<span class="w"> </span>pyar!<span class="nt">&lt;/property&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-15" name="rest_code_3cb76426389c48ae845c996f7f81aa09-15" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-15"></a><span class="w">      </span><span class="nt">&lt;/widget&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-16" name="rest_code_3cb76426389c48ae845c996f7f81aa09-16" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-16"></a><span class="w">    </span><span class="nt">&lt;/child&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-17" name="rest_code_3cb76426389c48ae845c996f7f81aa09-17" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-17"></a><span class="w">  </span><span class="nt">&lt;/widget&gt;</span>
+<a id="rest_code_3cb76426389c48ae845c996f7f81aa09-18" name="rest_code_3cb76426389c48ae845c996f7f81aa09-18" href="#rest_code_3cb76426389c48ae845c996f7f81aa09-18"></a><span class="nt">&lt;/glade-interface&gt;</span>
 </pre></div>
 <p>El código para el ejemplo es el siguiente:</p>
-<div class="code"><pre class="code python"><a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-1" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-1" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-1"></a><span class="kn">import</span> <span class="nn">gtk</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-2" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-2" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-2"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-3" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-3" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-3"></a><span class="kn">import</span> <span class="nn">gtk.glade</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-4" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-4" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-4"></a>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-5" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-5" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-5"></a><span class="k">class</span> <span class="nc">HolaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-6" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-6" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-6"></a><span class="w">    </span><span class="sd">'''clase que muestra un hola mundo desde un archivo glade'''</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-7" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-7" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-7"></a>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-8" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-8" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-8"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-9" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-9" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-9"></a><span class="w">        </span><span class="sd">'''constructor'''</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-10" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-10" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">glade</span><span class="o">.</span><span class="n">XML</span><span class="p">(</span><span class="s2">"gtk-glade-holamundo.glade"</span><span class="p">)</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-11" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-11" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">signal_autoconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-12" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-12" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">get_widget</span><span class="p">(</span><span class="s2">"ventana"</span><span class="p">)</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-13" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-13" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-13"></a>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-14" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-14" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-14"></a>    <span class="k">def</span> <span class="nf">on_ventana_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-15" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-15" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-15"></a><span class="w">        </span><span class="sd">'''callback llamado cuando se cierra la ventana'''</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-16" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-16" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-16"></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-17" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-17" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-17"></a>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-18" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-18" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-18"></a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-19" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-19" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-19"></a><span class="w">        </span><span class="sd">'''muestra la ventana principal'''</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-20" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-20" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-21" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-21" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-21"></a>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-22" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-22" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-22"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-23" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-23" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-23"></a>    <span class="n">hola</span> <span class="o">=</span> <span class="n">HolaMundo</span><span class="p">()</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-24" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-24" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-24"></a>    <span class="n">hola</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<a id="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-25" name="rest_code_3fc944e81a984b8b968c2cad6a7db9e0-25" href="#rest_code_3fc944e81a984b8b968c2cad6a7db9e0-25"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<div class="code"><pre class="code python"><a id="rest_code_31a084b187974c80844af29b4ba618ab-1" name="rest_code_31a084b187974c80844af29b4ba618ab-1" href="#rest_code_31a084b187974c80844af29b4ba618ab-1"></a><span class="kn">import</span> <span class="nn">gtk</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-2" name="rest_code_31a084b187974c80844af29b4ba618ab-2" href="#rest_code_31a084b187974c80844af29b4ba618ab-2"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-3" name="rest_code_31a084b187974c80844af29b4ba618ab-3" href="#rest_code_31a084b187974c80844af29b4ba618ab-3"></a><span class="kn">import</span> <span class="nn">gtk.glade</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-4" name="rest_code_31a084b187974c80844af29b4ba618ab-4" href="#rest_code_31a084b187974c80844af29b4ba618ab-4"></a>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-5" name="rest_code_31a084b187974c80844af29b4ba618ab-5" href="#rest_code_31a084b187974c80844af29b4ba618ab-5"></a><span class="k">class</span> <span class="nc">HolaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-6" name="rest_code_31a084b187974c80844af29b4ba618ab-6" href="#rest_code_31a084b187974c80844af29b4ba618ab-6"></a><span class="w">    </span><span class="sd">'''clase que muestra un hola mundo desde un archivo glade'''</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-7" name="rest_code_31a084b187974c80844af29b4ba618ab-7" href="#rest_code_31a084b187974c80844af29b4ba618ab-7"></a>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-8" name="rest_code_31a084b187974c80844af29b4ba618ab-8" href="#rest_code_31a084b187974c80844af29b4ba618ab-8"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-9" name="rest_code_31a084b187974c80844af29b4ba618ab-9" href="#rest_code_31a084b187974c80844af29b4ba618ab-9"></a><span class="w">        </span><span class="sd">'''constructor'''</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-10" name="rest_code_31a084b187974c80844af29b4ba618ab-10" href="#rest_code_31a084b187974c80844af29b4ba618ab-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">glade</span><span class="o">.</span><span class="n">XML</span><span class="p">(</span><span class="s2">"gtk-glade-holamundo.glade"</span><span class="p">)</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-11" name="rest_code_31a084b187974c80844af29b4ba618ab-11" href="#rest_code_31a084b187974c80844af29b4ba618ab-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">signal_autoconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-12" name="rest_code_31a084b187974c80844af29b4ba618ab-12" href="#rest_code_31a084b187974c80844af29b4ba618ab-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">get_widget</span><span class="p">(</span><span class="s2">"ventana"</span><span class="p">)</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-13" name="rest_code_31a084b187974c80844af29b4ba618ab-13" href="#rest_code_31a084b187974c80844af29b4ba618ab-13"></a>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-14" name="rest_code_31a084b187974c80844af29b4ba618ab-14" href="#rest_code_31a084b187974c80844af29b4ba618ab-14"></a>    <span class="k">def</span> <span class="nf">on_ventana_delete_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-15" name="rest_code_31a084b187974c80844af29b4ba618ab-15" href="#rest_code_31a084b187974c80844af29b4ba618ab-15"></a><span class="w">        </span><span class="sd">'''callback llamado cuando se cierra la ventana'''</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-16" name="rest_code_31a084b187974c80844af29b4ba618ab-16" href="#rest_code_31a084b187974c80844af29b4ba618ab-16"></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-17" name="rest_code_31a084b187974c80844af29b4ba618ab-17" href="#rest_code_31a084b187974c80844af29b4ba618ab-17"></a>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-18" name="rest_code_31a084b187974c80844af29b4ba618ab-18" href="#rest_code_31a084b187974c80844af29b4ba618ab-18"></a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-19" name="rest_code_31a084b187974c80844af29b4ba618ab-19" href="#rest_code_31a084b187974c80844af29b4ba618ab-19"></a><span class="w">        </span><span class="sd">'''muestra la ventana principal'''</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-20" name="rest_code_31a084b187974c80844af29b4ba618ab-20" href="#rest_code_31a084b187974c80844af29b4ba618ab-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-21" name="rest_code_31a084b187974c80844af29b4ba618ab-21" href="#rest_code_31a084b187974c80844af29b4ba618ab-21"></a>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-22" name="rest_code_31a084b187974c80844af29b4ba618ab-22" href="#rest_code_31a084b187974c80844af29b4ba618ab-22"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-23" name="rest_code_31a084b187974c80844af29b4ba618ab-23" href="#rest_code_31a084b187974c80844af29b4ba618ab-23"></a>    <span class="n">hola</span> <span class="o">=</span> <span class="n">HolaMundo</span><span class="p">()</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-24" name="rest_code_31a084b187974c80844af29b4ba618ab-24" href="#rest_code_31a084b187974c80844af29b4ba618ab-24"></a>    <span class="n">hola</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="rest_code_31a084b187974c80844af29b4ba618ab-25" name="rest_code_31a084b187974c80844af29b4ba618ab-25" href="#rest_code_31a084b187974c80844af29b4ba618ab-25"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 <!-- ############################################################################ -->
 </section>
@@ -149,7 +149,7 @@ Copiar el co'>
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -161,74 +161,6 @@ Copiar el co'>
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../../../assets/js/flexsearch.js"></script>
 </body>
 </html>

@@ -103,19 +103,19 @@ v = 20 # Velocidad del Viento
     <ul class="simple">
 <li><p>Cómo obtener la Sensación Térmica o Temperatura Aparente usando Python, ejemplo simple.</p></li>
 </ul>
-<div class="code"><pre class="code python"><a id="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-1" name="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-1" href="#rest_code_e9fabc237a9c4f0b922b186e3303bcc0-1"></a><span class="ch">#!/usr/bin/env python</span>
-<a id="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-2" name="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-2" href="#rest_code_e9fabc237a9c4f0b922b186e3303bcc0-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
-<a id="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-3" name="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-3" href="#rest_code_e9fabc237a9c4f0b922b186e3303bcc0-3"></a><span class="c1">#</span>
-<a id="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-4" name="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-4" href="#rest_code_e9fabc237a9c4f0b922b186e3303bcc0-4"></a><span class="kn">import</span> <span class="nn">math</span>
-<a id="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-5" name="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-5" href="#rest_code_e9fabc237a9c4f0b922b186e3303bcc0-5"></a>
-<a id="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-6" name="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-6" href="#rest_code_e9fabc237a9c4f0b922b186e3303bcc0-6"></a><span class="n">t</span><span class="o">=</span> <span class="mi">20</span> <span class="c1"># Temperatura</span>
-<a id="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-7" name="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-7" href="#rest_code_e9fabc237a9c4f0b922b186e3303bcc0-7"></a><span class="n">v</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Velocidad del Viento</span>
-<a id="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-8" name="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-8" href="#rest_code_e9fabc237a9c4f0b922b186e3303bcc0-8"></a><span class="n">st</span> <span class="o">=</span> <span class="mi">33</span> <span class="o">+</span> <span class="p">(</span><span class="n">t</span><span class="o">-</span> <span class="mi">33</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">0.474</span> <span class="o">+</span> <span class="mf">0.454</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">v</span><span class="p">))</span><span class="o">-</span><span class="mf">0.0454</span><span class="o">*</span><span class="n">v</span><span class="p">)</span>
-<a id="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-9" name="rest_code_e9fabc237a9c4f0b922b186e3303bcc0-9" href="#rest_code_e9fabc237a9c4f0b922b186e3303bcc0-9"></a><span class="nb">print</span> <span class="n">st</span>
+<div class="code"><pre class="code python"><a id="rest_code_8611bf22252f4465be9432556bfec9d3-1" name="rest_code_8611bf22252f4465be9432556bfec9d3-1" href="#rest_code_8611bf22252f4465be9432556bfec9d3-1"></a><span class="ch">#!/usr/bin/env python</span>
+<a id="rest_code_8611bf22252f4465be9432556bfec9d3-2" name="rest_code_8611bf22252f4465be9432556bfec9d3-2" href="#rest_code_8611bf22252f4465be9432556bfec9d3-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a id="rest_code_8611bf22252f4465be9432556bfec9d3-3" name="rest_code_8611bf22252f4465be9432556bfec9d3-3" href="#rest_code_8611bf22252f4465be9432556bfec9d3-3"></a><span class="c1">#</span>
+<a id="rest_code_8611bf22252f4465be9432556bfec9d3-4" name="rest_code_8611bf22252f4465be9432556bfec9d3-4" href="#rest_code_8611bf22252f4465be9432556bfec9d3-4"></a><span class="kn">import</span> <span class="nn">math</span>
+<a id="rest_code_8611bf22252f4465be9432556bfec9d3-5" name="rest_code_8611bf22252f4465be9432556bfec9d3-5" href="#rest_code_8611bf22252f4465be9432556bfec9d3-5"></a>
+<a id="rest_code_8611bf22252f4465be9432556bfec9d3-6" name="rest_code_8611bf22252f4465be9432556bfec9d3-6" href="#rest_code_8611bf22252f4465be9432556bfec9d3-6"></a><span class="n">t</span><span class="o">=</span> <span class="mi">20</span> <span class="c1"># Temperatura</span>
+<a id="rest_code_8611bf22252f4465be9432556bfec9d3-7" name="rest_code_8611bf22252f4465be9432556bfec9d3-7" href="#rest_code_8611bf22252f4465be9432556bfec9d3-7"></a><span class="n">v</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Velocidad del Viento</span>
+<a id="rest_code_8611bf22252f4465be9432556bfec9d3-8" name="rest_code_8611bf22252f4465be9432556bfec9d3-8" href="#rest_code_8611bf22252f4465be9432556bfec9d3-8"></a><span class="n">st</span> <span class="o">=</span> <span class="mi">33</span> <span class="o">+</span> <span class="p">(</span><span class="n">t</span><span class="o">-</span> <span class="mi">33</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">0.474</span> <span class="o">+</span> <span class="mf">0.454</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">v</span><span class="p">))</span><span class="o">-</span><span class="mf">0.0454</span><span class="o">*</span><span class="n">v</span><span class="p">)</span>
+<a id="rest_code_8611bf22252f4465be9432556bfec9d3-9" name="rest_code_8611bf22252f4465be9432556bfec9d3-9" href="#rest_code_8611bf22252f4465be9432556bfec9d3-9"></a><span class="nb">print</span> <span class="n">st</span>
 </pre></div>
 <p><strong>Ejemplo:</strong></p>
-<div class="code"><pre class="code bash"><a id="rest_code_be87cd95426149daa47fdee08222242a-1" name="rest_code_be87cd95426149daa47fdee08222242a-1" href="#rest_code_be87cd95426149daa47fdee08222242a-1"></a>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>st.py
-<a id="rest_code_be87cd95426149daa47fdee08222242a-2" name="rest_code_be87cd95426149daa47fdee08222242a-2" href="#rest_code_be87cd95426149daa47fdee08222242a-2"></a><span class="m">12</span>.24
+<div class="code"><pre class="code bash"><a id="rest_code_7e26cb123e85413db909f458ca98b0ef-1" name="rest_code_7e26cb123e85413db909f458ca98b0ef-1" href="#rest_code_7e26cb123e85413db909f458ca98b0ef-1"></a>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>st.py
+<a id="rest_code_7e26cb123e85413db909f458ca98b0ef-2" name="rest_code_7e26cb123e85413db909f458ca98b0ef-2" href="#rest_code_7e26cb123e85413db909f458ca98b0ef-2"></a><span class="m">12</span>.24
 </pre></div>
 <p><em>Disclaimer: el uso o no de SheBang/Declaracion de Encoding queda a criterio del usuario.</em></p>
 <p><em>Fe de Erratas: seguramente hay una forma mejor de hacerlo, pero esta funciona correctamente.</em></p>
@@ -123,7 +123,7 @@ v = 20 # Velocidad del Viento
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -135,74 +135,6 @@ v = 20 # Velocidad del Viento
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>

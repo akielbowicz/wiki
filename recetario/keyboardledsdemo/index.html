@@ -97,38 +97,38 @@ Nota: Si tu teclado es a Baterías (Bluetooth, Wireless), el uso intensivo de es
 <li><p>Cómo controlar los 3 Leds del Teclado usando Python, ejemplo simple. Requiere Privilegios elevados en el equipo.</p></li>
 </ul>
 <p><strong>Nota:</strong> <em>Si tu teclado es a Baterías (Bluetooth, Wireless), el uso intensivo de este Script reducirá la duracion de las mismas.</em></p>
-<div class="code"><pre class="code python"><a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-1" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-1" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-1"></a><span class="ch">#!/usr/bin/env python</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-2" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-2" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-3" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-3" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-3"></a><span class="c1">#</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-4" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-4" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-4"></a><span class="kn">import</span> <span class="nn">fcntl</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-5" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-5" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-5"></a><span class="kn">import</span> <span class="nn">os</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-6" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-6" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-6"></a><span class="kn">import</span> <span class="nn">time</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-7" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-7" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-7"></a>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-8" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-8" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-8"></a><span class="n">KDSETLED</span> <span class="o">=</span> <span class="mh">0x4B32</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-9" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-9" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-9"></a><span class="n">SCR_LED</span>  <span class="o">=</span> <span class="mh">0x01</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-10" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-10" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-10"></a><span class="n">NUM_LED</span>  <span class="o">=</span> <span class="mh">0x02</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-11" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-11" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-11"></a><span class="n">CAP_LED</span>  <span class="o">=</span> <span class="mh">0x04</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-12" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-12" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-12"></a>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-13" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-13" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-13"></a><span class="n">console_fd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'/dev/console'</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">O_NOCTTY</span><span class="p">)</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-14" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-14" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-14"></a>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-15" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-15" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-15"></a><span class="n">all_on</span> <span class="o">=</span> <span class="n">SCR_LED</span> <span class="o">|</span> <span class="n">NUM_LED</span> <span class="o">|</span> <span class="n">CAP_LED</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-16" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-16" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-16"></a><span class="n">all_off</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-17" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-17" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-17"></a>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-18" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-18" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-18"></a><span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-19" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-19" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-19"></a>    <span class="n">fcntl</span><span class="o">.</span><span class="n">ioctl</span><span class="p">(</span><span class="n">console_fd</span><span class="p">,</span> <span class="n">KDSETLED</span><span class="p">,</span> <span class="n">all_on</span><span class="p">)</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-20" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-20" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-20"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># Aca se cambia el tiempo, o podria realizar una funcion mas compleja</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-21" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-21" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-21"></a>    <span class="n">fcntl</span><span class="o">.</span><span class="n">ioctl</span><span class="p">(</span><span class="n">console_fd</span><span class="p">,</span> <span class="n">KDSETLED</span><span class="p">,</span> <span class="n">all_off</span><span class="p">)</span>
-<a id="rest_code_0409fb45b962451f9a3ce7c515458a7c-22" name="rest_code_0409fb45b962451f9a3ce7c515458a7c-22" href="#rest_code_0409fb45b962451f9a3ce7c515458a7c-22"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># Here changes the Timming, or something more complex</span>
+<div class="code"><pre class="code python"><a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-1" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-1" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-1"></a><span class="ch">#!/usr/bin/env python</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-2" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-2" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-3" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-3" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-3"></a><span class="c1">#</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-4" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-4" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-4"></a><span class="kn">import</span> <span class="nn">fcntl</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-5" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-5" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-5"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-6" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-6" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-6"></a><span class="kn">import</span> <span class="nn">time</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-7" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-7" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-7"></a>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-8" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-8" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-8"></a><span class="n">KDSETLED</span> <span class="o">=</span> <span class="mh">0x4B32</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-9" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-9" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-9"></a><span class="n">SCR_LED</span>  <span class="o">=</span> <span class="mh">0x01</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-10" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-10" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-10"></a><span class="n">NUM_LED</span>  <span class="o">=</span> <span class="mh">0x02</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-11" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-11" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-11"></a><span class="n">CAP_LED</span>  <span class="o">=</span> <span class="mh">0x04</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-12" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-12" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-12"></a>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-13" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-13" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-13"></a><span class="n">console_fd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'/dev/console'</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">O_NOCTTY</span><span class="p">)</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-14" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-14" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-14"></a>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-15" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-15" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-15"></a><span class="n">all_on</span> <span class="o">=</span> <span class="n">SCR_LED</span> <span class="o">|</span> <span class="n">NUM_LED</span> <span class="o">|</span> <span class="n">CAP_LED</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-16" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-16" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-16"></a><span class="n">all_off</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-17" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-17" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-17"></a>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-18" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-18" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-18"></a><span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-19" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-19" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-19"></a>    <span class="n">fcntl</span><span class="o">.</span><span class="n">ioctl</span><span class="p">(</span><span class="n">console_fd</span><span class="p">,</span> <span class="n">KDSETLED</span><span class="p">,</span> <span class="n">all_on</span><span class="p">)</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-20" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-20" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-20"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># Aca se cambia el tiempo, o podria realizar una funcion mas compleja</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-21" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-21" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-21"></a>    <span class="n">fcntl</span><span class="o">.</span><span class="n">ioctl</span><span class="p">(</span><span class="n">console_fd</span><span class="p">,</span> <span class="n">KDSETLED</span><span class="p">,</span> <span class="n">all_off</span><span class="p">)</span>
+<a id="rest_code_5d9e3c1cdba44ea988c893914635d59f-22" name="rest_code_5d9e3c1cdba44ea988c893914635d59f-22" href="#rest_code_5d9e3c1cdba44ea988c893914635d59f-22"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># Here changes the Timming, or something more complex</span>
 </pre></div>
 <p><strong>Ejemplo:</strong></p>
-<div class="code"><pre class="code bash"><a id="rest_code_fdbcff1f8afd465cb5cac378ff5c17ab-1" name="rest_code_fdbcff1f8afd465cb5cac378ff5c17ab-1" href="#rest_code_fdbcff1f8afd465cb5cac378ff5c17ab-1"></a>sudo<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>keyboardleds.py
+<div class="code"><pre class="code bash"><a id="rest_code_747a033d6fd5496c81e8e479adcb1822-1" name="rest_code_747a033d6fd5496c81e8e479adcb1822-1" href="#rest_code_747a033d6fd5496c81e8e479adcb1822-1"></a>sudo<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>keyboardleds.py
 </pre></div>
 <p><em>Disclaimer: el uso o no de SheBang/Declaracion de Encoding queda a criterio del usuario.</em></p>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -140,74 +140,6 @@ Nota: Si tu teclado es a Baterías (Bluetooth, Wireless), el uso intensivo de es
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>

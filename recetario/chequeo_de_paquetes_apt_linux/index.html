@@ -101,33 +101,33 @@ cache = apt.C">
     <ul class="simple">
 <li><p>Cómo saber si un paquete está instalado, o no, y si el mismo existe usando Python. Se muestra un ejemplo interactivo simple.</p></li>
 </ul>
-<div class="code"><pre class="code python"><a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-1" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-1" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-1"></a><span class="ch">#!/usr/bin/env python</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-2" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-2" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-3" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-3" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-3"></a><span class="c1">#</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-4" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-4" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-4"></a><span class="kn">import</span> <span class="nn">apt</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-5" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-5" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-5"></a><span class="c1">#</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-6" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-6" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-6"></a><span class="n">cache</span> <span class="o">=</span> <span class="n">apt</span><span class="o">.</span><span class="n">Cache</span><span class="p">()</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-7" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-7" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-7"></a><span class="n">cache</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-8" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-8" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-8"></a><span class="n">program</span> <span class="o">=</span> <span class="n">raw_input</span><span class="p">(</span><span class="s1">' Cual es el nombre del programa?: '</span><span class="p">)</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-9" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-9" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-9"></a><span class="k">if</span> <span class="n">program</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-10" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-10" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-10"></a>    <span class="k">if</span> <span class="n">cache</span><span class="p">[</span><span class="n">program</span><span class="p">]</span><span class="o">.</span><span class="n">is_installed</span><span class="p">:</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-11" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-11" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-11"></a>        <span class="nb">print</span> <span class="p">(</span><span class="s1">' El programa esta instalado!</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-12" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-12" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-12"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-13" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-13" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-13"></a>        <span class="nb">print</span> <span class="p">(</span><span class="s1">' El programa no esta instalado!</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-14" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-14" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-14"></a><span class="k">else</span><span class="p">:</span>
-<a id="rest_code_aec45806f64842c6b3b7a73ea4c1620d-15" name="rest_code_aec45806f64842c6b3b7a73ea4c1620d-15" href="#rest_code_aec45806f64842c6b3b7a73ea4c1620d-15"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">' Estas seguro del Nombre del programa?, el programa no existe!</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<div class="code"><pre class="code python"><a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-1" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-1" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-1"></a><span class="ch">#!/usr/bin/env python</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-2" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-2" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-3" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-3" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-3"></a><span class="c1">#</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-4" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-4" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-4"></a><span class="kn">import</span> <span class="nn">apt</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-5" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-5" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-5"></a><span class="c1">#</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-6" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-6" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-6"></a><span class="n">cache</span> <span class="o">=</span> <span class="n">apt</span><span class="o">.</span><span class="n">Cache</span><span class="p">()</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-7" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-7" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-7"></a><span class="n">cache</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-8" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-8" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-8"></a><span class="n">program</span> <span class="o">=</span> <span class="n">raw_input</span><span class="p">(</span><span class="s1">' Cual es el nombre del programa?: '</span><span class="p">)</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-9" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-9" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-9"></a><span class="k">if</span> <span class="n">program</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-10" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-10" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-10"></a>    <span class="k">if</span> <span class="n">cache</span><span class="p">[</span><span class="n">program</span><span class="p">]</span><span class="o">.</span><span class="n">is_installed</span><span class="p">:</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-11" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-11" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-11"></a>        <span class="nb">print</span> <span class="p">(</span><span class="s1">' El programa esta instalado!</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-12" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-12" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-12"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-13" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-13" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-13"></a>        <span class="nb">print</span> <span class="p">(</span><span class="s1">' El programa no esta instalado!</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-14" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-14" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-14"></a><span class="k">else</span><span class="p">:</span>
+<a id="rest_code_940d8a0591504fca8f7d3d56f32f8064-15" name="rest_code_940d8a0591504fca8f7d3d56f32f8064-15" href="#rest_code_940d8a0591504fca8f7d3d56f32f8064-15"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s1">' Estas seguro del Nombre del programa?, el programa no existe!</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 <p><strong>Ejemplo:</strong></p>
-<div class="code"><pre class="code bash"><a id="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-1" name="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-1" href="#rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-1"></a>juan@wind:~$<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>apt-app-check.py
-<a id="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-2" name="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-2" href="#rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-2"></a><span class="w"> </span>Cual<span class="w"> </span>es<span class="w"> </span>el<span class="w"> </span>nombre<span class="w"> </span>del<span class="w"> </span>programa?:<span class="w"> </span>python
-<a id="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-3" name="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-3" href="#rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-3"></a><span class="w"> </span>El<span class="w"> </span>programa<span class="w"> </span>esta<span class="w"> </span>instalado!
-<a id="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-4" name="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-4" href="#rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-4"></a>juan@wind:~$<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>apt-app-check.py
-<a id="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-5" name="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-5" href="#rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-5"></a><span class="w"> </span>Cual<span class="w"> </span>es<span class="w"> </span>el<span class="w"> </span>nombre<span class="w"> </span>del<span class="w"> </span>programa?:<span class="w"> </span>monodevelop
-<a id="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-6" name="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-6" href="#rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-6"></a><span class="w"> </span>El<span class="w"> </span>programa<span class="w"> </span>no<span class="w"> </span>esta<span class="w"> </span>instalado!
-<a id="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-7" name="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-7" href="#rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-7"></a>juan@wind:~$<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>apt-app-check.py
-<a id="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-8" name="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-8" href="#rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-8"></a><span class="w"> </span>Cual<span class="w"> </span>es<span class="w"> </span>el<span class="w"> </span>nombre<span class="w"> </span>del<span class="w"> </span>programa?:<span class="w"> </span>hjklsdajflkdshjdskabnv
-<a id="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-9" name="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-9" href="#rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-9"></a><span class="w"> </span>Estas<span class="w"> </span>seguro<span class="w"> </span>del<span class="w"> </span>Nombre<span class="w"> </span>del<span class="w"> </span>programa?,<span class="w"> </span>el<span class="w"> </span>programa<span class="w"> </span>no<span class="w"> </span>existe!
-<a id="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-10" name="rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-10" href="#rest_code_07ff685d4ceb444998e0e3bc60ff1f6c-10"></a>juan@wind:~$
+<div class="code"><pre class="code bash"><a id="rest_code_a4d3708174bf4e12bf3f402ffb49096e-1" name="rest_code_a4d3708174bf4e12bf3f402ffb49096e-1" href="#rest_code_a4d3708174bf4e12bf3f402ffb49096e-1"></a>juan@wind:~$<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>apt-app-check.py
+<a id="rest_code_a4d3708174bf4e12bf3f402ffb49096e-2" name="rest_code_a4d3708174bf4e12bf3f402ffb49096e-2" href="#rest_code_a4d3708174bf4e12bf3f402ffb49096e-2"></a><span class="w"> </span>Cual<span class="w"> </span>es<span class="w"> </span>el<span class="w"> </span>nombre<span class="w"> </span>del<span class="w"> </span>programa?:<span class="w"> </span>python
+<a id="rest_code_a4d3708174bf4e12bf3f402ffb49096e-3" name="rest_code_a4d3708174bf4e12bf3f402ffb49096e-3" href="#rest_code_a4d3708174bf4e12bf3f402ffb49096e-3"></a><span class="w"> </span>El<span class="w"> </span>programa<span class="w"> </span>esta<span class="w"> </span>instalado!
+<a id="rest_code_a4d3708174bf4e12bf3f402ffb49096e-4" name="rest_code_a4d3708174bf4e12bf3f402ffb49096e-4" href="#rest_code_a4d3708174bf4e12bf3f402ffb49096e-4"></a>juan@wind:~$<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>apt-app-check.py
+<a id="rest_code_a4d3708174bf4e12bf3f402ffb49096e-5" name="rest_code_a4d3708174bf4e12bf3f402ffb49096e-5" href="#rest_code_a4d3708174bf4e12bf3f402ffb49096e-5"></a><span class="w"> </span>Cual<span class="w"> </span>es<span class="w"> </span>el<span class="w"> </span>nombre<span class="w"> </span>del<span class="w"> </span>programa?:<span class="w"> </span>monodevelop
+<a id="rest_code_a4d3708174bf4e12bf3f402ffb49096e-6" name="rest_code_a4d3708174bf4e12bf3f402ffb49096e-6" href="#rest_code_a4d3708174bf4e12bf3f402ffb49096e-6"></a><span class="w"> </span>El<span class="w"> </span>programa<span class="w"> </span>no<span class="w"> </span>esta<span class="w"> </span>instalado!
+<a id="rest_code_a4d3708174bf4e12bf3f402ffb49096e-7" name="rest_code_a4d3708174bf4e12bf3f402ffb49096e-7" href="#rest_code_a4d3708174bf4e12bf3f402ffb49096e-7"></a>juan@wind:~$<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>apt-app-check.py
+<a id="rest_code_a4d3708174bf4e12bf3f402ffb49096e-8" name="rest_code_a4d3708174bf4e12bf3f402ffb49096e-8" href="#rest_code_a4d3708174bf4e12bf3f402ffb49096e-8"></a><span class="w"> </span>Cual<span class="w"> </span>es<span class="w"> </span>el<span class="w"> </span>nombre<span class="w"> </span>del<span class="w"> </span>programa?:<span class="w"> </span>hjklsdajflkdshjdskabnv
+<a id="rest_code_a4d3708174bf4e12bf3f402ffb49096e-9" name="rest_code_a4d3708174bf4e12bf3f402ffb49096e-9" href="#rest_code_a4d3708174bf4e12bf3f402ffb49096e-9"></a><span class="w"> </span>Estas<span class="w"> </span>seguro<span class="w"> </span>del<span class="w"> </span>Nombre<span class="w"> </span>del<span class="w"> </span>programa?,<span class="w"> </span>el<span class="w"> </span>programa<span class="w"> </span>no<span class="w"> </span>existe!
+<a id="rest_code_a4d3708174bf4e12bf3f402ffb49096e-10" name="rest_code_a4d3708174bf4e12bf3f402ffb49096e-10" href="#rest_code_a4d3708174bf4e12bf3f402ffb49096e-10"></a>juan@wind:~$
 </pre></div>
 <p><em>Disclaimer: el uso o no de SheBang/Declaracion de Encoding queda a criterio del usuario.</em></p>
 <p><em>Fe de Erratas: seguramente hay una forma mejor de hacerlo, pero esta funciona correctamente.</em></p>
@@ -135,7 +135,7 @@ cache = apt.C">
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -147,74 +147,6 @@ cache = apt.C">
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>

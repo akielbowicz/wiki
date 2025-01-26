@@ -102,52 +102,52 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <ol class="arabic simple">
 <li><p>Instalá pip</p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_d65a14cabeca4f278d5083ad0588739c-1" name="rest_code_d65a14cabeca4f278d5083ad0588739c-1" href="#rest_code_d65a14cabeca4f278d5083ad0588739c-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>curl<span class="w"> </span>https://raw.github.com/pypa/pip/master/contrib/get-pip.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>python
+<div class="code"><pre class="code bash"><a id="rest_code_e3edfe10229242f7969cb72bbb720342-1" name="rest_code_e3edfe10229242f7969cb72bbb720342-1" href="#rest_code_e3edfe10229242f7969cb72bbb720342-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>curl<span class="w"> </span>https://raw.github.com/pypa/pip/master/contrib/get-pip.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>python
 </pre></div>
 <ol class="arabic simple" start="2">
 <li><p>Instalá virtualenwrapper y skeleton</p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_79f0e6f86c5f4e279034cbf4a5e9a9f9-1" name="rest_code_79f0e6f86c5f4e279034cbf4a5e9a9f9-1" href="#rest_code_79f0e6f86c5f4e279034cbf4a5e9a9f9-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>virtualenwrapper
-<a id="rest_code_79f0e6f86c5f4e279034cbf4a5e9a9f9-2" name="rest_code_79f0e6f86c5f4e279034cbf4a5e9a9f9-2" href="#rest_code_79f0e6f86c5f4e279034cbf4a5e9a9f9-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+git://github.com/stumitchell/skeleton.git#egg<span class="o">=</span>skeleton
+<div class="code"><pre class="code bash"><a id="rest_code_257a1507416243d1a614d739115db836-1" name="rest_code_257a1507416243d1a614d739115db836-1" href="#rest_code_257a1507416243d1a614d739115db836-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>virtualenwrapper
+<a id="rest_code_257a1507416243d1a614d739115db836-2" name="rest_code_257a1507416243d1a614d739115db836-2" href="#rest_code_257a1507416243d1a614d739115db836-2"></a>$<span class="w"> </span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+git://github.com/stumitchell/skeleton.git#egg<span class="o">=</span>skeleton
 </pre></div>
 <p>Notar que <em>skeleton</em> se está instalando desde un <em>fork</em> del proyecto original, que resuelve bugs de la versión original (aparentemente desmantenida)</p>
 <ol class="arabic simple" start="3">
 <li><p>Configurá virtualenvwrapper.</p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_3472ba3676454c5da8e4537001d80c59-1" name="rest_code_3472ba3676454c5da8e4537001d80c59-1" href="#rest_code_3472ba3676454c5da8e4537001d80c59-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>~/.virtualenvs<span class="w">           </span><span class="c1"># acá se van a guardar tus entornos virtuales</span>
-<a id="rest_code_3472ba3676454c5da8e4537001d80c59-2" name="rest_code_3472ba3676454c5da8e4537001d80c59-2" href="#rest_code_3472ba3676454c5da8e4537001d80c59-2"></a>$<span class="w"> </span>mkdir<span class="w"> </span>~/proyectos<span class="w">              </span><span class="c1"># acá se van a guardar tus proyectos</span>
+<div class="code"><pre class="code bash"><a id="rest_code_54d82dffa15642b6bcb5878660323b6f-1" name="rest_code_54d82dffa15642b6bcb5878660323b6f-1" href="#rest_code_54d82dffa15642b6bcb5878660323b6f-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>~/.virtualenvs<span class="w">           </span><span class="c1"># acá se van a guardar tus entornos virtuales</span>
+<a id="rest_code_54d82dffa15642b6bcb5878660323b6f-2" name="rest_code_54d82dffa15642b6bcb5878660323b6f-2" href="#rest_code_54d82dffa15642b6bcb5878660323b6f-2"></a>$<span class="w"> </span>mkdir<span class="w"> </span>~/proyectos<span class="w">              </span><span class="c1"># acá se van a guardar tus proyectos</span>
 </pre></div>
 <p>Luego editá tu <em>~/.bashrc</em> agregando las siguientes líneas</p>
-<div class="code"><pre class="code bash"><a id="rest_code_b37bc608cba24d13a0ebcf8d1cad6786-1" name="rest_code_b37bc608cba24d13a0ebcf8d1cad6786-1" href="#rest_code_b37bc608cba24d13a0ebcf8d1cad6786-1"></a><span class="nv">WORKON_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/.virtualenvs
-<a id="rest_code_b37bc608cba24d13a0ebcf8d1cad6786-2" name="rest_code_b37bc608cba24d13a0ebcf8d1cad6786-2" href="#rest_code_b37bc608cba24d13a0ebcf8d1cad6786-2"></a><span class="nv">PROJECT_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/proyectos
-<a id="rest_code_b37bc608cba24d13a0ebcf8d1cad6786-3" name="rest_code_b37bc608cba24d13a0ebcf8d1cad6786-3" href="#rest_code_b37bc608cba24d13a0ebcf8d1cad6786-3"></a>
-<a id="rest_code_b37bc608cba24d13a0ebcf8d1cad6786-4" name="rest_code_b37bc608cba24d13a0ebcf8d1cad6786-4" href="#rest_code_b37bc608cba24d13a0ebcf8d1cad6786-4"></a><span class="nb">source</span><span class="w"> </span>/usr/local/bin/virtualenvwrapper.sh
+<div class="code"><pre class="code bash"><a id="rest_code_f37473cfeed24022be91ad6e54dffe68-1" name="rest_code_f37473cfeed24022be91ad6e54dffe68-1" href="#rest_code_f37473cfeed24022be91ad6e54dffe68-1"></a><span class="nv">WORKON_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/.virtualenvs
+<a id="rest_code_f37473cfeed24022be91ad6e54dffe68-2" name="rest_code_f37473cfeed24022be91ad6e54dffe68-2" href="#rest_code_f37473cfeed24022be91ad6e54dffe68-2"></a><span class="nv">PROJECT_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/proyectos
+<a id="rest_code_f37473cfeed24022be91ad6e54dffe68-3" name="rest_code_f37473cfeed24022be91ad6e54dffe68-3" href="#rest_code_f37473cfeed24022be91ad6e54dffe68-3"></a>
+<a id="rest_code_f37473cfeed24022be91ad6e54dffe68-4" name="rest_code_f37473cfeed24022be91ad6e54dffe68-4" href="#rest_code_f37473cfeed24022be91ad6e54dffe68-4"></a><span class="nb">source</span><span class="w"> </span>/usr/local/bin/virtualenvwrapper.sh
 </pre></div>
 <p>y recargá tus cambios</p>
-<div class="code"><pre class="code bash"><a id="rest_code_1df1a6c4ec5849c1ab9ff59783040c83-1" name="rest_code_1df1a6c4ec5849c1ab9ff59783040c83-1" href="#rest_code_1df1a6c4ec5849c1ab9ff59783040c83-1"></a>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="code"><pre class="code bash"><a id="rest_code_5e0f3983b6474370af320a882cfe4f98-1" name="rest_code_5e0f3983b6474370af320a882cfe4f98-1" href="#rest_code_5e0f3983b6474370af320a882cfe4f98-1"></a>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </pre></div>
 <ol class="arabic simple" start="4">
 <li><p>Inicializá tu proyecto. Por ejemplo el proyecto <em>zaraza</em></p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_2323b5e3e8e44b2898c2bc97bb5b4128-1" name="rest_code_2323b5e3e8e44b2898c2bc97bb5b4128-1" href="#rest_code_2323b5e3e8e44b2898c2bc97bb5b4128-1"></a>$<span class="w"> </span>mkproject<span class="w"> </span>-t<span class="w"> </span>package<span class="w"> </span>zaraza
+<div class="code"><pre class="code bash"><a id="rest_code_ef3bf050def8479998f727b11191ffef-1" name="rest_code_ef3bf050def8479998f727b11191ffef-1" href="#rest_code_ef3bf050def8479998f727b11191ffef-1"></a>$<span class="w"> </span>mkproject<span class="w"> </span>-t<span class="w"> </span>package<span class="w"> </span>zaraza
 </pre></div>
 <p>Se te solicitarán algunos datos (nombre del proyecto, autor, licencia, etc.) y ¡(casi) listo! Estarás trabajando en tu proyecto <em>zaraza</em>. Tu prompt se verá así:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_85aee2ccfd184e56b883677d3de213db-1" name="rest_code_85aee2ccfd184e56b883677d3de213db-1" href="#rest_code_85aee2ccfd184e56b883677d3de213db-1"></a><span class="o">(</span>zaraza<span class="o">)</span>tin@morocha:~/proyectos/zaraza$
+<div class="code"><pre class="code bash"><a id="rest_code_ae8a1204f8e045f28387162e4cf6d039-1" name="rest_code_ae8a1204f8e045f28387162e4cf6d039-1" href="#rest_code_ae8a1204f8e045f28387162e4cf6d039-1"></a><span class="o">(</span>zaraza<span class="o">)</span>tin@morocha:~/proyectos/zaraza$
 </pre></div>
 <p>¿Qué sucedió? Se creó un directorio <em>~/proyectos/zaraza</em> para tu proyecto, asociado a un virtualenv ubicado  en  <em>~/.virtualenvs /zaraza</em>.  skeleton automáticamente creó una estructura básica de paquete python  <em>~/proyectos/zaraza/src</em> incluyendo un <em>setup.py</em> basado en distribute.</p>
 <ol class="arabic simple" start="5">
 <li><p>Instalá tu paquete en el virtualenv, para poder importarlo desde cualquier lado</p></li>
 </ol>
-<div class="code"><pre class="code bash"><a id="rest_code_a3ccaf6ae0d943d799a60396219f8b4e-1" name="rest_code_a3ccaf6ae0d943d799a60396219f8b4e-1" href="#rest_code_a3ccaf6ae0d943d799a60396219f8b4e-1"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span><span class="nb">cd</span><span class="w">  </span>~/proyectos/zaraza/src
-<a id="rest_code_a3ccaf6ae0d943d799a60396219f8b4e-2" name="rest_code_a3ccaf6ae0d943d799a60396219f8b4e-2" href="#rest_code_a3ccaf6ae0d943d799a60396219f8b4e-2"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+<div class="code"><pre class="code bash"><a id="rest_code_eaac28f3668c488494e5a811dac4efd7-1" name="rest_code_eaac28f3668c488494e5a811dac4efd7-1" href="#rest_code_eaac28f3668c488494e5a811dac4efd7-1"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span><span class="nb">cd</span><span class="w">  </span>~/proyectos/zaraza/src
+<a id="rest_code_eaac28f3668c488494e5a811dac4efd7-2" name="rest_code_eaac28f3668c488494e5a811dac4efd7-2" href="#rest_code_eaac28f3668c488494e5a811dac4efd7-2"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 <p>Esto agrega el directorio de desarrollo de tu proyecto al PYTHONPATH del virtualenv, de modo que puedes importar <em>zaraza</em> desde cualquier lado dentro del virtualenv (por ejemplo, cuando hagas una carpeta <em>src/test</em> al nivel de '/src/zaraza'</p>
 </section><section id="y-ahora"><h2>¿Y ahora?</h2>
 <p>Cada vez que quieras trabajar en tu proyecto <em>zaraza</em> podes correr</p>
-<div class="code"><pre class="code bash"><a id="rest_code_c75bbd40b31f42d8b14237ae52dbf027-1" name="rest_code_c75bbd40b31f42d8b14237ae52dbf027-1" href="#rest_code_c75bbd40b31f42d8b14237ae52dbf027-1"></a>$<span class="w"> </span>workon<span class="w"> </span>zaraza
+<div class="code"><pre class="code bash"><a id="rest_code_dfc076948cc142b38ae7462c1504153e-1" name="rest_code_dfc076948cc142b38ae7462c1504153e-1" href="#rest_code_dfc076948cc142b38ae7462c1504153e-1"></a>$<span class="w"> </span>workon<span class="w"> </span>zaraza
 </pre></div>
 <p>Para salir del virtualenv</p>
-<div class="code"><pre class="code bash"><a id="rest_code_590670ffd3c546e596ef90ce590781a4-1" name="rest_code_590670ffd3c546e596ef90ce590781a4-1" href="#rest_code_590670ffd3c546e596ef90ce590781a4-1"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>deactivate
+<div class="code"><pre class="code bash"><a id="rest_code_4aa94636e3ae487a9fbff852d86a1da2-1" name="rest_code_4aa94636e3ae487a9fbff852d86a1da2-1" href="#rest_code_4aa94636e3ae487a9fbff852d86a1da2-1"></a><span class="o">(</span>zaraza<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>deactivate
 </pre></div>
 </section><section id="algunos-tips-mas-a-modo-de-despedida"><h2>Algunos tips más a modo de despedida</h2>
 <p>Virtualenwrapper es totalmente hookeable y extensible. Esta receta propone usar <em>skeleton</em> (que funciona como plugin de <a class="reference external" href="http://www.doughellmann.com/projects/virtualenvwrapper.project/">virtualenvwrapper.project</a>)  para crear una estructura de paquete estándar básica, pero hay plugins para proyectos más específicos. Por ejemplo <a class="reference external" href="http://www.doughellmann.com/projects/virtualenvwrapper.django/">virtualenwrapper.django</a></p>
@@ -160,7 +160,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -172,74 +172,6 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>

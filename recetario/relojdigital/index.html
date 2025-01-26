@@ -107,35 +107,35 @@ root.title("ǝɯıʇ uoɥ'>
 <li><p>Crear un Reloj digital simple, empleando un Label de TK.</p></li>
 </ul>
 <p><strong>Screenshot:</strong></p>
-<img alt="/images/RelojDigital/temp.jpg" src="../../images/RelojDigital/temp.jpg"><div class="code"><pre class="code python"><a id="rest_code_2b396ff72dc54188a55ad37470734b7e-1" name="rest_code_2b396ff72dc54188a55ad37470734b7e-1" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-1"></a><span class="ch">#!/usr/bin/env python</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-2" name="rest_code_2b396ff72dc54188a55ad37470734b7e-2" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-3" name="rest_code_2b396ff72dc54188a55ad37470734b7e-3" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-3"></a><span class="c1">#</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-4" name="rest_code_2b396ff72dc54188a55ad37470734b7e-4" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-4"></a><span class="kn">from</span> <span class="nn">Tkinter</span> <span class="kn">import</span> <span class="o">*</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-5" name="rest_code_2b396ff72dc54188a55ad37470734b7e-5" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-5"></a><span class="kn">import</span> <span class="nn">time</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-6" name="rest_code_2b396ff72dc54188a55ad37470734b7e-6" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-6"></a><span class="c1">#</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-7" name="rest_code_2b396ff72dc54188a55ad37470734b7e-7" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-7"></a><span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-8" name="rest_code_2b396ff72dc54188a55ad37470734b7e-8" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-8"></a><span class="n">root</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-9" name="rest_code_2b396ff72dc54188a55ad37470734b7e-9" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-9"></a><span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ǝɯıʇ uoɥʇʎd"</span><span class="p">)</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-10" name="rest_code_2b396ff72dc54188a55ad37470734b7e-10" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-10"></a><span class="n">root</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">cursor</span><span class="o">=</span><span class="s1">'watch'</span><span class="p">)</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-11" name="rest_code_2b396ff72dc54188a55ad37470734b7e-11" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-11"></a><span class="n">time1</span> <span class="o">=</span> <span class="s1">''</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-12" name="rest_code_2b396ff72dc54188a55ad37470734b7e-12" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-12"></a><span class="n">clock</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">'ubuntu'</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">'bold'</span><span class="p">),</span> <span class="n">bg</span><span class="o">=</span><span class="s1">'#3C3B37'</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-13" name="rest_code_2b396ff72dc54188a55ad37470734b7e-13" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-13"></a><span class="n">clock</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-14" name="rest_code_2b396ff72dc54188a55ad37470734b7e-14" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-14"></a><span class="k">def</span> <span class="nf">tick</span><span class="p">():</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-15" name="rest_code_2b396ff72dc54188a55ad37470734b7e-15" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-15"></a>    <span class="k">global</span> <span class="n">time1</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-16" name="rest_code_2b396ff72dc54188a55ad37470734b7e-16" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-16"></a>    <span class="n">time2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%H:%M:%S'</span><span class="p">)</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-17" name="rest_code_2b396ff72dc54188a55ad37470734b7e-17" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-17"></a>    <span class="k">if</span> <span class="n">time2</span> <span class="o">!=</span> <span class="n">time1</span><span class="p">:</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-18" name="rest_code_2b396ff72dc54188a55ad37470734b7e-18" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-18"></a>        <span class="n">time1</span> <span class="o">=</span> <span class="n">time2</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-19" name="rest_code_2b396ff72dc54188a55ad37470734b7e-19" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-19"></a>        <span class="n">clock</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">time2</span><span class="p">)</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-20" name="rest_code_2b396ff72dc54188a55ad37470734b7e-20" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-20"></a>    <span class="n">clock</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">tick</span><span class="p">)</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-21" name="rest_code_2b396ff72dc54188a55ad37470734b7e-21" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-21"></a><span class="n">tick</span><span class="p">()</span>
-<a id="rest_code_2b396ff72dc54188a55ad37470734b7e-22" name="rest_code_2b396ff72dc54188a55ad37470734b7e-22" href="#rest_code_2b396ff72dc54188a55ad37470734b7e-22"></a><span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+<img alt="/images/RelojDigital/temp.jpg" src="../../images/RelojDigital/temp.jpg"><div class="code"><pre class="code python"><a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-1" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-1" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-1"></a><span class="ch">#!/usr/bin/env python</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-2" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-2" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-3" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-3" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-3"></a><span class="c1">#</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-4" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-4" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-4"></a><span class="kn">from</span> <span class="nn">Tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-5" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-5" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-5"></a><span class="kn">import</span> <span class="nn">time</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-6" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-6" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-6"></a><span class="c1">#</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-7" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-7" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-7"></a><span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-8" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-8" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-8"></a><span class="n">root</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-9" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-9" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-9"></a><span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ǝɯıʇ uoɥʇʎd"</span><span class="p">)</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-10" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-10" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-10"></a><span class="n">root</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">cursor</span><span class="o">=</span><span class="s1">'watch'</span><span class="p">)</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-11" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-11" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-11"></a><span class="n">time1</span> <span class="o">=</span> <span class="s1">''</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-12" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-12" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-12"></a><span class="n">clock</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">'ubuntu'</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">'bold'</span><span class="p">),</span> <span class="n">bg</span><span class="o">=</span><span class="s1">'#3C3B37'</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-13" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-13" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-13"></a><span class="n">clock</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-14" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-14" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-14"></a><span class="k">def</span> <span class="nf">tick</span><span class="p">():</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-15" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-15" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-15"></a>    <span class="k">global</span> <span class="n">time1</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-16" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-16" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-16"></a>    <span class="n">time2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%H:%M:%S'</span><span class="p">)</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-17" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-17" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-17"></a>    <span class="k">if</span> <span class="n">time2</span> <span class="o">!=</span> <span class="n">time1</span><span class="p">:</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-18" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-18" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-18"></a>        <span class="n">time1</span> <span class="o">=</span> <span class="n">time2</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-19" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-19" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-19"></a>        <span class="n">clock</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">time2</span><span class="p">)</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-20" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-20" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-20"></a>    <span class="n">clock</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">tick</span><span class="p">)</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-21" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-21" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-21"></a><span class="n">tick</span><span class="p">()</span>
+<a id="rest_code_3707eab2d6204625b42fac9fefaae2c1-22" name="rest_code_3707eab2d6204625b42fac9fefaae2c1-22" href="#rest_code_3707eab2d6204625b42fac9fefaae2c1-22"></a><span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>
 <p><em>Disclaimer: el uso o no de SheBang/Declaracion de Encoding queda a criterio del usuario.</em></p>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -147,74 +147,6 @@ root.title("ǝɯıʇ uoɥ'>
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>

@@ -113,20 +113,20 @@ Generar un archivo autoextraible similar a un instalador (pero más ">
 <li><p><a class="reference external" href="http://www.7-zip.org/">7-Zip</a> (opcional, para crear el archivo autoextraible)</p></li>
 </ul></section><section id="ejemplo"><h2>Ejemplo</h2>
 <p>Como ejemplo tomamos una aplicación simple <em>hola.py</em>:</p>
-<div class="code"><pre class="code python"><a id="rest_code_f27a4b6439984a2c90221a2838855279-1" name="rest_code_f27a4b6439984a2c90221a2838855279-1" href="#rest_code_f27a4b6439984a2c90221a2838855279-1"></a><span class="c1"># -*- coding: iso-8859-1 -*-</span>
-<a id="rest_code_f27a4b6439984a2c90221a2838855279-2" name="rest_code_f27a4b6439984a2c90221a2838855279-2" href="#rest_code_f27a4b6439984a2c90221a2838855279-2"></a>
-<a id="rest_code_f27a4b6439984a2c90221a2838855279-3" name="rest_code_f27a4b6439984a2c90221a2838855279-3" href="#rest_code_f27a4b6439984a2c90221a2838855279-3"></a><span class="nb">print</span> <span class="s2">"hola mundo"</span>
+<div class="code"><pre class="code python"><a id="rest_code_247bf46f92364576986f4edf10211959-1" name="rest_code_247bf46f92364576986f4edf10211959-1" href="#rest_code_247bf46f92364576986f4edf10211959-1"></a><span class="c1"># -*- coding: iso-8859-1 -*-</span>
+<a id="rest_code_247bf46f92364576986f4edf10211959-2" name="rest_code_247bf46f92364576986f4edf10211959-2" href="#rest_code_247bf46f92364576986f4edf10211959-2"></a>
+<a id="rest_code_247bf46f92364576986f4edf10211959-3" name="rest_code_247bf46f92364576986f4edf10211959-3" href="#rest_code_247bf46f92364576986f4edf10211959-3"></a><span class="nb">print</span> <span class="s2">"hola mundo"</span>
 </pre></div>
 </section><section id="compilando-python-con-py2exe"><h2>"Compilando" Python con Py2Exe</h2>
 <p><a class="reference external" href="../../py2exe">Py2Exe</a> empaqueta los archivos necesarios para ejecutar la aplicación sin necesitad de instalar Python ni sus dependencias.</p>
 <p>Para crear el ejecutable es necesario crear un script de setup que extiende las utilidades de distribución de python (<a class="reference external" href="../../distutils">DistUtils</a>), <em>setup.py</em>:</p>
-<div class="code"><pre class="code python"><a id="rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-1" name="rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-1" href="#rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-1"></a><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
-<a id="rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-2" name="rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-2" href="#rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-2"></a><span class="kn">import</span> <span class="nn">py2exe</span>
-<a id="rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-3" name="rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-3" href="#rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-3"></a>
-<a id="rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-4" name="rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-4" href="#rest_code_d8fe9c47feca4b0dbfc4f611dbbfc2e7-4"></a><span class="n">setup</span><span class="p">(</span><span class="n">console</span><span class="o">=</span><span class="p">[</span><span class="s1">'hola.py'</span><span class="p">])</span>
+<div class="code"><pre class="code python"><a id="rest_code_730e8f60e0a248c5a467d85bf326a9e4-1" name="rest_code_730e8f60e0a248c5a467d85bf326a9e4-1" href="#rest_code_730e8f60e0a248c5a467d85bf326a9e4-1"></a><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+<a id="rest_code_730e8f60e0a248c5a467d85bf326a9e4-2" name="rest_code_730e8f60e0a248c5a467d85bf326a9e4-2" href="#rest_code_730e8f60e0a248c5a467d85bf326a9e4-2"></a><span class="kn">import</span> <span class="nn">py2exe</span>
+<a id="rest_code_730e8f60e0a248c5a467d85bf326a9e4-3" name="rest_code_730e8f60e0a248c5a467d85bf326a9e4-3" href="#rest_code_730e8f60e0a248c5a467d85bf326a9e4-3"></a>
+<a id="rest_code_730e8f60e0a248c5a467d85bf326a9e4-4" name="rest_code_730e8f60e0a248c5a467d85bf326a9e4-4" href="#rest_code_730e8f60e0a248c5a467d85bf326a9e4-4"></a><span class="n">setup</span><span class="p">(</span><span class="n">console</span><span class="o">=</span><span class="p">[</span><span class="s1">'hola.py'</span><span class="p">])</span>
 </pre></div>
 <p>Luego en la carpeta de la aplicación, por línea de comandos, ejecutamos este script:</p>
-<div class="code"><pre class="code console"><a id="rest_code_9d7db30c1c464964930c23f8a7393295-1" name="rest_code_9d7db30c1c464964930c23f8a7393295-1" href="#rest_code_9d7db30c1c464964930c23f8a7393295-1"></a><span class="go">python setup.py py2exe</span>
+<div class="code"><pre class="code console"><a id="rest_code_cb7cb7940fc145599af9bddbe7dca9e6-1" name="rest_code_cb7cb7940fc145599af9bddbe7dca9e6-1" href="#rest_code_cb7cb7940fc145599af9bddbe7dca9e6-1"></a><span class="go">python setup.py py2exe</span>
 </pre></div>
 <p>Con lo que se generará una carpeta <em>dist</em> con los siguientes archivos:</p>
 <ul class="simple">
@@ -140,7 +140,7 @@ Generar un archivo autoextraible similar a un instalador (pero más ">
 </section><section id="creando-un-instalador-simple-con-7-zip"><h2>Creando un instalador simple con 7-Zip</h2>
 <p>Con 7-zip se puede crear un único archivo comprimido autoextraible (ejecutable), con una muy buena tasa de compresión y de manera muy simple.</p>
 <p>Para ello, ejecutar 7-Zip en la linea de comandos sobre la carpeta de la aplicación:</p>
-<div class="code"><pre class="code console"><a id="rest_code_56e7b05a5d0444519741c4e149037411-1" name="rest_code_56e7b05a5d0444519741c4e149037411-1" href="#rest_code_56e7b05a5d0444519741c4e149037411-1"></a><span class="go">7z.exe a -sfx setup.exe dist</span>
+<div class="code"><pre class="code console"><a id="rest_code_88961188c9844bbaa2f4aa0349a0fc7a-1" name="rest_code_88961188c9844bbaa2f4aa0349a0fc7a-1" href="#rest_code_88961188c9844bbaa2f4aa0349a0fc7a-1"></a><span class="go">7z.exe a -sfx setup.exe dist</span>
 </pre></div>
 <p>Con esto nos creará un archivo <em>setup.exe</em> que al ejecutarlo descomprimirá automáticamente la carpeta de nuestra aplicación. Este archivo contiene todo lo necesario para ejecutar la aplicación.</p>
 <p>Este ejemplo usa la línea de comando, pero también se puede usar la interfase visual integrada al explorador de windows de 7-Zip (click derecho sobre la carpeta <em>dist</em>, en el menú contextual elejir 7-zip, añadir al archivo, y tildar opción "Crear archivo SFX")</p>
@@ -159,7 +159,7 @@ Generar un archivo autoextraible similar a un instalador (pero más ">
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -171,74 +171,6 @@ Generar un archivo autoextraible similar a un instalador (pero más ">
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>

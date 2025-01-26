@@ -99,25 +99,25 @@ if os.geteuid()==0: # ">
 <ul class="simple">
 <li><p>Toda aplicación que NO requiera privilegios elevados no debería poder ejecutarse como root.</p></li>
 </ul>
-<div class="code"><pre class="code python"><a id="rest_code_096f08f2baba48f9a5d81c6a109f0dcc-1" name="rest_code_096f08f2baba48f9a5d81c6a109f0dcc-1" href="#rest_code_096f08f2baba48f9a5d81c6a109f0dcc-1"></a><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">geteuid</span><span class="p">()</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># non-root check</span>
-<a id="rest_code_096f08f2baba48f9a5d81c6a109f0dcc-2" name="rest_code_096f08f2baba48f9a5d81c6a109f0dcc-2" href="#rest_code_096f08f2baba48f9a5d81c6a109f0dcc-2"></a>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s2">" ERROR: Do not run as root...</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-<a id="rest_code_096f08f2baba48f9a5d81c6a109f0dcc-3" name="rest_code_096f08f2baba48f9a5d81c6a109f0dcc-3" href="#rest_code_096f08f2baba48f9a5d81c6a109f0dcc-3"></a><span class="k">else</span><span class="p">:</span>
-<a id="rest_code_096f08f2baba48f9a5d81c6a109f0dcc-4" name="rest_code_096f08f2baba48f9a5d81c6a109f0dcc-4" href="#rest_code_096f08f2baba48f9a5d81c6a109f0dcc-4"></a>    <span class="nb">print</span> <span class="s2">" You are normal user... </span><span class="se">\n</span><span class="s2">"</span>
+<div class="code"><pre class="code python"><a id="rest_code_ef456c7812d2444189db5e4996bdeb7d-1" name="rest_code_ef456c7812d2444189db5e4996bdeb7d-1" href="#rest_code_ef456c7812d2444189db5e4996bdeb7d-1"></a><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">geteuid</span><span class="p">()</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># non-root check</span>
+<a id="rest_code_ef456c7812d2444189db5e4996bdeb7d-2" name="rest_code_ef456c7812d2444189db5e4996bdeb7d-2" href="#rest_code_ef456c7812d2444189db5e4996bdeb7d-2"></a>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s2">" ERROR: Do not run as root...</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<a id="rest_code_ef456c7812d2444189db5e4996bdeb7d-3" name="rest_code_ef456c7812d2444189db5e4996bdeb7d-3" href="#rest_code_ef456c7812d2444189db5e4996bdeb7d-3"></a><span class="k">else</span><span class="p">:</span>
+<a id="rest_code_ef456c7812d2444189db5e4996bdeb7d-4" name="rest_code_ef456c7812d2444189db5e4996bdeb7d-4" href="#rest_code_ef456c7812d2444189db5e4996bdeb7d-4"></a>    <span class="nb">print</span> <span class="s2">" You are normal user... </span><span class="se">\n</span><span class="s2">"</span>
 </pre></div>
 <p>Ejemplo:</p>
-<div class="code"><pre class="code bash"><a id="rest_code_16d5287e064241a5824b249132455b12-1" name="rest_code_16d5287e064241a5824b249132455b12-1" href="#rest_code_16d5287e064241a5824b249132455b12-1"></a>juan@maverick:~$<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>test.py
-<a id="rest_code_16d5287e064241a5824b249132455b12-2" name="rest_code_16d5287e064241a5824b249132455b12-2" href="#rest_code_16d5287e064241a5824b249132455b12-2"></a>
-<a id="rest_code_16d5287e064241a5824b249132455b12-3" name="rest_code_16d5287e064241a5824b249132455b12-3" href="#rest_code_16d5287e064241a5824b249132455b12-3"></a><span class="w"> </span>You<span class="w"> </span>are<span class="w"> </span>normal<span class="w"> </span>user...
-<a id="rest_code_16d5287e064241a5824b249132455b12-4" name="rest_code_16d5287e064241a5824b249132455b12-4" href="#rest_code_16d5287e064241a5824b249132455b12-4"></a>
-<a id="rest_code_16d5287e064241a5824b249132455b12-5" name="rest_code_16d5287e064241a5824b249132455b12-5" href="#rest_code_16d5287e064241a5824b249132455b12-5"></a>juan@maverick:~$<span class="w"> </span>sudo<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>test.py
-<a id="rest_code_16d5287e064241a5824b249132455b12-6" name="rest_code_16d5287e064241a5824b249132455b12-6" href="#rest_code_16d5287e064241a5824b249132455b12-6"></a>
-<a id="rest_code_16d5287e064241a5824b249132455b12-7" name="rest_code_16d5287e064241a5824b249132455b12-7" href="#rest_code_16d5287e064241a5824b249132455b12-7"></a><span class="w"> </span>ERROR:<span class="w"> </span>Do<span class="w"> </span>not<span class="w"> </span>run<span class="w"> </span>as<span class="w"> </span>root...
+<div class="code"><pre class="code bash"><a id="rest_code_bbbea8c76d2e42dbbd269058994b350c-1" name="rest_code_bbbea8c76d2e42dbbd269058994b350c-1" href="#rest_code_bbbea8c76d2e42dbbd269058994b350c-1"></a>juan@maverick:~$<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>test.py
+<a id="rest_code_bbbea8c76d2e42dbbd269058994b350c-2" name="rest_code_bbbea8c76d2e42dbbd269058994b350c-2" href="#rest_code_bbbea8c76d2e42dbbd269058994b350c-2"></a>
+<a id="rest_code_bbbea8c76d2e42dbbd269058994b350c-3" name="rest_code_bbbea8c76d2e42dbbd269058994b350c-3" href="#rest_code_bbbea8c76d2e42dbbd269058994b350c-3"></a><span class="w"> </span>You<span class="w"> </span>are<span class="w"> </span>normal<span class="w"> </span>user...
+<a id="rest_code_bbbea8c76d2e42dbbd269058994b350c-4" name="rest_code_bbbea8c76d2e42dbbd269058994b350c-4" href="#rest_code_bbbea8c76d2e42dbbd269058994b350c-4"></a>
+<a id="rest_code_bbbea8c76d2e42dbbd269058994b350c-5" name="rest_code_bbbea8c76d2e42dbbd269058994b350c-5" href="#rest_code_bbbea8c76d2e42dbbd269058994b350c-5"></a>juan@maverick:~$<span class="w"> </span>sudo<span class="w"> </span>/usr/bin/env<span class="w"> </span>python<span class="w"> </span>test.py
+<a id="rest_code_bbbea8c76d2e42dbbd269058994b350c-6" name="rest_code_bbbea8c76d2e42dbbd269058994b350c-6" href="#rest_code_bbbea8c76d2e42dbbd269058994b350c-6"></a>
+<a id="rest_code_bbbea8c76d2e42dbbd269058994b350c-7" name="rest_code_bbbea8c76d2e42dbbd269058994b350c-7" href="#rest_code_bbbea8c76d2e42dbbd269058994b350c-7"></a><span class="w"> </span>ERROR:<span class="w"> </span>Do<span class="w"> </span>not<span class="w"> </span>run<span class="w"> </span>as<span class="w"> </span>root...
 </pre></div>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -129,74 +129,6 @@ if os.geteuid()==0: # ">
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>

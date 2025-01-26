@@ -95,38 +95,38 @@ from progressbar import ">
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Este es un ejemplito de cómo descargar algo y a medida que se descarga, mostrar una barrita de progreso.</p>
-<div class="code"><pre class="code python"><a id="rest_code_d8489e921dab46f5a422dedee18e47cd-1" name="rest_code_d8489e921dab46f5a422dedee18e47cd-1" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-1"></a><span class="kn">from</span> <span class="nn">progressbar</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-2" name="rest_code_d8489e921dab46f5a422dedee18e47cd-2" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-2"></a><span class="kn">from</span> <span class="nn">progressbar</span> <span class="kn">import</span> <span class="n">Percentage</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-3" name="rest_code_d8489e921dab46f5a422dedee18e47cd-3" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-3"></a><span class="kn">from</span> <span class="nn">progressbar</span> <span class="kn">import</span> <span class="n">Bar</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-4" name="rest_code_d8489e921dab46f5a422dedee18e47cd-4" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-4"></a>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-5" name="rest_code_d8489e921dab46f5a422dedee18e47cd-5" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-5"></a>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-6" name="rest_code_d8489e921dab46f5a422dedee18e47cd-6" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-6"></a><span class="k">def</span> <span class="nf">download_python</span><span class="p">():</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-7" name="rest_code_d8489e921dab46f5a422dedee18e47cd-7" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-7"></a>    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.python.org/ftp/python/2.7/Python-2.7.tar.bz2'</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-8" name="rest_code_d8489e921dab46f5a422dedee18e47cd-8" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-8"></a>    <span class="n">fname</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-9" name="rest_code_d8489e921dab46f5a422dedee18e47cd-9" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-9"></a>    <span class="n">u</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-10" name="rest_code_d8489e921dab46f5a422dedee18e47cd-10" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-10"></a>    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-11" name="rest_code_d8489e921dab46f5a422dedee18e47cd-11" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-11"></a>    <span class="n">meta</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-12" name="rest_code_d8489e921dab46f5a422dedee18e47cd-12" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-12"></a>    <span class="n">file_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">getheaders</span><span class="p">(</span><span class="s2">"Content-Length"</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-13" name="rest_code_d8489e921dab46f5a422dedee18e47cd-13" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-13"></a>    <span class="nb">print</span> <span class="s2">"Descargando: </span><span class="si">%s</span><span class="s2"> Bytes: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">file_size</span><span class="p">)</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-14" name="rest_code_d8489e921dab46f5a422dedee18e47cd-14" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-14"></a>    <span class="n">pbar</span> <span class="o">=</span> <span class="n">ProgressBar</span><span class="p">(</span><span class="n">widgets</span><span class="o">=</span><span class="p">[</span><span class="n">Percentage</span><span class="p">(),</span> <span class="n">Bar</span><span class="p">()],</span> <span class="n">maxval</span><span class="o">=</span><span class="n">file_size</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-15" name="rest_code_d8489e921dab46f5a422dedee18e47cd-15" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-15"></a>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-16" name="rest_code_d8489e921dab46f5a422dedee18e47cd-16" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-16"></a>    <span class="n">chunk</span> <span class="o">=</span> <span class="mi">10240</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-17" name="rest_code_d8489e921dab46f5a422dedee18e47cd-17" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-17"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-18" name="rest_code_d8489e921dab46f5a422dedee18e47cd-18" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-18"></a>        <span class="n">buffer</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-19" name="rest_code_d8489e921dab46f5a422dedee18e47cd-19" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-19"></a>        <span class="k">if</span> <span class="n">buffer</span><span class="p">:</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-20" name="rest_code_d8489e921dab46f5a422dedee18e47cd-20" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-20"></a>            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-21" name="rest_code_d8489e921dab46f5a422dedee18e47cd-21" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-21"></a>            <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-22" name="rest_code_d8489e921dab46f5a422dedee18e47cd-22" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-22"></a>            <span class="n">i</span> <span class="o">+=</span> <span class="n">chunk</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-23" name="rest_code_d8489e921dab46f5a422dedee18e47cd-23" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-23"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-24" name="rest_code_d8489e921dab46f5a422dedee18e47cd-24" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-24"></a>            <span class="k">break</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-25" name="rest_code_d8489e921dab46f5a422dedee18e47cd-25" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-25"></a>    <span class="n">pbar</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
-<a id="rest_code_d8489e921dab46f5a422dedee18e47cd-26" name="rest_code_d8489e921dab46f5a422dedee18e47cd-26" href="#rest_code_d8489e921dab46f5a422dedee18e47cd-26"></a>    <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="code"><pre class="code python"><a id="rest_code_57d73a906fd44177b8b5fed79418f778-1" name="rest_code_57d73a906fd44177b8b5fed79418f778-1" href="#rest_code_57d73a906fd44177b8b5fed79418f778-1"></a><span class="kn">from</span> <span class="nn">progressbar</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-2" name="rest_code_57d73a906fd44177b8b5fed79418f778-2" href="#rest_code_57d73a906fd44177b8b5fed79418f778-2"></a><span class="kn">from</span> <span class="nn">progressbar</span> <span class="kn">import</span> <span class="n">Percentage</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-3" name="rest_code_57d73a906fd44177b8b5fed79418f778-3" href="#rest_code_57d73a906fd44177b8b5fed79418f778-3"></a><span class="kn">from</span> <span class="nn">progressbar</span> <span class="kn">import</span> <span class="n">Bar</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-4" name="rest_code_57d73a906fd44177b8b5fed79418f778-4" href="#rest_code_57d73a906fd44177b8b5fed79418f778-4"></a>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-5" name="rest_code_57d73a906fd44177b8b5fed79418f778-5" href="#rest_code_57d73a906fd44177b8b5fed79418f778-5"></a>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-6" name="rest_code_57d73a906fd44177b8b5fed79418f778-6" href="#rest_code_57d73a906fd44177b8b5fed79418f778-6"></a><span class="k">def</span> <span class="nf">download_python</span><span class="p">():</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-7" name="rest_code_57d73a906fd44177b8b5fed79418f778-7" href="#rest_code_57d73a906fd44177b8b5fed79418f778-7"></a>    <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.python.org/ftp/python/2.7/Python-2.7.tar.bz2'</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-8" name="rest_code_57d73a906fd44177b8b5fed79418f778-8" href="#rest_code_57d73a906fd44177b8b5fed79418f778-8"></a>    <span class="n">fname</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-9" name="rest_code_57d73a906fd44177b8b5fed79418f778-9" href="#rest_code_57d73a906fd44177b8b5fed79418f778-9"></a>    <span class="n">u</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-10" name="rest_code_57d73a906fd44177b8b5fed79418f778-10" href="#rest_code_57d73a906fd44177b8b5fed79418f778-10"></a>    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-11" name="rest_code_57d73a906fd44177b8b5fed79418f778-11" href="#rest_code_57d73a906fd44177b8b5fed79418f778-11"></a>    <span class="n">meta</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-12" name="rest_code_57d73a906fd44177b8b5fed79418f778-12" href="#rest_code_57d73a906fd44177b8b5fed79418f778-12"></a>    <span class="n">file_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">getheaders</span><span class="p">(</span><span class="s2">"Content-Length"</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-13" name="rest_code_57d73a906fd44177b8b5fed79418f778-13" href="#rest_code_57d73a906fd44177b8b5fed79418f778-13"></a>    <span class="nb">print</span> <span class="s2">"Descargando: </span><span class="si">%s</span><span class="s2"> Bytes: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">file_size</span><span class="p">)</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-14" name="rest_code_57d73a906fd44177b8b5fed79418f778-14" href="#rest_code_57d73a906fd44177b8b5fed79418f778-14"></a>    <span class="n">pbar</span> <span class="o">=</span> <span class="n">ProgressBar</span><span class="p">(</span><span class="n">widgets</span><span class="o">=</span><span class="p">[</span><span class="n">Percentage</span><span class="p">(),</span> <span class="n">Bar</span><span class="p">()],</span> <span class="n">maxval</span><span class="o">=</span><span class="n">file_size</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-15" name="rest_code_57d73a906fd44177b8b5fed79418f778-15" href="#rest_code_57d73a906fd44177b8b5fed79418f778-15"></a>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-16" name="rest_code_57d73a906fd44177b8b5fed79418f778-16" href="#rest_code_57d73a906fd44177b8b5fed79418f778-16"></a>    <span class="n">chunk</span> <span class="o">=</span> <span class="mi">10240</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-17" name="rest_code_57d73a906fd44177b8b5fed79418f778-17" href="#rest_code_57d73a906fd44177b8b5fed79418f778-17"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-18" name="rest_code_57d73a906fd44177b8b5fed79418f778-18" href="#rest_code_57d73a906fd44177b8b5fed79418f778-18"></a>        <span class="n">buffer</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-19" name="rest_code_57d73a906fd44177b8b5fed79418f778-19" href="#rest_code_57d73a906fd44177b8b5fed79418f778-19"></a>        <span class="k">if</span> <span class="n">buffer</span><span class="p">:</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-20" name="rest_code_57d73a906fd44177b8b5fed79418f778-20" href="#rest_code_57d73a906fd44177b8b5fed79418f778-20"></a>            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-21" name="rest_code_57d73a906fd44177b8b5fed79418f778-21" href="#rest_code_57d73a906fd44177b8b5fed79418f778-21"></a>            <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-22" name="rest_code_57d73a906fd44177b8b5fed79418f778-22" href="#rest_code_57d73a906fd44177b8b5fed79418f778-22"></a>            <span class="n">i</span> <span class="o">+=</span> <span class="n">chunk</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-23" name="rest_code_57d73a906fd44177b8b5fed79418f778-23" href="#rest_code_57d73a906fd44177b8b5fed79418f778-23"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-24" name="rest_code_57d73a906fd44177b8b5fed79418f778-24" href="#rest_code_57d73a906fd44177b8b5fed79418f778-24"></a>            <span class="k">break</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-25" name="rest_code_57d73a906fd44177b8b5fed79418f778-25" href="#rest_code_57d73a906fd44177b8b5fed79418f778-25"></a>    <span class="n">pbar</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+<a id="rest_code_57d73a906fd44177b8b5fed79418f778-26" name="rest_code_57d73a906fd44177b8b5fed79418f778-26" href="#rest_code_57d73a906fd44177b8b5fed79418f778-26"></a>    <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -138,74 +138,6 @@ from progressbar import ">
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>

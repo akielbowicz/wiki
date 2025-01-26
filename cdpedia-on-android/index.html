@@ -94,10 +94,10 @@ Para que funcione correctamente es necesario tener descomprimido (no soporta el 
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Cdpedia-on-android es una aplicación android que permite correr la Cdpedia en este sistema operativo.</p>
 <p>Para que funcione correctamente es necesario tener descomprimido (no soporta el archivo .iso) alguno de los releases de la cdpedia en la carpeta /mnt/sdcard/cdpedia. A continuación una mini receta:</p>
-<div class="code"><pre class="code console"><a id="rest_code_29fcd9f72b744fc3b926d998fdb279f9-1" name="rest_code_29fcd9f72b744fc3b926d998fdb279f9-1" href="#rest_code_29fcd9f72b744fc3b926d998fdb279f9-1"></a><span class="go">mount -t iso9660 -o loop cdpedia-0.8-cd.iso /mnt</span>
-<a id="rest_code_29fcd9f72b744fc3b926d998fdb279f9-2" name="rest_code_29fcd9f72b744fc3b926d998fdb279f9-2" href="#rest_code_29fcd9f72b744fc3b926d998fdb279f9-2"></a><span class="go">cp -R /mnt/cdpedia /media/android_sdcard</span>
-<a id="rest_code_29fcd9f72b744fc3b926d998fdb279f9-3" name="rest_code_29fcd9f72b744fc3b926d998fdb279f9-3" href="#rest_code_29fcd9f72b744fc3b926d998fdb279f9-3"></a><span class="go">sync</span>
-<a id="rest_code_29fcd9f72b744fc3b926d998fdb279f9-4" name="rest_code_29fcd9f72b744fc3b926d998fdb279f9-4" href="#rest_code_29fcd9f72b744fc3b926d998fdb279f9-4"></a><span class="go">umount /mnt</span>
+<div class="code"><pre class="code console"><a id="rest_code_261e47e7a7de429f880d0dc217934849-1" name="rest_code_261e47e7a7de429f880d0dc217934849-1" href="#rest_code_261e47e7a7de429f880d0dc217934849-1"></a><span class="go">mount -t iso9660 -o loop cdpedia-0.8-cd.iso /mnt</span>
+<a id="rest_code_261e47e7a7de429f880d0dc217934849-2" name="rest_code_261e47e7a7de429f880d0dc217934849-2" href="#rest_code_261e47e7a7de429f880d0dc217934849-2"></a><span class="go">cp -R /mnt/cdpedia /media/android_sdcard</span>
+<a id="rest_code_261e47e7a7de429f880d0dc217934849-3" name="rest_code_261e47e7a7de429f880d0dc217934849-3" href="#rest_code_261e47e7a7de429f880d0dc217934849-3"></a><span class="go">sync</span>
+<a id="rest_code_261e47e7a7de429f880d0dc217934849-4" name="rest_code_261e47e7a7de429f880d0dc217934849-4" href="#rest_code_261e47e7a7de429f880d0dc217934849-4"></a><span class="go">umount /mnt</span>
 </pre></div>
 <p>Si querés probar la primera versión de la aplicación para android, podés descargarte el .apk desde
 <a class="reference external" href="http://cdpedia.python.org.ar/CDPedia-release.apk">acá</a>.</p>
@@ -105,7 +105,7 @@ Para que funcione correctamente es necesario tener descomprimido (no soporta el 
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -117,74 +117,6 @@ Para que funcione correctamente es necesario tener descomprimido (no soporta el 
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../assets/js/flexsearch.js"></script>
 </body>
 </html>

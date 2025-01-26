@@ -95,73 +95,73 @@ Para probarlo correlo, entra una dirección que empiece con http://, hace foco e
     <p>Ejemplo de cómo usar webkit para editar páginas HTML como si fuera un editor.</p>
 <p>Para probarlo correlo, entra una dirección que empiece con <a class="reference external" href="http://">http://</a>, hace foco en alguna parte de la página y ponete a tipear como si fuera un editor de texto común.</p>
 <p>Un ejemplo de su uso (tarea del autor encontrar los cambios 😉).</p>
-<img alt="/images/Recetario/Gui/Gtk/WebkitEditor/webkit.png" src="../../../../images/Recetario/Gui/Gtk/WebkitEditor/webkit.png"><div class="code"><pre class="code python"><a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-1" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-1" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-1"></a><span class="kn">import</span> <span class="nn">gtk</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-2" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-2" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-2"></a><span class="kn">import</span> <span class="nn">webkit</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-3" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-3" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-3"></a>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-4" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-4" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-4"></a><span class="k">class</span> <span class="nc">Editor</span><span class="p">(</span><span class="n">webkit</span><span class="o">.</span><span class="n">WebView</span><span class="p">):</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-5" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-5" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-5"></a><span class="w">    </span><span class="sd">'''a webkit editor'''</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-6" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-6" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-6"></a>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-7" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-7" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-7"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-8" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-8" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-8"></a>        <span class="n">webkit</span><span class="o">.</span><span class="n">WebView</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-9" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-9" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_editable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-10" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-10" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-10"></a>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-11" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-11" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-11"></a><span class="k">class</span> <span class="nc">EditorWindow</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="p">):</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-12" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-12" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-12"></a><span class="w">    </span><span class="sd">'''the editor window'''</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-13" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-13" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-13"></a>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-14" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-14" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-14"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-15" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-15" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-15"></a>        <span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-16" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-16" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"webkit editor"</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-17" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-17" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-17"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_default_size</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-18" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-18" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-18"></a>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-19" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-19" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">entry</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Entry</span><span class="p">()</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-20" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-20" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">entry</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">"http://webkit.org"</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-21" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-21" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">entry</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'activate'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_on_entry_activate</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-22" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-22" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-22"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">editor</span> <span class="o">=</span> <span class="n">Editor</span><span class="p">()</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-23" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-23" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-23"></a>        <span class="n">scroll</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">ScrolledWindow</span><span class="p">()</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-24" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-24" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-24"></a>        <span class="n">scroll</span><span class="o">.</span><span class="n">set_policy</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">POLICY_AUTOMATIC</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">POLICY_AUTOMATIC</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-25" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-25" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-25"></a>        <span class="n">scroll</span><span class="o">.</span><span class="n">set_shadow_type</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">SHADOW_IN</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-26" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-26" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-26"></a>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-27" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-27" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-27"></a>        <span class="n">scroll</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">editor</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-28" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-28" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-28"></a>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-29" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-29" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-29"></a>        <span class="n">vbox</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">VBox</span><span class="p">()</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-30" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-30" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-30"></a>        <span class="n">vbox</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entry</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-31" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-31" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-31"></a>        <span class="n">vbox</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">scroll</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-32" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-32" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-32"></a>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-33" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-33" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-33"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">vbox</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-34" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-34" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-34"></a>        <span class="n">vbox</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-35" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-35" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-35"></a>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-36" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-36" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-36"></a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-37" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-37" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-37"></a><span class="w">        </span><span class="sd">'''load the given url in the editor and set it to editable'''</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-38" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-38" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-38"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">editor</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-39" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-39" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-39"></a>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-40" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-40" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-40"></a>    <span class="k">def</span> <span class="nf">_on_entry_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-41" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-41" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-41"></a><span class="w">        </span><span class="sd">'''callback called when the user hits enter on the entry'''</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-42" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-42" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-42"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-43" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-43" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-43"></a>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-44" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-44" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-44"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-45" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-45" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-45"></a>    <span class="n">window</span> <span class="o">=</span> <span class="n">EditorWindow</span><span class="p">()</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-46" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-46" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-46"></a>    <span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-47" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-47" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-47"></a>    <span class="n">window</span><span class="o">.</span><span class="n">entry</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
-<a id="rest_code_d947260ad33b4a5caea1c1644f40eff1-48" name="rest_code_d947260ad33b4a5caea1c1644f40eff1-48" href="#rest_code_d947260ad33b4a5caea1c1644f40eff1-48"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<img alt="/images/Recetario/Gui/Gtk/WebkitEditor/webkit.png" src="../../../../images/Recetario/Gui/Gtk/WebkitEditor/webkit.png"><div class="code"><pre class="code python"><a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-1" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-1" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-1"></a><span class="kn">import</span> <span class="nn">gtk</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-2" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-2" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-2"></a><span class="kn">import</span> <span class="nn">webkit</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-3" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-3" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-3"></a>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-4" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-4" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-4"></a><span class="k">class</span> <span class="nc">Editor</span><span class="p">(</span><span class="n">webkit</span><span class="o">.</span><span class="n">WebView</span><span class="p">):</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-5" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-5" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-5"></a><span class="w">    </span><span class="sd">'''a webkit editor'''</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-6" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-6" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-6"></a>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-7" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-7" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-7"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-8" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-8" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-8"></a>        <span class="n">webkit</span><span class="o">.</span><span class="n">WebView</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-9" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-9" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_editable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-10" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-10" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-10"></a>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-11" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-11" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-11"></a><span class="k">class</span> <span class="nc">EditorWindow</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="p">):</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-12" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-12" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-12"></a><span class="w">    </span><span class="sd">'''the editor window'''</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-13" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-13" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-13"></a>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-14" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-14" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-14"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-15" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-15" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-15"></a>        <span class="n">gtk</span><span class="o">.</span><span class="n">Window</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-16" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-16" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"webkit editor"</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-17" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-17" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-17"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">set_default_size</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-18" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-18" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-18"></a>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-19" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-19" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">entry</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">Entry</span><span class="p">()</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-20" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-20" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">entry</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">"http://webkit.org"</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-21" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-21" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">entry</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'activate'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_on_entry_activate</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-22" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-22" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-22"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">editor</span> <span class="o">=</span> <span class="n">Editor</span><span class="p">()</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-23" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-23" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-23"></a>        <span class="n">scroll</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">ScrolledWindow</span><span class="p">()</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-24" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-24" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-24"></a>        <span class="n">scroll</span><span class="o">.</span><span class="n">set_policy</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">POLICY_AUTOMATIC</span><span class="p">,</span> <span class="n">gtk</span><span class="o">.</span><span class="n">POLICY_AUTOMATIC</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-25" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-25" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-25"></a>        <span class="n">scroll</span><span class="o">.</span><span class="n">set_shadow_type</span><span class="p">(</span><span class="n">gtk</span><span class="o">.</span><span class="n">SHADOW_IN</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-26" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-26" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-26"></a>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-27" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-27" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-27"></a>        <span class="n">scroll</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">editor</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-28" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-28" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-28"></a>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-29" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-29" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-29"></a>        <span class="n">vbox</span> <span class="o">=</span> <span class="n">gtk</span><span class="o">.</span><span class="n">VBox</span><span class="p">()</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-30" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-30" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-30"></a>        <span class="n">vbox</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entry</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-31" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-31" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-31"></a>        <span class="n">vbox</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">scroll</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-32" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-32" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-32"></a>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-33" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-33" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-33"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">vbox</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-34" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-34" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-34"></a>        <span class="n">vbox</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-35" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-35" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-35"></a>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-36" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-36" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-36"></a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-37" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-37" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-37"></a><span class="w">        </span><span class="sd">'''load the given url in the editor and set it to editable'''</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-38" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-38" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-38"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">editor</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-39" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-39" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-39"></a>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-40" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-40" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-40"></a>    <span class="k">def</span> <span class="nf">_on_entry_activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">):</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-41" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-41" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-41"></a><span class="w">        </span><span class="sd">'''callback called when the user hits enter on the entry'''</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-42" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-42" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-42"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-43" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-43" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-43"></a>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-44" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-44" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-44"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-45" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-45" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-45"></a>    <span class="n">window</span> <span class="o">=</span> <span class="n">EditorWindow</span><span class="p">()</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-46" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-46" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-46"></a>    <span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-47" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-47" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-47"></a>    <span class="n">window</span><span class="o">.</span><span class="n">entry</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+<a id="rest_code_8e810d1b776b42ca9238ee3a26dffa80-48" name="rest_code_8e810d1b776b42ca9238ee3a26dffa80-48" href="#rest_code_8e810d1b776b42ca9238ee3a26dffa80-48"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 <p>Tengan en cuenta que en Ubuntu inferior 10.04 python-webkit en gtk nececita SI o SI llamar a "gtk.gdk.threads_init()", sino tira error:</p>
-<div class="code"><pre class="code console"><a id="rest_code_1f6faa4393fc4f6682fd2ad66041a8cb-1" name="rest_code_1f6faa4393fc4f6682fd2ad66041a8cb-1" href="#rest_code_1f6faa4393fc4f6682fd2ad66041a8cb-1"></a><span class="go">GLib-ERROR **: The thread system is not yet initialized.</span>
-<a id="rest_code_1f6faa4393fc4f6682fd2ad66041a8cb-2" name="rest_code_1f6faa4393fc4f6682fd2ad66041a8cb-2" href="#rest_code_1f6faa4393fc4f6682fd2ad66041a8cb-2"></a><span class="go">aborting...</span>
-<a id="rest_code_1f6faa4393fc4f6682fd2ad66041a8cb-3" name="rest_code_1f6faa4393fc4f6682fd2ad66041a8cb-3" href="#rest_code_1f6faa4393fc4f6682fd2ad66041a8cb-3"></a><span class="go">Cancelado</span>
+<div class="code"><pre class="code console"><a id="rest_code_c368d6f97c7d48f1bc5e847ed14fc829-1" name="rest_code_c368d6f97c7d48f1bc5e847ed14fc829-1" href="#rest_code_c368d6f97c7d48f1bc5e847ed14fc829-1"></a><span class="go">GLib-ERROR **: The thread system is not yet initialized.</span>
+<a id="rest_code_c368d6f97c7d48f1bc5e847ed14fc829-2" name="rest_code_c368d6f97c7d48f1bc5e847ed14fc829-2" href="#rest_code_c368d6f97c7d48f1bc5e847ed14fc829-2"></a><span class="go">aborting...</span>
+<a id="rest_code_c368d6f97c7d48f1bc5e847ed14fc829-3" name="rest_code_c368d6f97c7d48f1bc5e847ed14fc829-3" href="#rest_code_c368d6f97c7d48f1bc5e847ed14fc829-3"></a><span class="go">Cancelado</span>
 </pre></div>
 <p>Entonces deberán agregar un "gtk.gdk.threads_init()" antes de llamar a "EditorWindow_()". El final del código les quedará de la siguiente manera:</p>
-<div class="code"><pre class="code python"><a id="rest_code_292b8373cc774fce990a24d10833843b-1" name="rest_code_292b8373cc774fce990a24d10833843b-1" href="#rest_code_292b8373cc774fce990a24d10833843b-1"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-<a id="rest_code_292b8373cc774fce990a24d10833843b-2" name="rest_code_292b8373cc774fce990a24d10833843b-2" href="#rest_code_292b8373cc774fce990a24d10833843b-2"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">gdk</span><span class="o">.</span><span class="n">threads_init</span><span class="p">()</span>
-<a id="rest_code_292b8373cc774fce990a24d10833843b-3" name="rest_code_292b8373cc774fce990a24d10833843b-3" href="#rest_code_292b8373cc774fce990a24d10833843b-3"></a>    <span class="n">window</span> <span class="o">=</span> <span class="n">EditorWindow</span><span class="p">()</span>
-<a id="rest_code_292b8373cc774fce990a24d10833843b-4" name="rest_code_292b8373cc774fce990a24d10833843b-4" href="#rest_code_292b8373cc774fce990a24d10833843b-4"></a>    <span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<a id="rest_code_292b8373cc774fce990a24d10833843b-5" name="rest_code_292b8373cc774fce990a24d10833843b-5" href="#rest_code_292b8373cc774fce990a24d10833843b-5"></a>    <span class="n">window</span><span class="o">.</span><span class="n">entry</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
-<a id="rest_code_292b8373cc774fce990a24d10833843b-6" name="rest_code_292b8373cc774fce990a24d10833843b-6" href="#rest_code_292b8373cc774fce990a24d10833843b-6"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<div class="code"><pre class="code python"><a id="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-1" name="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-1" href="#rest_code_f7cfa9ba2a5b4f15a94efbc062920357-1"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<a id="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-2" name="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-2" href="#rest_code_f7cfa9ba2a5b4f15a94efbc062920357-2"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">gdk</span><span class="o">.</span><span class="n">threads_init</span><span class="p">()</span>
+<a id="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-3" name="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-3" href="#rest_code_f7cfa9ba2a5b4f15a94efbc062920357-3"></a>    <span class="n">window</span> <span class="o">=</span> <span class="n">EditorWindow</span><span class="p">()</span>
+<a id="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-4" name="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-4" href="#rest_code_f7cfa9ba2a5b4f15a94efbc062920357-4"></a>    <span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-5" name="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-5" href="#rest_code_f7cfa9ba2a5b4f15a94efbc062920357-5"></a>    <span class="n">window</span><span class="o">.</span><span class="n">entry</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+<a id="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-6" name="rest_code_f7cfa9ba2a5b4f15a94efbc062920357-6" href="#rest_code_f7cfa9ba2a5b4f15a94efbc062920357-6"></a>    <span class="n">gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
     </div>    
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -173,74 +173,6 @@ Para probarlo correlo, entra una dirección que empiece con http://, hace foco e
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../../../assets/js/flexsearch.js"></script>
 </body>
 </html>

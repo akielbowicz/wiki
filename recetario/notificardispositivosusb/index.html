@@ -103,35 +103,35 @@ def callback(c">
     <ul class="simple">
 <li><p>Cómo Detectar y notificar dispositivos USB, usando Python, en Linux, ejemplo simple.</p></li>
 </ul>
-<div class="code"><pre class="code python"><a id="rest_code_3eec950cd77442fc921b5ab7de042936-1" name="rest_code_3eec950cd77442fc921b5ab7de042936-1" href="#rest_code_3eec950cd77442fc921b5ab7de042936-1"></a><span class="ch">#!/usr/bin/env python</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-2" name="rest_code_3eec950cd77442fc921b5ab7de042936-2" href="#rest_code_3eec950cd77442fc921b5ab7de042936-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-3" name="rest_code_3eec950cd77442fc921b5ab7de042936-3" href="#rest_code_3eec950cd77442fc921b5ab7de042936-3"></a><span class="kn">import</span> <span class="nn">glib</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-4" name="rest_code_3eec950cd77442fc921b5ab7de042936-4" href="#rest_code_3eec950cd77442fc921b5ab7de042936-4"></a><span class="kn">import</span> <span class="nn">gudev</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-5" name="rest_code_3eec950cd77442fc921b5ab7de042936-5" href="#rest_code_3eec950cd77442fc921b5ab7de042936-5"></a><span class="kn">import</span> <span class="nn">pynotify</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-6" name="rest_code_3eec950cd77442fc921b5ab7de042936-6" href="#rest_code_3eec950cd77442fc921b5ab7de042936-6"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-7" name="rest_code_3eec950cd77442fc921b5ab7de042936-7" href="#rest_code_3eec950cd77442fc921b5ab7de042936-7"></a><span class="c1">#</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-8" name="rest_code_3eec950cd77442fc921b5ab7de042936-8" href="#rest_code_3eec950cd77442fc921b5ab7de042936-8"></a><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-9" name="rest_code_3eec950cd77442fc921b5ab7de042936-9" href="#rest_code_3eec950cd77442fc921b5ab7de042936-9"></a>    <span class="n">device_vendor</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s2">"ID_VENDOR_ENC"</span><span class="p">)</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-10" name="rest_code_3eec950cd77442fc921b5ab7de042936-10" href="#rest_code_3eec950cd77442fc921b5ab7de042936-10"></a>    <span class="n">device_model</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s2">"ID_MODEL_ENC"</span><span class="p">)</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-11" name="rest_code_3eec950cd77442fc921b5ab7de042936-11" href="#rest_code_3eec950cd77442fc921b5ab7de042936-11"></a>    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"add"</span><span class="p">:</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-12" name="rest_code_3eec950cd77442fc921b5ab7de042936-12" href="#rest_code_3eec950cd77442fc921b5ab7de042936-12"></a>        <span class="n">n</span> <span class="o">=</span> <span class="n">pynotify</span><span class="o">.</span><span class="n">Notification</span><span class="p">(</span><span class="s2">"USB Device Added"</span><span class="p">,</span> <span class="s2">"</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> is now connected "</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-13" name="rest_code_3eec950cd77442fc921b5ab7de042936-13" href="#rest_code_3eec950cd77442fc921b5ab7de042936-13"></a>                                  <span class="s2">"to your system"</span> <span class="o">%</span> <span class="p">(</span><span class="n">device_vendor</span><span class="p">,</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-14" name="rest_code_3eec950cd77442fc921b5ab7de042936-14" href="#rest_code_3eec950cd77442fc921b5ab7de042936-14"></a>                                  <span class="n">device_model</span><span class="p">))</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-15" name="rest_code_3eec950cd77442fc921b5ab7de042936-15" href="#rest_code_3eec950cd77442fc921b5ab7de042936-15"></a>        <span class="n">n</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-16" name="rest_code_3eec950cd77442fc921b5ab7de042936-16" href="#rest_code_3eec950cd77442fc921b5ab7de042936-16"></a>    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"remove"</span><span class="p">:</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-17" name="rest_code_3eec950cd77442fc921b5ab7de042936-17" href="#rest_code_3eec950cd77442fc921b5ab7de042936-17"></a>        <span class="n">n</span> <span class="o">=</span> <span class="n">pynotify</span><span class="o">.</span><span class="n">Notification</span><span class="p">(</span><span class="s2">"USB Device Removed"</span><span class="p">,</span> <span class="s2">"</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> has been "</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-18" name="rest_code_3eec950cd77442fc921b5ab7de042936-18" href="#rest_code_3eec950cd77442fc921b5ab7de042936-18"></a>                                  <span class="s2">"disconnected from your system"</span> <span class="o">%</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-19" name="rest_code_3eec950cd77442fc921b5ab7de042936-19" href="#rest_code_3eec950cd77442fc921b5ab7de042936-19"></a>                                  <span class="p">(</span><span class="n">device_vendor</span><span class="p">,</span> <span class="n">device_model</span><span class="p">))</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-20" name="rest_code_3eec950cd77442fc921b5ab7de042936-20" href="#rest_code_3eec950cd77442fc921b5ab7de042936-20"></a>        <span class="n">n</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-21" name="rest_code_3eec950cd77442fc921b5ab7de042936-21" href="#rest_code_3eec950cd77442fc921b5ab7de042936-21"></a><span class="c1">#</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-22" name="rest_code_3eec950cd77442fc921b5ab7de042936-22" href="#rest_code_3eec950cd77442fc921b5ab7de042936-22"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">pynotify</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">"USB Device Notifier"</span><span class="p">):</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-23" name="rest_code_3eec950cd77442fc921b5ab7de042936-23" href="#rest_code_3eec950cd77442fc921b5ab7de042936-23"></a>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s2">"Couldn't connect to the notification daemon!"</span><span class="p">)</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-24" name="rest_code_3eec950cd77442fc921b5ab7de042936-24" href="#rest_code_3eec950cd77442fc921b5ab7de042936-24"></a><span class="c1">#</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-25" name="rest_code_3eec950cd77442fc921b5ab7de042936-25" href="#rest_code_3eec950cd77442fc921b5ab7de042936-25"></a><span class="n">client</span> <span class="o">=</span> <span class="n">gudev</span><span class="o">.</span><span class="n">Client</span><span class="p">([</span><span class="s2">"usb/usb_device"</span><span class="p">])</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-26" name="rest_code_3eec950cd77442fc921b5ab7de042936-26" href="#rest_code_3eec950cd77442fc921b5ab7de042936-26"></a><span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"uevent"</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-27" name="rest_code_3eec950cd77442fc921b5ab7de042936-27" href="#rest_code_3eec950cd77442fc921b5ab7de042936-27"></a><span class="c1">#</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-28" name="rest_code_3eec950cd77442fc921b5ab7de042936-28" href="#rest_code_3eec950cd77442fc921b5ab7de042936-28"></a><span class="n">loop</span> <span class="o">=</span> <span class="n">glib</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
-<a id="rest_code_3eec950cd77442fc921b5ab7de042936-29" name="rest_code_3eec950cd77442fc921b5ab7de042936-29" href="#rest_code_3eec950cd77442fc921b5ab7de042936-29"></a><span class="n">loop</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<div class="code"><pre class="code python"><a id="rest_code_1fe1692a1599407abdefa92827b71b1a-1" name="rest_code_1fe1692a1599407abdefa92827b71b1a-1" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-1"></a><span class="ch">#!/usr/bin/env python</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-2" name="rest_code_1fe1692a1599407abdefa92827b71b1a-2" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-3" name="rest_code_1fe1692a1599407abdefa92827b71b1a-3" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-3"></a><span class="kn">import</span> <span class="nn">glib</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-4" name="rest_code_1fe1692a1599407abdefa92827b71b1a-4" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-4"></a><span class="kn">import</span> <span class="nn">gudev</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-5" name="rest_code_1fe1692a1599407abdefa92827b71b1a-5" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-5"></a><span class="kn">import</span> <span class="nn">pynotify</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-6" name="rest_code_1fe1692a1599407abdefa92827b71b1a-6" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-6"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-7" name="rest_code_1fe1692a1599407abdefa92827b71b1a-7" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-7"></a><span class="c1">#</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-8" name="rest_code_1fe1692a1599407abdefa92827b71b1a-8" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-8"></a><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-9" name="rest_code_1fe1692a1599407abdefa92827b71b1a-9" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-9"></a>    <span class="n">device_vendor</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s2">"ID_VENDOR_ENC"</span><span class="p">)</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-10" name="rest_code_1fe1692a1599407abdefa92827b71b1a-10" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-10"></a>    <span class="n">device_model</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s2">"ID_MODEL_ENC"</span><span class="p">)</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-11" name="rest_code_1fe1692a1599407abdefa92827b71b1a-11" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-11"></a>    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"add"</span><span class="p">:</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-12" name="rest_code_1fe1692a1599407abdefa92827b71b1a-12" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-12"></a>        <span class="n">n</span> <span class="o">=</span> <span class="n">pynotify</span><span class="o">.</span><span class="n">Notification</span><span class="p">(</span><span class="s2">"USB Device Added"</span><span class="p">,</span> <span class="s2">"</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> is now connected "</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-13" name="rest_code_1fe1692a1599407abdefa92827b71b1a-13" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-13"></a>                                  <span class="s2">"to your system"</span> <span class="o">%</span> <span class="p">(</span><span class="n">device_vendor</span><span class="p">,</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-14" name="rest_code_1fe1692a1599407abdefa92827b71b1a-14" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-14"></a>                                  <span class="n">device_model</span><span class="p">))</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-15" name="rest_code_1fe1692a1599407abdefa92827b71b1a-15" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-15"></a>        <span class="n">n</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-16" name="rest_code_1fe1692a1599407abdefa92827b71b1a-16" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-16"></a>    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"remove"</span><span class="p">:</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-17" name="rest_code_1fe1692a1599407abdefa92827b71b1a-17" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-17"></a>        <span class="n">n</span> <span class="o">=</span> <span class="n">pynotify</span><span class="o">.</span><span class="n">Notification</span><span class="p">(</span><span class="s2">"USB Device Removed"</span><span class="p">,</span> <span class="s2">"</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> has been "</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-18" name="rest_code_1fe1692a1599407abdefa92827b71b1a-18" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-18"></a>                                  <span class="s2">"disconnected from your system"</span> <span class="o">%</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-19" name="rest_code_1fe1692a1599407abdefa92827b71b1a-19" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-19"></a>                                  <span class="p">(</span><span class="n">device_vendor</span><span class="p">,</span> <span class="n">device_model</span><span class="p">))</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-20" name="rest_code_1fe1692a1599407abdefa92827b71b1a-20" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-20"></a>        <span class="n">n</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-21" name="rest_code_1fe1692a1599407abdefa92827b71b1a-21" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-21"></a><span class="c1">#</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-22" name="rest_code_1fe1692a1599407abdefa92827b71b1a-22" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-22"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">pynotify</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">"USB Device Notifier"</span><span class="p">):</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-23" name="rest_code_1fe1692a1599407abdefa92827b71b1a-23" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-23"></a>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s2">"Couldn't connect to the notification daemon!"</span><span class="p">)</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-24" name="rest_code_1fe1692a1599407abdefa92827b71b1a-24" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-24"></a><span class="c1">#</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-25" name="rest_code_1fe1692a1599407abdefa92827b71b1a-25" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-25"></a><span class="n">client</span> <span class="o">=</span> <span class="n">gudev</span><span class="o">.</span><span class="n">Client</span><span class="p">([</span><span class="s2">"usb/usb_device"</span><span class="p">])</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-26" name="rest_code_1fe1692a1599407abdefa92827b71b1a-26" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-26"></a><span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"uevent"</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-27" name="rest_code_1fe1692a1599407abdefa92827b71b1a-27" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-27"></a><span class="c1">#</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-28" name="rest_code_1fe1692a1599407abdefa92827b71b1a-28" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-28"></a><span class="n">loop</span> <span class="o">=</span> <span class="n">glib</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+<a id="rest_code_1fe1692a1599407abdefa92827b71b1a-29" name="rest_code_1fe1692a1599407abdefa92827b71b1a-29" href="#rest_code_1fe1692a1599407abdefa92827b71b1a-29"></a><span class="n">loop</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 <p><em>Disclaimer: el uso o no de SheBang/Declaracion de Encoding queda a criterio del usuario.</em></p>
 <p><em>Fe de Erratas: seguramente hay una forma mejor de hacerlo, pero esta funciona correctamente.</em></p>
@@ -139,7 +139,7 @@ def callback(c">
 </div>
         <!--End of body content-->
 
-        <footer id="footer" class="bg-light"><span>Contents © 2024         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
+        <footer id="footer" class="bg-light"><span>Contents © 2025         <a href="mailto:admin@python.org.ar">Python Argentina</a> - Powered by         <a href="https://getnikola.com" rel="nofollow" target="_blanc">Nikola</a>         </span><span><a href="https://ac.python.org.ar/#donaciones" rel="nofollow" target="_blanc">Aporta a PyAr con tu donación</a><a></a></span>
             
         </footer>
 </div>
@@ -151,74 +151,6 @@ def callback(c">
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
-    var searchIndex = new FlexSearch.Index();  // Initialize FlexSearch
-    var index = {};  // This will store the index data globally within this script block
-
-    // Fetch the generated JSON file
-    fetch('/wiki/search_index.json')
-    .then(response => response.json())
-    .then(data => {
-        index = data;  // Store the fetched data in the 'index' variable
-        for (var key in index) {
-            if (index.hasOwnProperty(key)) {
-                searchIndex.add(key, index[key].content);
-            }
-        }
-    });
-
-    var input = document.getElementById('search_input');
-    var button = document.getElementById('search_button');
-
-    // Function to perform search
-    function performSearch() {
-        var query = input.value;
-        var results = searchIndex.search(query);
-        var resultsContainer = document.getElementById('search_results');
-        resultsContainer.innerHTML = ''; // Clear previous results
-
-        var ul = document.createElement('ul'); // Create a UL element to hold the results
-
-        // Display results
-        results.forEach(function(result) {
-            var li = document.createElement('li'); // Create a LI element for each result
-            var link = document.createElement('a');
-            link.href = index[result].url;
-            link.textContent = index[result].title;
-            li.appendChild(link);
-            ul.appendChild(li); // Append the LI to the UL
-        });
-
-        resultsContainer.appendChild(ul); // Append the UL to the results container
-        document.getElementById('search_overlay').style.display = 'flex'; // Show the overlay
-    }
-
-    // Event listener for search button click
-    button.addEventListener('click', performSearch);
-
-    // Event listener for pressing enter key in the search input
-    input.addEventListener('keypress', function(event) {
-        if (event.key === "Enter" || event.keyCode === 13) {
-            event.preventDefault();  // Prevent the form from being submitted
-            performSearch();
-        }
-    });
-});
-
-// Function to close the search overlay
-function closeSearch() {
-    document.getElementById('search_overlay').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        var searchOverlay = document.getElementById('search_overlay');
-        if (searchOverlay !== null) {
-            closeSearch();
-        }
-    }
-});
-</script>
+    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>
