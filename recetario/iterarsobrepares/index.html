@@ -32,7 +32,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 (3, 4)
 (5">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
+<meta property="article:published_time" content="2025-03-19T19:04:33-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -95,20 +95,20 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages\recetario\iterarsobrepares.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/iterarsobrepares.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Iterar Sobre Pares</h2>
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>¿Cómo iterar por ejemplo la secuencia [1,2,3,4,5,6] para que cada item sea: (1,2), (3,4), (5,6)?</p>
-<div class="code"><pre class="code pycon"><a id="rest_code_65e2b32368004a1d96ef2d962babed34-1" name="rest_code_65e2b32368004a1d96ef2d962babed34-1" href="#rest_code_65e2b32368004a1d96ef2d962babed34-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
-<a id="rest_code_65e2b32368004a1d96ef2d962babed34-2" name="rest_code_65e2b32368004a1d96ef2d962babed34-2" href="#rest_code_65e2b32368004a1d96ef2d962babed34-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
-<a id="rest_code_65e2b32368004a1d96ef2d962babed34-3" name="rest_code_65e2b32368004a1d96ef2d962babed34-3" href="#rest_code_65e2b32368004a1d96ef2d962babed34-3"></a><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
-<a id="rest_code_65e2b32368004a1d96ef2d962babed34-4" name="rest_code_65e2b32368004a1d96ef2d962babed34-4" href="#rest_code_65e2b32368004a1d96ef2d962babed34-4"></a><span class="gp">... </span>    <span class="nb">print</span> <span class="n">x</span>
-<a id="rest_code_65e2b32368004a1d96ef2d962babed34-5" name="rest_code_65e2b32368004a1d96ef2d962babed34-5" href="#rest_code_65e2b32368004a1d96ef2d962babed34-5"></a><span class="gp">...</span>
-<a id="rest_code_65e2b32368004a1d96ef2d962babed34-6" name="rest_code_65e2b32368004a1d96ef2d962babed34-6" href="#rest_code_65e2b32368004a1d96ef2d962babed34-6"></a><span class="go">(1, 2)</span>
-<a id="rest_code_65e2b32368004a1d96ef2d962babed34-7" name="rest_code_65e2b32368004a1d96ef2d962babed34-7" href="#rest_code_65e2b32368004a1d96ef2d962babed34-7"></a><span class="go">(3, 4)</span>
-<a id="rest_code_65e2b32368004a1d96ef2d962babed34-8" name="rest_code_65e2b32368004a1d96ef2d962babed34-8" href="#rest_code_65e2b32368004a1d96ef2d962babed34-8"></a><span class="go">(5, 6)</span>
+<div class="code"><pre class="code pycon"><a id="rest_code_317ed827f1584f388d5fe9814e669fa1-1" name="rest_code_317ed827f1584f388d5fe9814e669fa1-1" href="#rest_code_317ed827f1584f388d5fe9814e669fa1-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<a id="rest_code_317ed827f1584f388d5fe9814e669fa1-2" name="rest_code_317ed827f1584f388d5fe9814e669fa1-2" href="#rest_code_317ed827f1584f388d5fe9814e669fa1-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<a id="rest_code_317ed827f1584f388d5fe9814e669fa1-3" name="rest_code_317ed827f1584f388d5fe9814e669fa1-3" href="#rest_code_317ed827f1584f388d5fe9814e669fa1-3"></a><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+<a id="rest_code_317ed827f1584f388d5fe9814e669fa1-4" name="rest_code_317ed827f1584f388d5fe9814e669fa1-4" href="#rest_code_317ed827f1584f388d5fe9814e669fa1-4"></a><span class="gp">... </span>    <span class="nb">print</span> <span class="n">x</span>
+<a id="rest_code_317ed827f1584f388d5fe9814e669fa1-5" name="rest_code_317ed827f1584f388d5fe9814e669fa1-5" href="#rest_code_317ed827f1584f388d5fe9814e669fa1-5"></a><span class="gp">...</span>
+<a id="rest_code_317ed827f1584f388d5fe9814e669fa1-6" name="rest_code_317ed827f1584f388d5fe9814e669fa1-6" href="#rest_code_317ed827f1584f388d5fe9814e669fa1-6"></a><span class="go">(1, 2)</span>
+<a id="rest_code_317ed827f1584f388d5fe9814e669fa1-7" name="rest_code_317ed827f1584f388d5fe9814e669fa1-7" href="#rest_code_317ed827f1584f388d5fe9814e669fa1-7"></a><span class="go">(3, 4)</span>
+<a id="rest_code_317ed827f1584f388d5fe9814e669fa1-8" name="rest_code_317ed827f1584f388d5fe9814e669fa1-8" href="#rest_code_317ed827f1584f388d5fe9814e669fa1-8"></a><span class="go">(5, 6)</span>
 </pre></div>
     </div>    
 </div>
@@ -126,6 +126,6 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
+    </script><script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@0.8.0/dist/flexsearch.bundle.min.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>

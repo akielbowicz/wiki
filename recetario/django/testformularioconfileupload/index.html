@@ -28,7 +28,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 client = Client()">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
+<meta property="article:published_time" content="2025-03-19T19:04:33-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -91,24 +91,24 @@ client = Client()">
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages\recetario\django\testformularioconfileupload.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/django/testformularioconfileupload.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Test Formulario Con File Upload En Django</h2>
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Un ejemplo de cómo probar un formulario que tiene un campo para subir un archivo.</p>
-<div class="code"><pre class="code python"><a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-1" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-1" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-1"></a><span class="kn">from</span> <span class="nn">django.test.client</span> <span class="kn">import</span> <span class="n">Client</span>
-<a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-2" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-2" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-2"></a><span class="kn">from</span> <span class="nn">django.core.files.uploadedfile</span> <span class="kn">import</span> <span class="n">SimpleUploadedFile</span>
-<a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-3" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-3" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-3"></a>
-<a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-4" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-4" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-4"></a><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
-<a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-5" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-5" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-5"></a><span class="n">client</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
-<a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-6" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-6" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-6"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'campo1'</span><span class="p">:</span> <span class="s1">'valor1'</span><span class="p">,</span>
-<a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-7" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-7" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-7"></a>        <span class="s1">'campo2'</span><span class="p">:</span> <span class="s1">'valor2'</span><span class="p">,</span>
-<a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-8" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-8" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-8"></a>        <span class="s1">'archivo'</span><span class="p">:</span> <span class="n">SimpleUploadedFile</span><span class="p">(</span><span class="s1">'nombre_de_archivo'</span><span class="p">,</span><span class="s1">'contenido de archivo'</span><span class="p">),</span>
-<a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-9" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-9" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-9"></a><span class="p">}</span>
-<a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-10" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-10" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-10"></a>
-<a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-11" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-11" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-11"></a><span class="n">response</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'/path/al/form'</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<a id="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-12" name="rest_code_87b9c4ebb8bf46838d90657be35ac3ad-12" href="#rest_code_87b9c4ebb8bf46838d90657be35ac3ad-12"></a><span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+<div class="code"><pre class="code python"><a id="rest_code_e853da908296412fa47e2cd89f080523-1" name="rest_code_e853da908296412fa47e2cd89f080523-1" href="#rest_code_e853da908296412fa47e2cd89f080523-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.test.client</span><span class="w"> </span><span class="kn">import</span> <span class="n">Client</span>
+<a id="rest_code_e853da908296412fa47e2cd89f080523-2" name="rest_code_e853da908296412fa47e2cd89f080523-2" href="#rest_code_e853da908296412fa47e2cd89f080523-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.core.files.uploadedfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleUploadedFile</span>
+<a id="rest_code_e853da908296412fa47e2cd89f080523-3" name="rest_code_e853da908296412fa47e2cd89f080523-3" href="#rest_code_e853da908296412fa47e2cd89f080523-3"></a>
+<a id="rest_code_e853da908296412fa47e2cd89f080523-4" name="rest_code_e853da908296412fa47e2cd89f080523-4" href="#rest_code_e853da908296412fa47e2cd89f080523-4"></a><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
+<a id="rest_code_e853da908296412fa47e2cd89f080523-5" name="rest_code_e853da908296412fa47e2cd89f080523-5" href="#rest_code_e853da908296412fa47e2cd89f080523-5"></a><span class="n">client</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
+<a id="rest_code_e853da908296412fa47e2cd89f080523-6" name="rest_code_e853da908296412fa47e2cd89f080523-6" href="#rest_code_e853da908296412fa47e2cd89f080523-6"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'campo1'</span><span class="p">:</span> <span class="s1">'valor1'</span><span class="p">,</span>
+<a id="rest_code_e853da908296412fa47e2cd89f080523-7" name="rest_code_e853da908296412fa47e2cd89f080523-7" href="#rest_code_e853da908296412fa47e2cd89f080523-7"></a>        <span class="s1">'campo2'</span><span class="p">:</span> <span class="s1">'valor2'</span><span class="p">,</span>
+<a id="rest_code_e853da908296412fa47e2cd89f080523-8" name="rest_code_e853da908296412fa47e2cd89f080523-8" href="#rest_code_e853da908296412fa47e2cd89f080523-8"></a>        <span class="s1">'archivo'</span><span class="p">:</span> <span class="n">SimpleUploadedFile</span><span class="p">(</span><span class="s1">'nombre_de_archivo'</span><span class="p">,</span><span class="s1">'contenido de archivo'</span><span class="p">),</span>
+<a id="rest_code_e853da908296412fa47e2cd89f080523-9" name="rest_code_e853da908296412fa47e2cd89f080523-9" href="#rest_code_e853da908296412fa47e2cd89f080523-9"></a><span class="p">}</span>
+<a id="rest_code_e853da908296412fa47e2cd89f080523-10" name="rest_code_e853da908296412fa47e2cd89f080523-10" href="#rest_code_e853da908296412fa47e2cd89f080523-10"></a>
+<a id="rest_code_e853da908296412fa47e2cd89f080523-11" name="rest_code_e853da908296412fa47e2cd89f080523-11" href="#rest_code_e853da908296412fa47e2cd89f080523-11"></a><span class="n">response</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'/path/al/form'</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<a id="rest_code_e853da908296412fa47e2cd89f080523-12" name="rest_code_e853da908296412fa47e2cd89f080523-12" href="#rest_code_e853da908296412fa47e2cd89f080523-12"></a><span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
 </pre></div>
     </div>    
 </div>
@@ -126,6 +126,6 @@ client = Client()">
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../../assets/js/flexsearch.js"></script>
+    </script><script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@0.8.0/dist/flexsearch.bundle.min.js"></script><script src="../../../assets/js/flexsearch.js"></script>
 </body>
 </html>

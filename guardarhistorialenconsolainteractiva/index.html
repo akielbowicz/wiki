@@ -25,7 +25,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <meta property="og:description" content="como guardar y recuperar el historial de las sesiones en la consola interactiva (donado por Matias Ribecky)
 crear un archivo llamado .pythonrc (se llama asi pero podria llamarse de cualquier otra form">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
+<meta property="article:published_time" content="2025-03-19T19:04:33-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -88,29 +88,29 @@ crear un archivo llamado .pythonrc (se llama asi pero podria llamarse de cualqui
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages\guardarhistorialenconsolainteractiva.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages/guardarhistorialenconsolainteractiva.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Guardar Historial En Consola Interactiva</h2>
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>como guardar y recuperar el historial de las sesiones en la consola interactiva (donado por Matias Ribecky)</p>
 <p>crear un archivo llamado .pythonrc (se llama asi pero podria llamarse de cualquier otra forma), que dice:</p>
-<div class="code"><pre class="code python"><a id="rest_code_556f19ae453a42988e8e2ec23cb34523-1" name="rest_code_556f19ae453a42988e8e2ec23cb34523-1" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-1"></a><span class="kn">import</span> <span class="nn">os</span>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-2" name="rest_code_556f19ae453a42988e8e2ec23cb34523-2" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-2"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-3" name="rest_code_556f19ae453a42988e8e2ec23cb34523-3" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-3"></a><span class="kn">import</span> <span class="nn">atexit</span>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-4" name="rest_code_556f19ae453a42988e8e2ec23cb34523-4" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-4"></a>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-5" name="rest_code_556f19ae453a42988e8e2ec23cb34523-5" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-5"></a><span class="n">history_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">"~/.pyhistory"</span><span class="p">)</span>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-6" name="rest_code_556f19ae453a42988e8e2ec23cb34523-6" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-6"></a>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-7" name="rest_code_556f19ae453a42988e8e2ec23cb34523-7" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-7"></a><span class="k">def</span> <span class="nf">save_history</span><span class="p">():</span>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-8" name="rest_code_556f19ae453a42988e8e2ec23cb34523-8" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-8"></a>    <span class="kn">import</span> <span class="nn">readline</span>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-9" name="rest_code_556f19ae453a42988e8e2ec23cb34523-9" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-9"></a>    <span class="n">readline</span><span class="o">.</span><span class="n">write_history_file</span><span class="p">(</span><span class="n">history_path</span><span class="p">)</span>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-10" name="rest_code_556f19ae453a42988e8e2ec23cb34523-10" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-10"></a>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-11" name="rest_code_556f19ae453a42988e8e2ec23cb34523-11" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-11"></a><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">history_path</span><span class="p">):</span>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-12" name="rest_code_556f19ae453a42988e8e2ec23cb34523-12" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-12"></a>    <span class="n">readline</span><span class="o">.</span><span class="n">read_history_file</span><span class="p">(</span><span class="n">history_path</span><span class="p">)</span>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-13" name="rest_code_556f19ae453a42988e8e2ec23cb34523-13" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-13"></a>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-14" name="rest_code_556f19ae453a42988e8e2ec23cb34523-14" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-14"></a><span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">save_history</span><span class="p">)</span>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-15" name="rest_code_556f19ae453a42988e8e2ec23cb34523-15" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-15"></a>
-<a id="rest_code_556f19ae453a42988e8e2ec23cb34523-16" name="rest_code_556f19ae453a42988e8e2ec23cb34523-16" href="#rest_code_556f19ae453a42988e8e2ec23cb34523-16"></a><span class="k">del</span> <span class="n">os</span><span class="p">,</span> <span class="n">sys</span><span class="p">,</span> <span class="n">atexit</span><span class="p">,</span> <span class="n">readline</span><span class="p">,</span> <span class="n">rlcompleter</span><span class="p">,</span> <span class="n">save_history</span><span class="p">,</span> <span class="n">history_path</span>
+<div class="code"><pre class="code python"><a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-1" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-1" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-2" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-2" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-3" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-3" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">atexit</span>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-4" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-4" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-4"></a>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-5" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-5" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-5"></a><span class="n">history_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">"~/.pyhistory"</span><span class="p">)</span>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-6" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-6" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-6"></a>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-7" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-7" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">save_history</span><span class="p">():</span>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-8" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-8" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-8"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">readline</span>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-9" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-9" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-9"></a>    <span class="n">readline</span><span class="o">.</span><span class="n">write_history_file</span><span class="p">(</span><span class="n">history_path</span><span class="p">)</span>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-10" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-10" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-10"></a>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-11" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-11" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-11"></a><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">history_path</span><span class="p">):</span>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-12" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-12" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-12"></a>    <span class="n">readline</span><span class="o">.</span><span class="n">read_history_file</span><span class="p">(</span><span class="n">history_path</span><span class="p">)</span>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-13" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-13" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-13"></a>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-14" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-14" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-14"></a><span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">save_history</span><span class="p">)</span>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-15" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-15" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-15"></a>
+<a id="rest_code_73bfa907aca34a4db1d9685cf7282eda-16" name="rest_code_73bfa907aca34a4db1d9685cf7282eda-16" href="#rest_code_73bfa907aca34a4db1d9685cf7282eda-16"></a><span class="k">del</span> <span class="n">os</span><span class="p">,</span> <span class="n">sys</span><span class="p">,</span> <span class="n">atexit</span><span class="p">,</span> <span class="n">readline</span><span class="p">,</span> <span class="n">rlcompleter</span><span class="p">,</span> <span class="n">save_history</span><span class="p">,</span> <span class="n">history_path</span>
 </pre></div>
 <p>y en el environment se setteada la variable</p>
 <p>PYTHONSTARTUP=/home/tuusuario/.pythonrc (aca importa que sea igual al nombre del alchivo).</p>
@@ -130,6 +130,6 @@ crear un archivo llamado .pythonrc (se llama asi pero podria llamarse de cualqui
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../assets/js/flexsearch.js"></script>
+    </script><script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@0.8.0/dist/flexsearch.bundle.min.js"></script><script src="../assets/js/flexsearch.js"></script>
 </body>
 </html>

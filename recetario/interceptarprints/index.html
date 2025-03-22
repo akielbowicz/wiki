@@ -24,7 +24,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <meta property="og:url" content="https://wiki.python.org.ar/recetario/interceptarprints/">
 <meta property="og:description" content='Esto sirve para modificar los strings que se vayan a imprimir, por ejemplo para agregarles un timestamp o algo similar. En este ejemplo lo usamos para redefinir "2" y "4". Probado en Python 2 y Python'>
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-20T14:29:19-03:00">
+<meta property="article:published_time" content="2025-03-19T19:04:33-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -87,28 +87,28 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages\recetario\interceptarprints.rst" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages/recetario/interceptarprints.rst" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Interceptar Prints</h2>
     </div>
     <div class="e-content entry-content" itemprop="articleBody text">
     <p>Esto sirve para modificar los strings que se vayan a imprimir, por ejemplo para agregarles un timestamp o algo similar. En este ejemplo lo usamos para redefinir "2" y "4". Probado en Python 2 y Python 3.</p>
-<div class="code"><pre class="code python"><a id="rest_code_66f87996098c48b59a195fcbb224341a-1" name="rest_code_66f87996098c48b59a195fcbb224341a-1" href="#rest_code_66f87996098c48b59a195fcbb224341a-1"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-2" name="rest_code_66f87996098c48b59a195fcbb224341a-2" href="#rest_code_66f87996098c48b59a195fcbb224341a-2"></a>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-3" name="rest_code_66f87996098c48b59a195fcbb224341a-3" href="#rest_code_66f87996098c48b59a195fcbb224341a-3"></a><span class="k">class</span> <span class="nc">FakeStdout</span><span class="p">:</span>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-4" name="rest_code_66f87996098c48b59a195fcbb224341a-4" href="#rest_code_66f87996098c48b59a195fcbb224341a-4"></a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-5" name="rest_code_66f87996098c48b59a195fcbb224341a-5" href="#rest_code_66f87996098c48b59a195fcbb224341a-5"></a>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"2"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">)</span>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-6" name="rest_code_66f87996098c48b59a195fcbb224341a-6" href="#rest_code_66f87996098c48b59a195fcbb224341a-6"></a>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"4"</span><span class="p">,</span> <span class="s2">"6"</span><span class="p">)</span>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-7" name="rest_code_66f87996098c48b59a195fcbb224341a-7" href="#rest_code_66f87996098c48b59a195fcbb224341a-7"></a>        <span class="n">real_stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-8" name="rest_code_66f87996098c48b59a195fcbb224341a-8" href="#rest_code_66f87996098c48b59a195fcbb224341a-8"></a>    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-9" name="rest_code_66f87996098c48b59a195fcbb224341a-9" href="#rest_code_66f87996098c48b59a195fcbb224341a-9"></a>        <span class="n">real_stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-10" name="rest_code_66f87996098c48b59a195fcbb224341a-10" href="#rest_code_66f87996098c48b59a195fcbb224341a-10"></a>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-11" name="rest_code_66f87996098c48b59a195fcbb224341a-11" href="#rest_code_66f87996098c48b59a195fcbb224341a-11"></a><span class="n">real_stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-12" name="rest_code_66f87996098c48b59a195fcbb224341a-12" href="#rest_code_66f87996098c48b59a195fcbb224341a-12"></a><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">FakeStdout</span><span class="p">()</span>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-13" name="rest_code_66f87996098c48b59a195fcbb224341a-13" href="#rest_code_66f87996098c48b59a195fcbb224341a-13"></a>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-14" name="rest_code_66f87996098c48b59a195fcbb224341a-14" href="#rest_code_66f87996098c48b59a195fcbb224341a-14"></a>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-15" name="rest_code_66f87996098c48b59a195fcbb224341a-15" href="#rest_code_66f87996098c48b59a195fcbb224341a-15"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<a id="rest_code_66f87996098c48b59a195fcbb224341a-16" name="rest_code_66f87996098c48b59a195fcbb224341a-16" href="#rest_code_66f87996098c48b59a195fcbb224341a-16"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+<div class="code"><pre class="code python"><a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-1" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-1" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-2" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-2" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-2"></a>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-3" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-3" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">FakeStdout</span><span class="p">:</span>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-4" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-4" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-4"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-5" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-5" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-5"></a>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"2"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">)</span>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-6" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-6" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-6"></a>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"4"</span><span class="p">,</span> <span class="s2">"6"</span><span class="p">)</span>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-7" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-7" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-7"></a>        <span class="n">real_stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-8" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-8" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-9" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-9" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-9"></a>        <span class="n">real_stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-10" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-10" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-10"></a>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-11" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-11" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-11"></a><span class="n">real_stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-12" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-12" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-12"></a><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">FakeStdout</span><span class="p">()</span>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-13" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-13" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-13"></a>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-14" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-14" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-14"></a>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-15" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-15" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-15"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<a id="rest_code_dc8209461f7a4af1ad857fb969d56be3-16" name="rest_code_dc8209461f7a4af1ad857fb969d56be3-16" href="#rest_code_dc8209461f7a4af1ad857fb969d56be3-16"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
     </div>    
 </div>
@@ -126,6 +126,6 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../assets/js/flexsearch.js"></script>
+    </script><script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@0.8.0/dist/flexsearch.bundle.min.js"></script><script src="../../assets/js/flexsearch.js"></script>
 </body>
 </html>

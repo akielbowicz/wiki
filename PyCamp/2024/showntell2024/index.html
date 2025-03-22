@@ -26,7 +26,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 Andre
 Sublime-T">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2024-06-25T18:46:27-03:00">
+<meta property="article:published_time" content="2025-03-21T20:05:40-03:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -89,7 +89,7 @@ Sublime-T">
 <div class="col-lg-12 px-4 py-2">
     <div class="page-header">
         <div class="pull-right">
-            <a href="https://github.com/PyAr/wiki/blob/master/pages\PyCamp\2024\show_and_tell.md" id="sourcelink" class="nav-link">Editar</a>
+            <a href="https://github.com/PyAr/wiki/blob/master/pages/PyCamp/2024/show_and_tell.md" id="sourcelink" class="nav-link">Editar</a>
         </div>
         <h2>Show &amp; Tell 2024</h2>
     </div>
@@ -103,12 +103,12 @@ Sublime-T">
 <p><strong>python</strong></p>
 <p>auto-import mágico </p>
 <p>Implementación que <a href="#andre">Andre</a> compartió por el grupo.</p>
-<div class="code"><pre class="code literal-block"><span class="kn">import</span> <span class="nn">importlib</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<div class="code"><pre class="code literal-block"><span class="kn">import</span><span class="w"> </span><span class="nn">importlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
 <span class="n">original_hook</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span>
 
-<span class="k">def</span> <span class="nf">my_hook</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_hook</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">type_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="ne">NameError</span><span class="p">:</span>
         <span class="n">original_hook</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">)</span>
         <span class="k">return</span>
@@ -247,6 +247,6 @@ fdupes<span class="w"> </span>-dNr<span class="w"> </span>.
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});
-    </script><script src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.31/dist/flexsearch.bundle.js"></script><script src="../../../assets/js/flexsearch.js"></script>
+    </script><script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@0.8.0/dist/flexsearch.bundle.min.js"></script><script src="../../../assets/js/flexsearch.js"></script>
 </body>
 </html>
