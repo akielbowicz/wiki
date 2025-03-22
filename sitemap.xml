@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://wiki.python.org.ar/</loc>
-  <lastmod>2025-03-21T23:05:00Z</lastmod>
+  <lastmod>2025-03-22T15:05:00Z</lastmod>
  </url>
  <url>
   <loc>https://wiki.python.org.ar/2018/</loc>
@@ -723,10 +723,6 @@
  </url>
  <url>
   <loc>https://wiki.python.org.ar/PyCamp/2018/actividades/</loc>
-  <lastmod>2025-03-19T22:40:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wiki.python.org.ar/PyCamp/2018rst/</loc>
   <lastmod>2025-03-19T22:40:00Z</lastmod>
  </url>
  <url>
